@@ -1,9 +1,9 @@
 import React from 'react';
-import Table from './Table';
+import CustomTable from './CustomTable/CustomTable';
 
 const Dashboard = () => {
     return(
-        <Table />
+        <CustomTable />
     );
 }
 
