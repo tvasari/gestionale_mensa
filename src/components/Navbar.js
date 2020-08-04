@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
@@ -11,8 +12,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
-const drawerWidth = '20%';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,8 +39,16 @@ const useStyles = makeStyles((theme) => ({
   toolBar: {
       display: 'flex',
       justifyContent: 'space-between'
+  },
+  link: {
+    textDecoration: 'none',
+    color: 'black'
   }
 }));
+
+const drawerWidth = '20%';
+
+const workingTabs = ['Mese', 'Menù', 'Pasto', 'Ingredienti', 'Magazzino', 'Statistiche', 'Account'];
 
 const Navbar = () => {
 
@@ -65,18 +72,23 @@ const Navbar = () => {
       <Drawer
         className={classes.drawer}
         variant="permanent"
-        classes={{paper: classes.drawerPaper}}>
+        classes={{paper: classes.drawerPaper}}
+      >
         <Toolbar />
         <div className={classes.drawerContainer}>
           <List>
-            {['Mese', 'Menù', 'Pasto', 'Ingredienti', 'Magazzino', 'Statistiche', 'Account'].map((text, index) => (
-                <div key={text + 'view'} className="view">
-                    <ListItem button key={text}>
-                        <ListItemText key={text + index} primary={text} />
+            {
+              workingTabs.map((tab, index) => (
+                <div key={tab + 'view'} className="view">
+                  <NavLink to={`/${tab}`} className={classes.link} activeStyle={{color: 'darkorange'}}>
+                    <ListItem button key={tab}>
+                        <ListItemText key={tab + index} primary={tab} />
                     </ListItem>
-                    <Divider key={text + 'divider'}/>
-              </div>
-            ))}
+                  </NavLink>
+                  <Divider key={tab + 'divider'}/>
+                </div>
+              ))
+            }
           </List>
         </div>
       </Drawer>

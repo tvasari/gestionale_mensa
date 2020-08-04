@@ -42,7 +42,7 @@ const useStyles = makeStyles({
       color: 'black'
   },
   tableRow: {
-      padding: '0'
+      padding: '0 20px'
   }
 });
 
