@@ -99,7 +99,7 @@ export default function CustomizedTables() {
               <Fragment>
                 <TableRow key={row.name}>
                     <TableCell component="th" scope="row">
-                        {row.name}
+                        <b>{row.name}</b>
                         {
                             row.name === 'Primi Piatti' || row.name === 'Secondi Piatti'
                             ? (
@@ -135,7 +135,7 @@ export default function CustomizedTables() {
                     row.name === 'Primi Piatti' || row.name === 'Secondi Piatti'
                     ? (
                       <TableRow className={classes.subrow}>
-                        <TableCell>Alternativa Dietetica</TableCell>
+                        <TableCell><b>Alternativa Dietetica</b></TableCell>
                         <TableCell>Alt</TableCell>
                         <TableCell>Alt</TableCell>
                         <TableCell>Alt</TableCell>
