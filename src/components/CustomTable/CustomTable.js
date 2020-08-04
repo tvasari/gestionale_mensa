@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import Selector from './Selector';
+import Selector from '../Selector';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -29,21 +29,24 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const useStyles = makeStyles({
-  table: {
-    maxWidth: '80%',
-    float: 'right',
-    height: '90vh'
-  },
-  option: {
+    table: {
+        maxWidth: '80%',
+        float: 'right',
+        height: '90vh'
+    },
+    option: {
+        color: '#1976d2'
+    },
+    tableHead: {
+      backgroundColor: '#eaf4f4',
       color: 'black'
-  },
-  tableHead: {
-      backgroundColor: '#fff',
-      color: 'black'
-  },
-  tableRow: {
-      padding: '0 20px'
-  }
+    },
+    tableRow: {
+        padding: '5px 20px'
+    },
+    tableBody: {
+        overflowX: 'auto',
+    }
 });
 
 const yearCreator = () => {
@@ -79,11 +82,11 @@ const meals = [
 ];
 
 const values = [
-    'Giorno', 
-    'Cociv Badge', 
-    'Cociv Firme', 
-    'Tot. Cociv', 
-    'Tot.'
+    <h3 style={{color: '#1976d2'}}>Giorno</h3>,
+    <h3 style={{color: '#1976d2'}}>Cociv Badge</h3>,
+    <h3 style={{color: '#1976d2'}}>Cociv Firme</h3>,
+    <h3 style={{color: '#1976d2'}}>Tot. Cociv</h3>,
+    <h3 style={{color: '#1976d2'}}>Tot.</h3>
 ]
 
 const attendance = [
@@ -128,22 +131,22 @@ const CustomTable = () => {
   const selectors = [
       <Selector key="Mese" type="Mese" array={months} style={classes.option}/>,
       <Selector key="Anno" type="Anno" array={yearCreator()} style={classes.option}/>,
-      <Selector key="Pasto" type="Pasto" array={meals} style={classes.option}/>,
+      <Selector key="Tipo" type="Tipo" array={meals} style={classes.option}/>,
       <Selector key="Presenze" type="Presenze" array={attendance} style={classes.option}/>,
     ]
 
   return (
     <TableContainer component={Paper} className={classes.table}>
-        <Table aria-label="customized table">
+        <Table stickyHeader aria-label="customized table">
             
             <TableHead>
                 <TableRow>
                     {
                         headerGenerator(selectors, classes.tableHead)
                     }
-                    <TableCell>
-                        <Button variant="outlined" color="primary">
-                            Modifica
+                    <TableCell className={classes.tableHead}>
+                        <Button variant="outlined" className={classes.option}>
+                            <b>Modifica</b>
                         </Button>
                     </TableCell>
                 </TableRow>

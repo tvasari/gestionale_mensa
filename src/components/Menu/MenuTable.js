@@ -10,24 +10,8 @@ import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
-
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 function createData(name, lun, mar, mer, gio, ven, sab, dom) {
   return { name, lun, mar, mer, gio, ven, sab, dom };
@@ -52,14 +36,17 @@ const rows = [
 ];
 
 const days = [
-    "Giorni",
-    "Lunedì",
-    "Martedì",
-    "Mercoledì",
-    "Giovedì",
-    "Venerdì",
-    "Sabato",
-    "Domenica"
+  <ButtonGroup disableElevation variant="contained" color="primary" aria-label="contained primary button group">
+    <Button>Pranzo</Button>
+    <Button>Cena</Button>
+  </ButtonGroup>,
+  <h3 style={{color: '#1976d2'}}>Lunedì</h3>,
+  <h3 style={{color: '#1976d2'}}>Martedì</h3>,
+  <h3 style={{color: '#1976d2'}}>Mercoledì</h3>,
+  <h3 style={{color: '#1976d2'}}>Giovedì</h3>,
+  <h3 style={{color: '#1976d2'}}>Venerdì</h3>,
+  <h3 style={{color: '#1976d2'}}>Sabato</h3>,
+  <h3 style={{color: '#1976d2'}}>Domenica</h3>
 ]
 
 const useStyles = makeStyles({
@@ -77,6 +64,12 @@ const useStyles = makeStyles({
     },
     subrow: {
       visibility: 'visible' //toggle to 'collapse' on click
+    },
+    tableHeader: {
+      backgroundColor: '#eaf4f4'
+    },
+    option: {
+      color: '#1976d2'
     }
 });
 
@@ -90,12 +83,12 @@ export default function CustomizedTables() {
 
   return (
     <TableContainer component={Paper} className={classes.container}>
-      <Table className={classes.table} aria-label="customized table">
+      <Table className={classes.table} stickyHeader aria-label="customized table">
 
         <TableHead>
           <TableRow>
               {
-                  days.map(day => <StyledTableCell>{day}</StyledTableCell>)
+                  days.map(day => <TableCell className={classes.tableHeader}>{day}</TableCell>)
               }
           </TableRow>
         </TableHead>
@@ -104,8 +97,8 @@ export default function CustomizedTables() {
           {
             rows.map((row) => (
               <Fragment>
-                <StyledTableRow key={row.name}>
-                    <StyledTableCell component="th" scope="row">
+                <TableRow key={row.name}>
+                    <TableCell component="th" scope="row">
                         {row.name}
                         {
                             row.name === 'Primi Piatti' || row.name === 'Secondi Piatti'
@@ -116,13 +109,13 @@ export default function CustomizedTables() {
                             )
                             : null
                         }
-                    </StyledTableCell>
+                    </TableCell>
                     {
                         Object.keys(row).map(day => {
                             return day === 'name' 
                             ? null
                             : (
-                                <StyledTableCell>
+                                <TableCell>
                                     {
                                         row.lun.map(each => {
                                             return (
@@ -132,15 +125,26 @@ export default function CustomizedTables() {
                                             );
                                         })
                                     }
-                                </StyledTableCell>
+                                </TableCell>
                             );
                         })
                     }
-                </StyledTableRow>
+                </TableRow>
                 <Fragment>
                   {
                     row.name === 'Primi Piatti' || row.name === 'Secondi Piatti'
-                    ? <StyledTableRow className={classes.subrow}>ciao</StyledTableRow>
+                    ? (
+                      <TableRow className={classes.subrow}>
+                        <TableCell>Alternativa Dietetica</TableCell>
+                        <TableCell>Alt</TableCell>
+                        <TableCell>Alt</TableCell>
+                        <TableCell>Alt</TableCell>
+                        <TableCell>Alt</TableCell>
+                        <TableCell>Alt</TableCell>
+                        <TableCell>Alt</TableCell>
+                        <TableCell>Alt</TableCell>
+                      </TableRow>
+                    )
                     : null
                   }
                 </Fragment>

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    backgroundColor: '#1352E3'
+    backgroundColor: '#1976d2',
   },
   drawer: {
     flexShrink: 0,
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
     position: 'absolute',
-    backgroundColor: '#EDF2FE'
+    backgroundColor: '#eaf4f4'
   },
   drawerContainer: {
     overflow: 'auto',
