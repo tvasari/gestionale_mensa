@@ -3,8 +3,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 import Navbar from './components/Navbar';
-import CustomTable from './components/CustomTable/CustomTable';
-import Menu from './components/Menu/Menu';
+import MonthlyTable from './components/MonthlyTable/MonthlyTable';
+import MenuTable from './components/MenuTable/MenuTable';
 
 
 class App extends Component {
@@ -15,8 +15,8 @@ class App extends Component {
         <BrowserRouter>
           <Navbar />
           <Switch>
-            <Route path="/Mese" component={CustomTable} />
-            <Route path="/Menù" component={Menu} />
+            <Route path="/Mese" component={MonthlyTable} />
+            <Route path="/Menù" component={MenuTable} />
           </Switch>
         </BrowserRouter>
       </div>

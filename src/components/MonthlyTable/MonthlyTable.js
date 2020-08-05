@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import Selector from '../Selector';
+import Selector from './Selector';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -17,6 +17,7 @@ const StyledTableCell = withStyles((theme) => ({
   },
   body: {
     fontSize: 14,
+    padding: '5px 20px'
   },
 }))(TableCell);
 
@@ -39,25 +40,8 @@ const useStyles = makeStyles({
     },
     tableHead: {
       backgroundColor: '#eaf4f4',
-      color: 'black'
-    },
-    tableRow: {
-        padding: '5px 20px'
-    },
-    tableBody: {
-        overflowX: 'auto',
     }
 });
-
-const yearCreator = () => {
-    const years = [];
-
-    for (let i = 2010; i <= 2100; i++) {
-        years.push(i)
-    }
-
-    return years;
-}
 
 const months = [
     'Gennaio', 
@@ -81,19 +65,15 @@ const meals = [
     "Spuntini"
 ];
 
-const values = [
-    <h3 style={{color: '#1976d2'}}>Giorno</h3>,
-    <h3 style={{color: '#1976d2'}}>Cociv Badge</h3>,
-    <h3 style={{color: '#1976d2'}}>Cociv Firme</h3>,
-    <h3 style={{color: '#1976d2'}}>Tot. Cociv</h3>,
-    <h3 style={{color: '#1976d2'}}>Tot.</h3>
-]
-
 const attendance = [
     'Cociv',
     'Radimero',
     'Altri'
-]
+];
+
+const values = ["Giorno", "Cociv Badge", "Cociv Firme", "Tot. Cociv", "Tot."].map((item, i) => {
+    return <h3 key={item} style={{color: '#1976d2'}}>{item}</h3>
+});
 
 const headerGenerator = (array, style) => {
     return (
@@ -105,28 +85,37 @@ const headerGenerator = (array, style) => {
             );
         })
     );
-}
+};
 
-const daysCreator = (month, year, style) => {
+const yearCreator = () => {
+    const years = [];
+
+    for (let i = 2010; i <= 2100; i++) {
+        years.push(i)
+    }
+
+    return years;
+};
+
+const dataRowCreator = (month, year) => {
     const monthDays = new Date(year, month + 1, 0).getDate();
-    let days = [];
+    let dataRow = [];
 
     for (let i=0; i <= monthDays; i++) {
-        days.push(
+        dataRow.push(
             <StyledTableRow key={monthDays + i * 2}>
-                <StyledTableCell key={monthDays + i} className={style}>{i}</StyledTableCell>
-                <StyledTableCell key={"badge" + i} className={style}>badge</StyledTableCell>
-                <StyledTableCell key={"firme" + i} className={style}>firme</StyledTableCell>
-                <StyledTableCell key={"totale" + i} className={style}>totale</StyledTableCell>
-                <StyledTableCell key={"tot" + i} className={style}>Tot.</StyledTableCell>
+                <StyledTableCell key={monthDays + i}>{i}</StyledTableCell>
+                <StyledTableCell key={"badge" + i}>badge</StyledTableCell>
+                <StyledTableCell key={"firme" + i}>firme</StyledTableCell>
+                <StyledTableCell key={"totale" + i}>totale</StyledTableCell>
+                <StyledTableCell key={"tot" + i}>Tot.</StyledTableCell>
             </StyledTableRow>
         );
     }
+    return dataRow;
+};
 
-    return days;
-}
-
-const CustomTable = () => {
+const MonthlyTable = () => {
   const classes = useStyles();
   const selectors = [
       <Selector key="Mese" type="Mese" array={months} style={classes.option}/>,
@@ -137,13 +126,11 @@ const CustomTable = () => {
 
   return (
     <TableContainer component={Paper} className={classes.table}>
-        <Table stickyHeader aria-label="customized table">
+        <Table stickyHeader>
             
             <TableHead>
                 <TableRow>
-                    {
-                        headerGenerator(selectors, classes.tableHead)
-                    }
+                    { headerGenerator(selectors, classes.tableHead) }
                     <TableCell className={classes.tableHead}>
                         <Button variant="outlined" className={classes.option}>
                             <b>Modifica</b>
@@ -151,16 +138,12 @@ const CustomTable = () => {
                     </TableCell>
                 </TableRow>
                 <TableRow>
-                    {
-                        headerGenerator(values, classes.tableHead)
-                    }
+                    { headerGenerator(values, classes.tableHead) }
                 </TableRow>
             </TableHead>
 
             <TableBody>
-                {
-                    daysCreator(8, 2020, classes.tableRow)
-                }
+                { dataRowCreator(8, 2020) }
             </TableBody>
 
         </Table>
@@ -168,4 +151,4 @@ const CustomTable = () => {
   );
 }
 
-export default CustomTable;
+export default MonthlyTable;

@@ -12,6 +12,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Collapse from '@material-ui/core/Collapse';
+import WeekPicker from './MenuTable/WeekPicker.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,11 +40,15 @@ const useStyles = makeStyles((theme) => ({
   },
   toolBar: {
       display: 'flex',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      alignItems: 'center'
   },
   link: {
     textDecoration: 'none',
     color: 'black'
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
   }
 }));
 
@@ -51,7 +57,6 @@ const drawerWidth = '20%';
 const workingTabs = ['Mese', 'Menù', 'Pasto', 'Ingredienti', 'Magazzino', 'Statistiche', 'Account'];
 
 const Navbar = () => {
-
   const classes = useStyles();
 
   return (
@@ -59,7 +64,7 @@ const Navbar = () => {
 
       <AppBar position="relative" className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
-            <div className={classes.user}>
+            <div className={classes.toolBar}>
                 <Box m={1}>
                     <Avatar src="/broken-image.jpg" />
                 </Box>
@@ -86,6 +91,28 @@ const Navbar = () => {
                     </ListItem>
                   </NavLink>
                   <Divider key={tab + 'divider'}/>
+                  {
+                    tab === 'Menù'
+                    ? (
+                      <Collapse in={true} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                          <ListItem button className={classes.nested}>
+                            <WeekPicker />
+                          </ListItem>
+                          <ListItem button className={classes.nested}>
+                            <ListItemText primary="Aggiungi Menù" />
+                          </ListItem>
+                          <ListItem button className={classes.nested}>
+                            <ListItemText primary="Modifica" />
+                          </ListItem>
+                          <ListItem button className={classes.nested}>
+                            <ListItemText primary="Sintesi del Mese" />
+                          </ListItem>
+                        </List>
+                      </Collapse>
+                    )
+                    : null
+                  }
                 </div>
               ))
             }
