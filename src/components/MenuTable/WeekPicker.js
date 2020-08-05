@@ -1,28 +1,40 @@
+import React, { useState } from "react";
 import format from "date-fns/format";
 import { it } from 'date-fns/locale'
-import React, { useState } from "react";
 import startOfWeek from "date-fns/startOfWeek";
+import DateFnsUtils from "@date-io/date-fns";
 import { DatePicker } from "@material-ui/pickers";
 import { createStyles } from "@material-ui/styles";
 import { withStyles } from "@material-ui/core";
 
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+
+class LocalizedUtils extends DateFnsUtils {
+  getDatePickerHeaderText(date) {
+    return format(date, "d MMM yyyy", { locale: this.locale });
+  }
+}
+
 const WeekPicker = () => {
   const [selectedDate, handleDateChange] = useState(new Date());
 
+  // Fai iniziare la settimana a Lunedì e non Domenica
   const formatWeekSelectLabel = () => {
     return `Settimana del ${format(startOfWeek(selectedDate), "d MMMM", {locale: it})}`
   };
 
   return (
-    <DatePicker
-      label="Settimana"
-      value={selectedDate}
-      labelFunc={formatWeekSelectLabel}
-      onChange={handleDateChange}
-      format='it'
-      showTodayButton
-      todayLabel="Oggi"
-    />
+    <MuiPickersUtilsProvider utils={LocalizedUtils} locale={it}>
+      <DatePicker
+        label="Settimana"
+        value={selectedDate}
+        labelFunc={formatWeekSelectLabel}
+        onChange={handleDateChange}
+        showTodayButton
+        todayLabel="Oggi"
+        cancelLabel="Annulla"
+      />
+    </MuiPickersUtilsProvider>
   );
 }
 
