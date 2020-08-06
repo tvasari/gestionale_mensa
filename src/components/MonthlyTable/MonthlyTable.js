@@ -7,8 +7,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 import Selector from './Selector';
+import EditIcon from '@material-ui/icons/Edit';
+import SearchIcon from '@material-ui/icons/Search';
+import IconButton from '@material-ui/core/IconButton';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -132,9 +134,12 @@ const MonthlyTable = () => {
                 <TableRow>
                     { headerGenerator(selectors, classes.tableHead) }
                     <TableCell className={classes.tableHead}>
-                        <Button variant="outlined" className={classes.option}>
-                            <b>Modifica</b>
-                        </Button>
+                        <IconButton>
+                            <SearchIcon/>
+                        </IconButton>
+                        <IconButton>
+                            <EditIcon/>
+                        </IconButton>
                     </TableCell>
                 </TableRow>
                 <TableRow>

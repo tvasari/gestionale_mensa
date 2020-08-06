@@ -17,6 +17,9 @@ import WeekPicker from './WeekPicker.js';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import EditIcon from '@material-ui/icons/Edit';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import DateRangeIcon from '@material-ui/icons/DateRange';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -107,14 +110,24 @@ const Navbar = () => {
                           </ListItem>
                           <ListItem button className={classes.nested}>
                             <ListItemText primary="Aggiungi Menù" />
+                            <IconButton>
+                              <AddBoxIcon />
+                            </IconButton>
                           </ListItem>
                           <ListItem button className={classes.nested}>
                             <ListItemText primary="Modifica" />
+                            <IconButton>
+                              <EditIcon />
+                            </IconButton>
                           </ListItem>
                           <ListItem button className={classes.nested}>
                             <ListItemText primary="Sintesi del Mese" />
+                            <IconButton>
+                              <DateRangeIcon />
+                            </IconButton>
                           </ListItem>
                         </List>
+                        <Divider/>
                       </Collapse>
                     )
                     : null
