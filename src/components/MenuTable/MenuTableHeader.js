@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
@@ -27,7 +28,13 @@ const MenuTableHeader = ({ daysArray }) => {
           <StyledButton>Pranzo</StyledButton>
           <StyledButton>Cena</StyledButton>
         </div>,
-        ...daysArray.map(day => <StyledHeader>{day}</StyledHeader>)
+        ...daysArray.map(day => {
+            return <StyledHeader>
+                <NavLink style={{textDecoration: 'none', color: '#1976d2'}} to={`/CostoPasto`}>
+                    {day}
+                </NavLink>
+            </StyledHeader>
+        })
     ]
 
     return(

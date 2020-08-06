@@ -13,7 +13,10 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
-import WeekPicker from './MenuTable/WeekPicker.js';
+import WeekPicker from './WeekPicker.js';
+import IconButton from '@material-ui/core/IconButton';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -88,6 +91,9 @@ const Navbar = () => {
                   <NavLink to={`/${tab}`} className={classes.link} activeStyle={{color: 'darkorange'}}>
                     <ListItem button key={tab}>
                         <ListItemText key={tab + index} primary={tab} />
+                        <IconButton>
+                          <KeyboardArrowDownIcon />
+                        </IconButton>
                     </ListItem>
                   </NavLink>
                   <Divider key={tab + 'divider'}/>

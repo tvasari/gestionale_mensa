@@ -14,15 +14,15 @@ import MenuTableHeader from './MenuTableHeader';
 
 const useStyles = makeStyles({
   container: {
-      maxHeight: '90vh',
-      overflow: 'auto'
+    maxHeight: '90vh',
+    overflow: 'auto'
   },
   table: {
-      width: '80%',
-      float: 'right'
+    width: '80%',
+    float: 'right'
   },
   meal: {
-      padding: '16px 0'
+    padding: '16px 0'
   },
   subrow: {
     visibility: 'visible' //toggle to 'collapse' on click
