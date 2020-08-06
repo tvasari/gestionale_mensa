@@ -55,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
   },
   nested: {
     paddingLeft: theme.spacing(4),
+  },
+  icon: {
+    color: 'rgba(0, 0, 0, 0.54)'
   }
 }));
 
@@ -110,22 +113,18 @@ const Navbar = () => {
                           </ListItem>
                           <ListItem button className={classes.nested}>
                             <ListItemText primary="Aggiungi Menù" />
-                            <IconButton>
-                              <AddBoxIcon />
-                            </IconButton>
+                            <AddBoxIcon className={classes.icon}/>
                           </ListItem>
                           <ListItem button className={classes.nested}>
                             <ListItemText primary="Modifica" />
-                            <IconButton>
-                              <EditIcon />
-                            </IconButton>
+                            <EditIcon className={classes.icon}/>                            
                           </ListItem>
-                          <ListItem button className={classes.nested}>
-                            <ListItemText primary="Sintesi del Mese" />
-                            <IconButton>
-                              <DateRangeIcon />
-                            </IconButton>
-                          </ListItem>
+                          <NavLink className={classes.link} to='/SintesiMese'>
+                            <ListItem button className={classes.nested}>
+                              <ListItemText primary="Sintesi del Mese" />
+                              <DateRangeIcon className={classes.icon}/>
+                            </ListItem>
+                          </NavLink>
                         </List>
                         <Divider/>
                       </Collapse>

@@ -10,7 +10,6 @@ import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import MenuTableHeader from './MenuTableHeader';
 
 const useStyles = makeStyles({
   container: {
@@ -43,17 +42,14 @@ const primiPiatti = daysArray.map(day => ["Pasta", "Minestra"])
 
 const rows = [
   createData('Primi Piatti', ...primiPiatti),
-  createData('Secondi Piatti', ...primiPiatti),
-  createData('Contorni', ...primiPiatti),
-  createData('Dessert', ...primiPiatti),
-  createData('Bevande', ...primiPiatti)
+  createData('Secondi Piatti', ...primiPiatti)
 ];
 
 const handleCollapse = () => {
   console.log('this.state.open changed!')
 }
 
-const MenuTable = () => {
+export default function SintesiMese() {
   const classes = useStyles();
 
   return (
@@ -61,7 +57,6 @@ const MenuTable = () => {
       <Table className={classes.table} stickyHeader>
 
         <TableHead>
-          <MenuTableHeader daysArray={daysArray} />
         </TableHead>
 
         <TableBody>
@@ -71,15 +66,6 @@ const MenuTable = () => {
                 <TableRow key={row.name}>
                   <TableCell component="th" scope="row">
                     <b>{row.name}</b>
-                    {
-                      row.name === 'Primi Piatti' || row.name === 'Secondi Piatti'
-                      ? (
-                          <IconButton size="small" onClick={() => handleCollapse()}>
-                              {true ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                          </IconButton> 
-                      )
-                      : null
-                    }
                   </TableCell>
                   {
                     Object.keys(row).map(day => {
@@ -101,24 +87,6 @@ const MenuTable = () => {
                       })
                     }
                 </TableRow>
-                <Fragment>
-                  {
-                    row.name === 'Primi Piatti' || row.name === 'Secondi Piatti'
-                    ? (
-                      <TableRow className={classes.subrow}>
-                        <TableCell><b>Alternativa Dietetica</b></TableCell>
-                        <TableCell>Alt</TableCell>
-                        <TableCell>Alt</TableCell>
-                        <TableCell>Alt</TableCell>
-                        <TableCell>Alt</TableCell>
-                        <TableCell>Alt</TableCell>
-                        <TableCell>Alt</TableCell>
-                        <TableCell>Alt</TableCell>
-                      </TableRow>
-                    )
-                    : null
-                  }
-                </Fragment>
               </Fragment>
                 
             ))
@@ -129,5 +97,3 @@ const MenuTable = () => {
     </TableContainer>
   );
 }
-
-export default MenuTable;
