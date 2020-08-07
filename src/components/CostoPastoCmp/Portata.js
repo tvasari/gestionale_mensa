@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
+import { styled } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+import IconButton from '@material-ui/core/IconButton';
+import NoteAddIcon from '@material-ui/icons/NoteAdd';
 import Piatto from './Piatto';
-import { styled } from '@material-ui/core/styles';
 
 const StyledTableCell = styled(TableCell)({
   position: 'sticky',
@@ -16,7 +18,12 @@ const Portata = ({ rows }) => {
             return (
               <Fragment>
                 <TableRow >
-                  <StyledTableCell><b>{portata.toUpperCase()}</b></StyledTableCell>
+                  <StyledTableCell>
+                    <b>{portata.toUpperCase()}</b>
+                    <IconButton>
+                      <NoteAddIcon />
+                    </IconButton>
+                  </StyledTableCell>
                   <StyledTableCell><b>Ingredienti</b></StyledTableCell>
                   <StyledTableCell><b>Quantità</b></StyledTableCell>
                   <StyledTableCell><b>UM</b></StyledTableCell>

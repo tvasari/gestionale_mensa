@@ -29,14 +29,14 @@ const HeaderCostoPasto = ({ sameOrigin }) => {
             <TableCell colSpan={5} align="left" className={classes.headerCell}>
               <div style={{display: 'flex', alignItems: 'center'}}>
                 <IconButton>
-                  <NavLink to="/Menù">
+                  <NavLink style={{color: '#1976d2'}} to="/Menù">
                     <KeyboardBackspaceIcon/>
                   </NavLink>
                 </IconButton>
+                <h3 className={classes.header}><b>{sameOrigin} 7 Agosto 2020</b></h3>
                 <IconButton>
                   <EditIcon/>
                 </IconButton>
-                <h3 className={classes.header}><b>{sameOrigin} 7 Agosto 2020</b></h3>
               </div>
             </TableCell>
             <TableCell className={classes.headerCell}>

@@ -18,16 +18,16 @@ const Piatto = ({ rows, portata }) => {
                           <TableCell>
                             {ingrediente}
                           </TableCell>
-                          <TableCell>
+                          <TableCell align="right">
                             {rows[portata][piatto]['ingredienti'][ingrediente].qty}
                           </TableCell>
                           <TableCell>
                             {rows[portata][piatto]['ingredienti'][ingrediente].um}
                           </TableCell>
-                          <TableCell>
+                          <TableCell align="right">
                             {rows[portata][piatto]['ingredienti'][ingrediente].costoUm}
                           </TableCell>
-                          <TableCell>
+                          <TableCell align="right">
                             {rows[portata][piatto]['ingredienti'][ingrediente].costoUm}
                           </TableCell>
                         </Fragment>
@@ -37,8 +37,10 @@ const Piatto = ({ rows, portata }) => {
                 }
                 <TableRow>
                   <TableCell colSpan={4}></TableCell>
-                  <TableCell><b>Somma</b></TableCell>
-                  <TableCell>1500</TableCell>
+                  <TableCell></TableCell>
+                  <TableCell style={{display: 'flex', justifyContent: 'space-between', borderBottom: 0}}>
+                    <b>Somma</b><b>2020</b>
+                  </TableCell>
                 </TableRow>
                 <TableRow><TableCell colSpan={8}></TableCell></TableRow>
               </Fragment>

@@ -102,7 +102,7 @@ export default function CostoPasto() {
 
         <TableBody>
           <Portata rows={rows} />
-          <Totali classes={classes} />
+          <Totali />
         </TableBody>
 
       </Table>

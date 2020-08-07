@@ -27,7 +27,7 @@ const HeaderCostoPasto = ({ colSpan }) => {
             <TableCell colSpan={colSpan} align="left" className={classes.headerCell}>
                 <div style={{display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', width: '20vw'}}>
                     <IconButton>
-                    <NavLink to="/Menù">
+                    <NavLink style={{color: '#1976d2'}} to="/Menù">
                         <KeyboardBackspaceIcon/>
                     </NavLink>
                     </IconButton>
