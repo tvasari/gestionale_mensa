@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Selector from './Selector';
+import Selector from '../Selector';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
@@ -37,41 +37,10 @@ const useStyles = makeStyles({
         float: 'right',
         height: '90vh'
     },
-    option: {
-        color: '#1976d2'
-    },
     tableHead: {
       backgroundColor: '#eaf4f4',
     }
 });
-
-const months = [
-    'Gennaio', 
-    'Febbraio', 
-    'Marzo', 
-    'Aprile', 
-    'Maggio', 
-    'Giugno', 
-    'Luglio', 
-    'Agosto', 
-    'Settembre', 
-    'Ottobre', 
-    'Novembre', 
-    'Dicembre'
-];
-
-const meals = [
-    "Colazione", 
-    "Pranzo", 
-    "Cena", 
-    "Spuntini"
-];
-
-const attendance = [
-    'Cociv',
-    'Radimero',
-    'Altri'
-];
 
 const values = ["Giorno", "Cociv Badge", "Cociv Firme", "Tot. Cociv", "Tot."].map((item, i) => {
     return <h3 key={item} style={{color: '#1976d2'}}>{item}</h3>
@@ -87,16 +56,6 @@ const headerGenerator = (array, style) => {
             );
         })
     );
-};
-
-const yearCreator = () => {
-    const years = [];
-
-    for (let i = 2010; i <= 2100; i++) {
-        years.push(i)
-    }
-
-    return years;
 };
 
 const dataRowCreator = (month, year) => {
@@ -120,10 +79,10 @@ const dataRowCreator = (month, year) => {
 const MonthlyTable = () => {
   const classes = useStyles();
   const selectors = [
-      <Selector key="Mese" type="Mese" array={months} style={classes.option}/>,
-      <Selector key="Anno" type="Anno" array={yearCreator()} style={classes.option}/>,
-      <Selector key="Tipo" type="Tipo" array={meals} style={classes.option}/>,
-      <Selector key="Presenze" type="Presenze" array={attendance} style={classes.option}/>,
+      <Selector key="Mese" type="Mese"/>,
+      <Selector key="Anno" type="Anno"/>,
+      <Selector key="Tipo" type="Tipo"/>,
+      <Selector key="Presenze" type="Presenze"/>,
     ]
 
   return (

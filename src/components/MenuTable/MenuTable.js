@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import MenuTableHeader from './MenuTableHeader';
+import HeaderMenu from './HeaderMenu';
 
 const useStyles = makeStyles({
   container: {
@@ -61,7 +61,7 @@ const MenuTable = () => {
       <Table className={classes.table} stickyHeader>
 
         <TableHead>
-          <MenuTableHeader daysArray={daysArray} />
+          <HeaderMenu daysArray={daysArray} />
         </TableHead>
 
         <TableBody>

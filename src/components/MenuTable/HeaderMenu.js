@@ -22,7 +22,7 @@ const StyledHeader = styled(Typography)({
     fontSize: '1.1em'
 })
 
-const MenuTableHeader = ({ daysArray }) => {
+const HeaderMenu = ({ daysArray }) => {
     const days = [
         <div>
           <StyledButton>Pranzo</StyledButton>
@@ -50,4 +50,4 @@ const MenuTableHeader = ({ daysArray }) => {
     );
 }
 
-export default MenuTableHeader;
+export default HeaderMenu;

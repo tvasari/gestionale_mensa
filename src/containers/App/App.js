@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 
-import Navbar from './components/Navbar/Navbar';
-import MonthlyTable from './components/MonthlyTable/MonthlyTable';
-import MenuTable from './components/MenuTable/MenuTable';
-import CostoPasto from './components/CostoPasto/CostoPasto';
-import SintesiMese from './components/SintesiMese/SintesiMese';
+import Navbar from '../../components/Navbar/Navbar';
+import MonthlyTable from '../../components/MonthlyTable/MonthlyTable';
+import MenuTable from '../../components/MenuTable/MenuTable';
+import CostoPasto from '../CostoPasto/CostoPasto';
+import SintesiMese from '../../components/SintesiMese/SintesiMese';
 
 class App extends Component {
 
