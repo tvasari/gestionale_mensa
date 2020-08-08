@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
 
 const drawerWidth = '20%';
 
-const workingTabs = ['Mese', 'Menù', 'Pasto', 'Ingredienti', 'Magazzino', 'Statistiche', 'Account'];
+const workingTabs = ['Mese', 'Menù', 'Ristorazione', 'Magazzino', 'Statistiche', 'Account'];
 
 const Navbar = () => {
   const classes = useStyles();
@@ -112,11 +112,11 @@ const Navbar = () => {
                             <WeekPicker />
                           </ListItem>
                           <ListItem button className={classes.nested}>
-                            <ListItemText primary="Aggiungi Menù" />
+                            <ListItemText primary="Nuovo Menù" />
                             <AddBoxIcon className={classes.icon}/>
                           </ListItem>
                           <ListItem button className={classes.nested}>
-                            <ListItemText primary="Modifica" />
+                            <ListItemText primary="Modifica Menù" />
                             <EditIcon className={classes.icon}/>                            
                           </ListItem>
                           <NavLink className={classes.link} to='/SintesiMese'>

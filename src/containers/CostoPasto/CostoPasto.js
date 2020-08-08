@@ -84,7 +84,13 @@ const rows = {
         }
       }
     }
-  }
+  },
+  contorni: {},
+  pane: {},
+  bibite: {},
+  'frutta e dessert': {},
+  condimenti: {},
+  suppellettili: {}
 }
 
 const sameOrigin = 'Pranzo/Cena';

@@ -28,7 +28,7 @@ const HeaderCostoPasto = ({ sameOrigin }) => {
         <TableRow>
             <TableCell colSpan={5} align="left" className={classes.headerCell}>
               <div style={{display: 'flex', alignItems: 'center'}}>
-                <IconButton>
+                <IconButton style={{padding: 0}}>
                   <NavLink style={{color: '#1976d2'}} to="/Menù">
                     <KeyboardBackspaceIcon/>
                   </NavLink>

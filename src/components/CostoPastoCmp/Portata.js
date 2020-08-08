@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { styled } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 import Piatto from './Piatto';
@@ -23,6 +24,13 @@ const Portata = ({ rows }) => {
                     <IconButton>
                       <NoteAddIcon />
                     </IconButton>
+                    <TextField
+                      id="outlined-multiline-static"
+                      label="Note"
+                      multiline
+                      rows={4}
+                      variant="outlined"
+                    />
                   </StyledTableCell>
                   <StyledTableCell><b>Ingredienti</b></StyledTableCell>
                   <StyledTableCell><b>Quantità</b></StyledTableCell>

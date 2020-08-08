@@ -16,7 +16,8 @@ class App extends Component {
         <BrowserRouter>
           <Navbar />
           <Switch>
-            <Route path="/Mese" component={MonthlyTable} />
+            <Route exact path="/" component={MonthlyTable} />
+            <Route exact path="/Mese" component={MonthlyTable} />
             <Route path="/Menù" component={MenuTable} />
             <Route path="/CostoPasto" component={CostoPasto} />
             <Route path="/SintesiMese" component={SintesiMese} />

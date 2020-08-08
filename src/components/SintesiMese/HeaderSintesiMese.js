@@ -26,10 +26,10 @@ const HeaderCostoPasto = ({ colSpan }) => {
         <TableRow>
             <TableCell colSpan={colSpan} align="left" className={classes.headerCell}>
                 <div style={{display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', width: '20vw'}}>
-                    <IconButton>
-                    <NavLink style={{color: '#1976d2'}} to="/Menù">
-                        <KeyboardBackspaceIcon/>
-                    </NavLink>
+                    <IconButton style={{padding: 0}}>
+                      <NavLink style={{color: '#1976d2'}} to="/Menù">
+                          <KeyboardBackspaceIcon/>
+                      </NavLink>
                     </IconButton>
                     <Selector type='Mese'/>
                     <Selector type='Anno'/>
