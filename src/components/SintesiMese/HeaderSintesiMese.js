@@ -19,24 +19,26 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-const HeaderCostoPasto = ({ colSpan }) => {
+const HeaderSintesiMese = ({ colSpan }) => {
     const classes = useStyles();
 
     return(
         <TableRow>
-            <TableCell colSpan={colSpan} align="left" className={classes.headerCell}>
-                <div style={{display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', width: '20vw'}}>
+            <TableCell colSpan={2} align="left" className={classes.headerCell}>
+                <div>
                     <IconButton style={{padding: 0}}>
                       <NavLink style={{color: '#1976d2'}} to="/Menù">
                           <KeyboardBackspaceIcon/>
                       </NavLink>
                     </IconButton>
-                    <Selector type='Mese'/>
-                    <Selector type='Anno'/>
                 </div>
             </TableCell>
-          </TableRow>
+            <TableCell colSpan={colSpan} className={classes.headerCell}>
+                <Selector type='Mese'/>
+                <Selector type='Anno'/>
+            </TableCell>
+        </TableRow>
     );
 }
 
-export default HeaderCostoPasto;
+export default HeaderSintesiMese;

@@ -7,6 +7,7 @@ import MonthlyTable from '../../components/MonthlyTable/MonthlyTable';
 import MenuTable from '../../components/MenuTable/MenuTable';
 import CostoPasto from '../CostoPasto/CostoPasto';
 import SintesiMese from '../../components/SintesiMese/SintesiMese';
+import Ristorazione from '../Ristorazione/Ristorazione';
 
 class App extends Component {
 
@@ -16,11 +17,12 @@ class App extends Component {
         <BrowserRouter>
           <Navbar />
           <Switch>
-            <Route exact path="/" component={MonthlyTable} />
+            <Route exact path="/Gestionale_Mensa" component={MonthlyTable} />
             <Route exact path="/Mese" component={MonthlyTable} />
             <Route path="/Menù" component={MenuTable} />
             <Route path="/CostoPasto" component={CostoPasto} />
             <Route path="/SintesiMese" component={SintesiMese} />
+            <Route path="/Ristorazione" component={Ristorazione} />
           </Switch>
         </BrowserRouter>
       </div>
