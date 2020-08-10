@@ -3,29 +3,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-import { ThemeProvider } from "@material-ui/styles";
-import { createMuiTheme } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   option: {
       color: '#1976d2'
-  }
-});
-
-const materialTheme = createMuiTheme({
-    overrides: {
-      MuiFormLabel: {
-        root: {
-          color: "white",
-        },
-      },
-      MuiInputBase: {
-        root: {
-          color: "white",
-        },
-      },
-    },
-});
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+    maxWidth: 300,
+  },
+}));
 
 const meals = [
   "Colazione", 
@@ -33,6 +21,13 @@ const meals = [
   "Cena", 
   "Spuntini"
 ];
+
+const courses = [
+  'Primo Piatto',
+  'Secondo Piatto',
+  'Contorno',
+  'Frutta/Dessert'
+]
 
 const attendance = [
   'Cociv',
@@ -75,8 +70,11 @@ const Selector = ({ type, array }) => {
     case 'Mese':
       array = months;
       break;
-    case 'Tipo':
+    case 'Filtra':
       array = meals;
+      break;
+    case 'Tipo':
+      array = courses;
       break;
     case 'Presenze':
       array = attendance;
@@ -86,18 +84,16 @@ const Selector = ({ type, array }) => {
   }
 
   return(
-    <ThemeProvider theme={materialTheme}>
-        <FormControl>
-            <InputLabel className={classes.option}>{type}</InputLabel>
-            <Select onChange={e => console.log(e.target.value)} className={classes.option} native>
-                {
-                    array.map((data, i) => {
-                        return <option className={classes.option} value={data} key={data + i}>{data}</option>
-                    })
-                }
-            </Select>
-        </FormControl>
-    </ThemeProvider>
+    <FormControl className={classes.formControl}>
+        <InputLabel className={classes.option}>{type}</InputLabel>
+        <Select onChange={e => console.log(e.target.value)} className={classes.option} native>
+            {
+                array.map((data, i) => {
+                    return <option className={classes.option} value={data} key={data + i}>{data}</option>
+                })
+            }
+        </Select>
+    </FormControl>
   );
 };
 

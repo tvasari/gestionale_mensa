@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Selector from '../Selector';
+import Selector from '../../components/Selector';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
@@ -81,7 +81,7 @@ const MonthlyTable = () => {
   const selectors = [
       <Selector key="Mese" type="Mese"/>,
       <Selector key="Anno" type="Anno"/>,
-      <Selector key="Tipo" type="Tipo"/>,
+      <Selector key="Filtra" type="Filtra"/>,
       <Selector key="Presenze" type="Presenze"/>,
     ]
 

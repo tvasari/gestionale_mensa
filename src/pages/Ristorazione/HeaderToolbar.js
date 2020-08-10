@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Toolbar = () => {
+const HeaderToolbar = () => {
     const classes = useStyles();
 
     return(
@@ -30,4 +30,4 @@ const Toolbar = () => {
     );
 }
 
-export default Toolbar;
+export default HeaderToolbar;

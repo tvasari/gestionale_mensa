@@ -5,9 +5,9 @@ import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import Paper from '@material-ui/core/Paper';
-import Portata from '../../components/CostoPastoCmp/Portata';
-import Totali from '../../components/CostoPastoCmp/Totali';
-import HeaderCostoPasto from '../../components/CostoPastoCmp/HeaderCostoPasto';
+import Portata from './Portata';
+import Totali from './Totali';
+import HeaderCostoPasto from './HeaderCostoPasto';
 
 const useStyles = makeStyles(theme => ({
   table: {

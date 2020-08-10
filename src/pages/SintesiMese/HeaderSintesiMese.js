@@ -5,7 +5,8 @@ import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import IconButton from '@material-ui/core/IconButton';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import Selector from '../Selector';
+import Box from '@material-ui/core/Box';
+import Selector from '../../components/Selector';
 
 const useStyles = makeStyles(theme => ({
     header: {
@@ -34,8 +35,10 @@ const HeaderSintesiMese = ({ colSpan }) => {
                 </div>
             </TableCell>
             <TableCell colSpan={colSpan} className={classes.headerCell}>
+              <Box mr={2} width="fit-content" display="inline">
                 <Selector type='Mese'/>
-                <Selector type='Anno'/>
+              </Box>
+              <Selector type='Anno'/>
             </TableCell>
         </TableRow>
     );

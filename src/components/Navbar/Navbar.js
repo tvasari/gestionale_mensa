@@ -20,6 +20,7 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import EditIcon from '@material-ui/icons/Edit';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import DateRangeIcon from '@material-ui/icons/DateRange';
+import logo from '../../img/logo.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,7 +48,8 @@ const useStyles = makeStyles((theme) => ({
   toolBar: {
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center'
+      alignItems: 'center',
+      paddingLeft: 0
   },
   link: {
     textDecoration: 'none',
@@ -70,14 +72,16 @@ const Navbar = () => {
 
   return (
     <div className={classes.root}>
-
       <AppBar position="relative" className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
             <div className={classes.toolBar}>
-                <Box m={1}>
-                    <Avatar src="/broken-image.jpg" />
-                </Box>
-                <Typography>Nome_Utente</Typography>
+              <NavLink style={{display: 'contents'}} to="/Gestionale_Mensa">
+                <img src={logo} alt="Italiana Mense" style={{padding: '0 8px', margin: '0 30px', width: '5vw', height: '64px'}}/>
+              </NavLink>
+              <Box m={1}>
+                  <Avatar src="/broken-image.jpg" />
+              </Box>
+              <Typography>Nome_Utente</Typography>
             </div>
             <Button color="inherit">Esci</Button>
         </Toolbar>
