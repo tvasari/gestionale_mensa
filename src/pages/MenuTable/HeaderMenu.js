@@ -26,7 +26,7 @@ const HeaderMenu = ({ daysArray }) => {
         </div>,
         ...daysArray.map(day => {
             return <StyledHeader>
-                <NavLink style={{textDecoration: 'none', color: '#1976d2'}} to={`/CostoPasto`}>
+                <NavLink style={{textDecoration: 'none', color: '#1976d2'}} to={`/costo_pasto`}>
                     {day}
                 </NavLink>
             </StyledHeader>

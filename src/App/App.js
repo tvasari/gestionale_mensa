@@ -8,6 +8,7 @@ import MenuTable from '../pages/MenuTable/MenuTable';
 import CostoPasto from '../pages/CostoPasto/CostoPasto';
 import SintesiMese from '../pages/SintesiMese/SintesiMese';
 import Ristorazione from '../pages/Ristorazione/Ristorazione';
+import AppTheme from '../utils/AppTheme'
 
 class App extends Component {
 
@@ -17,12 +18,14 @@ class App extends Component {
         <BrowserRouter>
           <Navbar />
           <Switch>
-            <Route exact path="/Gestionale_Mensa" component={MonthlyTable} />
-            <Route exact path="/Mese" component={MonthlyTable} />
-            <Route path="/Menù" component={MenuTable} />
-            <Route path="/CostoPasto" component={CostoPasto} />
-            <Route path="/SintesiMese" component={SintesiMese} />
-            <Route path="/Ristorazione" component={Ristorazione} />
+            <AppTheme>
+              <Route exact path="/gestionale_mensa" component={MonthlyTable} />
+              <Route exact path="/mese" component={MonthlyTable} />
+              <Route path="/menù" component={MenuTable} />
+              <Route path="/costo_pasto" component={CostoPasto} />
+              <Route path="/sintesi_mese" component={SintesiMese} />
+              <Route path="/ristorazione" component={Ristorazione} />
+            </AppTheme>
           </Switch>
         </BrowserRouter>
       </div>

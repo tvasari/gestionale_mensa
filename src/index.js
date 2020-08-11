@@ -8,7 +8,7 @@ import DateFnsUtils from '@date-io/date-fns';
 
 ReactDOM.render(
   <MuiPickersUtilsProvider utils={DateFnsUtils}>
-    <App />
+      <App />
   </MuiPickersUtilsProvider>,
   document.getElementById('root')
 );
