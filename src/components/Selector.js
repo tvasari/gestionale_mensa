@@ -80,14 +80,14 @@ const Selector = ({ type, array, formControlStyle }) => {
 
   return(
     <FormControl className={formControlStyle}>
-        <InputLabel className={classes.option}>{type}</InputLabel>
-        <Select onChange={e => console.log(e.target.value)} className={classes.option} native>
-            {
-                array.map((data, i) => {
-                    return <option className={classes.option} value={data} key={data + i}>{data}</option>
-                })
-            }
-        </Select>
+      <InputLabel className={classes.option}>{type}</InputLabel>
+      <Select onChange={e => console.log(e.target.value)} className={classes.option} native>
+        {
+          array.map((data, i) => {
+            return <option className={classes.option} value={data} key={data + i}>{data}</option>
+          })
+        }
+      </Select>
     </FormControl>
   );
 };

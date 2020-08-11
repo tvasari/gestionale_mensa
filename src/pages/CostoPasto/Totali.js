@@ -12,7 +12,7 @@ const numPasti = 144;
 const costoPasto = 129;
 const costoTot = costoPasto * 3;
 const perc = (costoPasto / costoTot * 100).toFixed(1);
-
+const portate = ["Primi", "Secondi", "Contorni"]
 const Totali = () => {
 
     return(
@@ -36,21 +36,17 @@ const Totali = () => {
                     <Collapse in={true} timeout="auto" unmountOnExit>
                         <Table size="small" aria-label="purchases">
                             <TableBody>
-                                <TableRow>
-                                    <TableCell>Totale Primi</TableCell>
-                                    <TableCell align="right">{ perc }%</TableCell>
-                                    <TableCell align="right">{ costoPasto }</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>Totale Secondi</TableCell>
-                                    <TableCell align="right">{ perc }%</TableCell>
-                                    <TableCell align="right">{ costoPasto }</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell>Totale Contorni</TableCell>
-                                    <TableCell align="right">{ perc }%</TableCell>
-                                    <TableCell align="right">{ costoPasto }</TableCell>
-                                </TableRow>
+                                {
+                                    portate.map(portata => {
+                                        return(
+                                            <TableRow>
+                                                <TableCell>Totale {portata}</TableCell>
+                                                <TableCell align="right">{ perc }%</TableCell>
+                                                <TableCell align="right">{ costoPasto }</TableCell>
+                                            </TableRow>
+                                        );
+                                    })
+                                }
                             </TableBody>
                         </Table>
                     </Collapse>

@@ -19,6 +19,15 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingLeft: 0
+    },
+    logo: {
+        padding: '0 8px', 
+        margin: '0 30px', 
+        width: '5vw', 
+        height: '64px'
+    },
+    navLink: {
+        display: 'contents'
     }
 }));
 
@@ -30,11 +39,11 @@ const TopBar = () => {
         <AppBar position="relative" className={classes.appBar}>
             <Toolbar className={classes.toolBar}>
                 <div className={classes.toolBar}>
-                    <NavLink style={{display: 'contents'}} to="/gestionale_mensa">
-                        <img src={logo} alt="Italiana Mense" style={{padding: '0 8px', margin: '0 30px', width: '5vw', height: '64px'}}/>
+                    <NavLink className={classes.navLink} to="/gestionale_mensa">
+                        <img src={logo} alt="Italiana Mense" className={classes.logo}/>
                     </NavLink>
                     <Box m={1}>
-                        <Avatar src="/broken-image.jpg" />
+                        <Avatar src="/broken-image.jpg"/>
                     </Box>
                     <Typography>Nome_Utente</Typography>
                 </div>
