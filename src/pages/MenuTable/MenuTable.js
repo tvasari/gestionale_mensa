@@ -1,23 +1,21 @@
 import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
+import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
+import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import HeaderMenu from './HeaderMenu';
 
 const useStyles = makeStyles({
-  container: {
-    maxHeight: '90vh',
-    overflow: 'auto'
-  },
   table: {
+    maxHeight: '90vh',
+    overflow: 'auto',
     width: '80%',
     float: 'right'
   },
@@ -57,8 +55,8 @@ const MenuTable = () => {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper} className={classes.container}>
-      <Table className={classes.table} stickyHeader>
+    <TableContainer component={Paper} className={classes.table}>
+      <Table stickyHeader>
 
         <TableHead>
           <HeaderMenu daysArray={daysArray} />

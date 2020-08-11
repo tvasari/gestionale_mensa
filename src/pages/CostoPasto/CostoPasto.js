@@ -17,9 +17,6 @@ const useStyles = makeStyles(theme => ({
   container: {
     maxHeight: '90vh',
     overflow: 'auto'
-  },
-  nested: {
-    paddingLeft: theme.spacing(4),
   }
 }));
 

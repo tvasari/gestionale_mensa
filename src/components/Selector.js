@@ -7,12 +7,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 const useStyles = makeStyles((theme) => ({
   option: {
       color: '#1976d2'
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-    maxWidth: 300,
-  },
+  }
 }));
 
 const meals = [
@@ -60,7 +55,7 @@ const yearsCreator = () => {
   return years;
 };
 
-const Selector = ({ type, array }) => {
+const Selector = ({ type, array, formControlStyle }) => {
   const classes = useStyles();
 
   switch(type) {
@@ -84,7 +79,7 @@ const Selector = ({ type, array }) => {
   }
 
   return(
-    <FormControl className={classes.formControl}>
+    <FormControl className={formControlStyle}>
         <InputLabel className={classes.option}>{type}</InputLabel>
         <Select onChange={e => console.log(e.target.value)} className={classes.option} native>
             {

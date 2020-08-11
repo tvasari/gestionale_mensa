@@ -1,12 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { NavLink } from 'react-router-dom';
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
-import IconButton from '@material-ui/core/IconButton';
 import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
 import Box from '@material-ui/core/Box';
 import Selector from '../../components/Selector';
+import StyledTableCell from '../../components/StyledTableCell';
+import BackArrowButton from '../../components/BackArrowButton';
 
 const useStyles = makeStyles(theme => ({
     header: {
@@ -14,9 +12,6 @@ const useStyles = makeStyles(theme => ({
       fontWeight: '700',
       paddingLeft: theme.spacing(4),
       paddingRight: theme.spacing(4)
-    },
-    headerCell: {
-      backgroundColor: '#eaf4f4'
     }
   }));
 
@@ -25,21 +20,15 @@ const HeaderSintesiMese = ({ colSpan }) => {
 
     return(
         <TableRow>
-            <TableCell colSpan={2} align="left" className={classes.headerCell}>
-                <div>
-                    <IconButton style={{padding: 0}}>
-                      <NavLink style={{color: '#1976d2'}} to="/Menù">
-                          <KeyboardBackspaceIcon/>
-                      </NavLink>
-                    </IconButton>
-                </div>
-            </TableCell>
-            <TableCell colSpan={colSpan} className={classes.headerCell}>
+            <StyledTableCell colSpan={2} align="left">
+              <BackArrowButton path="Menù" />
+            </StyledTableCell>
+            <StyledTableCell colSpan={colSpan}>
               <Box mr={2} width="fit-content" display="inline">
                 <Selector type='Mese'/>
               </Box>
               <Selector type='Anno'/>
-            </TableCell>
+            </StyledTableCell>
         </TableRow>
     );
 }

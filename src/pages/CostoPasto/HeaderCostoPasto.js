@@ -1,13 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { NavLink } from 'react-router-dom';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
+import StyledTableCell from '../../components/StyledTableCell';
+import BackArrowButton from '../../components/BackArrowButton';
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -15,9 +14,6 @@ const useStyles = makeStyles(theme => ({
     fontWeight: '700',
     paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(4)
-  },
-  headerCell: {
-    backgroundColor: '#eaf4f4'
   }
 }));
 
@@ -26,20 +22,16 @@ const HeaderCostoPasto = ({ sameOrigin }) => {
 
     return(
         <TableRow>
-            <TableCell colSpan={5} align="left" className={classes.headerCell}>
+            <StyledTableCell colSpan={5} align="left">
               <div style={{display: 'flex', alignItems: 'center'}}>
-                <IconButton style={{padding: 0}}>
-                  <NavLink style={{color: '#1976d2'}} to="/Menù">
-                    <KeyboardBackspaceIcon/>
-                  </NavLink>
-                </IconButton>
+                <BackArrowButton path="Menù" />
                 <h3 className={classes.header}><b>{sameOrigin} 7 Agosto 2020</b></h3>
                 <IconButton>
                   <EditIcon/>
                 </IconButton>
               </div>
-            </TableCell>
-            <TableCell className={classes.headerCell}>
+            </StyledTableCell>
+            <StyledTableCell>
               <div style={{display: 'flex', justifyContent: 'space-around'}}>
                 <IconButton>
                   <KeyboardArrowLeftIcon/>
@@ -48,7 +40,7 @@ const HeaderCostoPasto = ({ sameOrigin }) => {
                   <KeyboardArrowRightIcon/>
                 </IconButton>
               </div>
-            </TableCell>
+            </StyledTableCell>
           </TableRow>
     );
 }

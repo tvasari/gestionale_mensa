@@ -54,7 +54,7 @@ const AddForm  = () => {
             <Box className={classes.container} border={1} borderColor="#1976d2">
                 <form style={{display: 'grid'}} noValidate autoComplete="off">
                     <TextField className={classes.formControl} label="Nome"/>
-                    <Selector className={classes.formControl} type="Tipo" />
+                    <Selector type="Tipo" formControlStyle={classes.formControl}/>
                     <FormControl className={classes.formControl}>
                         <InputLabel>Ingredienti</InputLabel>
                         <Select
