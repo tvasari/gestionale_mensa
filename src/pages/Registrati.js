@@ -9,6 +9,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    margin: 0,
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -63%)'
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -32,7 +39,7 @@ const Registrati = () => {
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container component="main" maxWidth="xs" className={classes.container}>
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
@@ -87,18 +94,19 @@ const Registrati = () => {
               />
             </Grid>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Registrati
-          </Button>
+          <NavLink to="/gestionale_mensa" style={{textDecoration: 'none'}}>
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Registrati
+            </Button>
+          </NavLink>
           <Grid container justify="flex-end">
             <Grid item>
-              <NavLink to="/gestionale_mensa" style={{textDecoration: 'none'}}>
+              <NavLink to="/accedi" style={{textDecoration: 'none'}}>
                 Hai già un account? Accedi
               </NavLink>
             </Grid>

@@ -9,6 +9,7 @@ import CostoPasto from 'pages/CostoPasto/CostoPasto';
 import SintesiMenu from 'pages/SintesiMenu/SintesiMenu';
 import Ristorazione from 'pages/Ristorazione/Ristorazione';
 import Registrati from 'pages/Registrati';
+import Accedi from 'pages/Accedi';
 import AppTheme from 'utils/AppTheme';
 
 class App extends Component {
@@ -21,6 +22,9 @@ class App extends Component {
             <Switch>
               <Route path="/registrati">
                 <Registrati />
+              </Route>
+              <Route path="/accedi">
+                <Accedi />
               </Route>
               <Route exact path="/gestionale_mensa">
                 <Navbar />
