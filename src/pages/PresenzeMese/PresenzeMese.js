@@ -6,6 +6,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Selector from '../../components/Selector';
 import EditIcon from '@material-ui/icons/Edit';
@@ -21,27 +22,24 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-const useStyles = makeStyles({
-    table: {
-        maxWidth: '80%',
-        float: 'right',
-        height: '90vh'
-    },
+const useStyles = makeStyles(theme => ({
+    container: theme.container,
+    table: theme.table,
     compressedCell: {
         padding: '4px 16px'
     }
+}));
+
+const colNames = ["Giorno", "Cociv Badge", "Cociv Firme", "Tot. Cociv", "Tot."].map((colName, i) => {
+    return <Typography variant='body1' key={colName} color='primary'>{colName}</Typography>
 });
 
-const values = ["Giorno", "Cociv Badge", "Cociv Firme", "Tot. Cociv", "Tot."].map((item, i) => {
-    return <h3 key={item} style={{color: '#1976d2'}}>{item}</h3>
-});
-
-const headerGenerator = (array) => {
+const headerGenerator = (headers) => {
     return (
-        array.map((data, i) => {
+        headers.map((header, i) => {
             return (
-                <StyledTableCell key={data + i}>
-                    {data}
+                <StyledTableCell key={header + i}>
+                    {header}
                 </StyledTableCell>
             );
         })
@@ -68,6 +66,7 @@ const dataRowCreator = (month, year, style) => {
 
 const MonthlyTable = () => {
   const classes = useStyles();
+
   const selectors = [
       <Selector key="Mese" type="Mese"/>,
       <Selector key="Anno" type="Anno"/>,
@@ -76,8 +75,8 @@ const MonthlyTable = () => {
     ]
 
   return (
-    <TableContainer component={Paper} className={classes.table}>
-        <Table stickyHeader>
+    <TableContainer component={Paper} className={classes.container}>
+        <Table stickyHeader className={classes.table}>
             
             <TableHead>
                 <TableRow>
@@ -92,7 +91,7 @@ const MonthlyTable = () => {
                     </StyledTableCell>
                 </TableRow>
                 <TableRow>
-                    { headerGenerator(values) }
+                    { headerGenerator(colNames) }
                 </TableRow>
             </TableHead>
 

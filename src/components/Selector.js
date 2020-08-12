@@ -5,8 +5,8 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 
 const useStyles = makeStyles((theme) => ({
-  option: {
-      color: '#1976d2'
+  fontColor: {
+      color: theme.palette.primary.main
   }
 }));
 
@@ -80,11 +80,11 @@ const Selector = ({ type, array, formControlStyle }) => {
 
   return(
     <FormControl className={formControlStyle}>
-      <InputLabel className={classes.option}>{type}</InputLabel>
-      <Select onChange={e => console.log(e.target.value)} className={classes.option} native>
+      <InputLabel>{type}</InputLabel>
+      <Select onChange={e => console.log(e.target.value)} native>
         {
           array.map((data, i) => {
-            return <option className={classes.option} value={data} key={data + i}>{data}</option>
+            return <option className={classes.fontColor} value={data} key={data + i}>{data}</option>
           })
         }
       </Select>

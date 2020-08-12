@@ -8,8 +8,10 @@ import SearchBar from './SearchBar';
 
 const useStyles = makeStyles(theme => ({
     headerCell: {
-      backgroundColor: '#eaf4f4',
-     
+      backgroundColor: theme.palette.primary.light,
+    },
+    searchBarWidth: {
+        width: '100px'
     }
 }));
 
@@ -18,7 +20,7 @@ const HeaderToolbar = () => {
 
     return(
         <TableRow>
-            <TableCell style={{width: '100px'}} className={classes.headerCell}>
+            <TableCell className={`${classes.headerCell} ${classes.searchBarWidth}`}>
                 <SearchBar />
             </TableCell>
             <TableCell className={classes.headerCell}>

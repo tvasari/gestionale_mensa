@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: 'inherit',
       padding: 0,
     },
-  }));
+}));
 
 const ItemList = () => {
     const classes = useStyles();
@@ -32,7 +32,6 @@ const ItemList = () => {
                 [0, 1, 2, 3].map((sectionId) => (
                     <li key={`section-${sectionId}`} className={classes.listSection}>
                         <ul className={classes.ul}>
-                            
                             {[0, 1, 2].map((item) => (
                                 <Item key={`item-${sectionId}-${item}`} />
                             ))}
@@ -45,7 +44,6 @@ const ItemList = () => {
                 [0, 1, 2, 3].map((sectionId) => (
                     <li key={`section-${sectionId}`} className={classes.listSection}>
                         <ul className={classes.ul}>
-                            
                             {[0, 1, 2].map((item) => (
                                 <Item key={`item-${sectionId}-${item}`} />
                             ))}

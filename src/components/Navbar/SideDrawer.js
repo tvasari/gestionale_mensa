@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     drawerPaper: {
       width: '20%',
       position: 'absolute',
-      backgroundColor: '#eaf4f4'
+      backgroundColor: theme.palette.primary.light
     },
     drawerContainer: {
       overflow: 'auto',
@@ -50,7 +50,7 @@ const SideDrawer = () => {
                                 <NavLink 
                                     to={`/${tab.toLowerCase()}`} 
                                     className={classes.link} 
-                                    activeStyle={{color: 'darkorange'}}
+                                    activeStyle={{color: '#d50000'}}
                                 >
                                     <ListItem button key={tab}>
                                         <ListItemText key={tab + index} primary={tab}/>

@@ -7,16 +7,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import HeaderSintesiMese from './HeaderSintesiMese';
+import HeaderSintesiMese from './HeaderSintesiMenu';
 
 const useStyles = makeStyles(theme => ({
-  container: {
-    maxHeight: '90vh',
-    overflow: 'auto',
-    width: '80%',
-    float: 'right'
-  },
-  datePad: {
+  container: {...theme.container, ...theme.table},
+  datePadding: {
     padding: '0 0 0 16px'
   }
 }));
@@ -72,7 +67,7 @@ export default function SintesiMese() {
         <TableBody>
           <TableRow>
             <TableCell colSpan={2}></TableCell>
-            { generateDays(2020, 7, classes.datePad) }
+            { generateDays(2020, 7, classes.datePadding) }
           </TableRow>
           <TableRow>
             <TableCell rowSpan={4}><b>Pranzo</b></TableCell>

@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from '../../img/logo.png';
+import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import { NavLink } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
-        backgroundColor: '#1976d2',
+        backgroundColor: theme.palette.primary.main,
     },
     toolBar: {
         display: 'flex',

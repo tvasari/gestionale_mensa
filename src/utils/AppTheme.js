@@ -4,9 +4,31 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: '#1976d2',
-            light: '#eaf4f4',
-            contrastText: '#ff9100'
+            main: '#455a64',
+            light: '#cfd8dc'
+        }
+    },
+    container: {
+        maxHeight: '90vh',
+        overflow: 'auto'
+    },
+    table: {
+        width: '80%',
+        float: 'right'
+    },
+    overrides: {
+        MuiInputBase: {
+            root: {
+                color: '#455a64'
+            }
+        },
+        MuiFormLabel: {
+            root: {
+                '&$focused': {
+                    color: '#d50000'
+                },
+                color: '#455a64',
+            }
         }
     }
 })

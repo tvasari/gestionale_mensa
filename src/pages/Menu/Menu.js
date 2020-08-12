@@ -12,23 +12,16 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import HeaderMenu from './HeaderMenu';
 
-const useStyles = makeStyles({
-  table: {
-    maxHeight: '90vh',
-    overflow: 'auto',
-    width: '80%',
-    float: 'right'
-  },
+const useStyles = makeStyles(theme => ({
+  container: theme.container,
+  table: theme.table,
   meal: {
     padding: '16px 0'
   },
   subrow: {
     visibility: 'visible' //toggle to 'collapse' on click
-  },
-  tableHead: {
-    backgroundColor: '#eaf4f4'
   }
-});
+}));
 
 function createData(name, Lunedì, Martedì, Mercoledì, Giovedì, Venerdì, Sabato, Domenica) {
   return { name, Lunedì, Martedì, Mercoledì, Giovedì, Venerdì, Sabato, Domenica };
@@ -55,8 +48,8 @@ const MenuTable = () => {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper} className={classes.table}>
-      <Table stickyHeader>
+    <TableContainer component={Paper} className={classes.container}>
+      <Table className={classes.table} stickyHeader>
 
         <TableHead>
           <HeaderMenu daysArray={daysArray} />

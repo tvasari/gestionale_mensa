@@ -2,15 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
 import TableRow from '@material-ui/core/TableRow';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import StyledTableCell from '../../components/StyledTableCell';
-
-const StyledButton = styled(Button)({
-    color: '#1976d2', 
-    fontWeight: '700',
-    fontSize: '1em'
-});
+import StyledButton from '../../components/StyledButton';
 
 const StyledHeader = styled(Typography)({
     color: '#1976d2', 

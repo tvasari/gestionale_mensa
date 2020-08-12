@@ -26,21 +26,8 @@ const useStyles = makeStyles(theme => ({
     chips: {
         display: 'flex',
         flexWrap: 'wrap',
-    },
+    }
 }));
-
-const theme = createMuiTheme({
-    overrides: {
-        MuiFormLabel: {
-            root: {
-                '&$focused': {
-                    color: 'darkorange'
-                },
-                color: '#1976d2',
-            }
-        },
-    },
-});
 
 const names = [
     'formaggio'
@@ -50,36 +37,34 @@ const AddForm  = () => {
     const classes = useStyles();
 
     return(
-        <ThemeProvider theme={theme}>
-            <Box className={classes.container} border={1} borderColor="#1976d2">
-                <form style={{display: 'grid'}} noValidate autoComplete="off">
-                    <TextField className={classes.formControl} label="Nome"/>
-                    <Selector type="Tipo" formControlStyle={classes.formControl}/>
-                    <FormControl className={classes.formControl}>
-                        <InputLabel>Ingredienti</InputLabel>
-                        <Select
-                            multiple
-                            value={names}
-                            onChange={() => console.log('worked!')}
-                            input={<Input />}
-                            renderValue={(selected) => (
-                                <div className={classes.chips}>
-                                    {selected.map((value) => (
-                                        <Chip key={value} label={value} className={classes.chip} />
-                                    ))}
-                                </div>
-                            )}
-                        >
-                                {names.map((name) => (
-                                    <MenuItem key={name} value={name}>
-                                        {name}
-                                    </MenuItem>
+        <Box className={classes.container} border={1} borderColor="#1976d2">
+            <form style={{display: 'grid'}} noValidate autoComplete="off">
+                <TextField className={classes.formControl} label="Nome"/>
+                <Selector type="Tipo" formControlStyle={classes.formControl}/>
+                <FormControl className={classes.formControl}>
+                    <InputLabel>Ingredienti</InputLabel>
+                    <Select
+                        multiple
+                        value={names}
+                        onChange={() => console.log('worked!')}
+                        input={<Input />}
+                        renderValue={(selected) => (
+                            <div className={classes.chips}>
+                                {selected.map((value) => (
+                                    <Chip key={value} label={value} className={classes.chip} />
                                 ))}
-                        </Select>
-                    </FormControl>
-                </form>
-            </Box>
-        </ThemeProvider>
+                            </div>
+                        )}
+                    >
+                        {names.map((name) => (
+                            <MenuItem key={name} value={name}>
+                                {name}
+                            </MenuItem>
+                        ))}
+                    </Select>
+                </FormControl>
+            </form>
+        </Box>
     );
 }
 
