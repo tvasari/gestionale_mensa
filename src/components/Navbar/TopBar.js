@@ -7,7 +7,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {
@@ -27,7 +26,8 @@ const useStyles = makeStyles((theme) => ({
         height: '64px'
     },
     navLink: {
-        display: 'contents'
+        display: 'contents',
+        textDecoration: 'none'
     }
 }));
 
@@ -47,7 +47,9 @@ const TopBar = () => {
                     </Box>
                     <Typography>Nome_Utente</Typography>
                 </div>
-                <Button color="inherit">Esci</Button>
+                <NavLink className={classes.navLink} to="/registrati">
+                    <Typography variant="button" color="secondary">Esci</Typography>
+                </NavLink>
             </Toolbar>
         </AppBar>
     );

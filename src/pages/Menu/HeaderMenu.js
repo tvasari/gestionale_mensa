@@ -6,11 +6,11 @@ import Typography from '@material-ui/core/Typography';
 import StyledTableCell from '../../components/StyledTableCell';
 import StyledButton from '../../components/StyledButton';
 
-const StyledHeader = styled(Typography)({
-    color: '#1976d2', 
+const StyledHeader = styled(Typography)(({theme}) => ({
+    color: theme.palette.primary.main, 
     fontWeight: '700',
     fontSize: '1.1em'
-})
+}))
 
 const HeaderMenu = ({ daysArray }) => {
     const days = [
@@ -19,11 +19,13 @@ const HeaderMenu = ({ daysArray }) => {
           <StyledButton>Cena</StyledButton>
         </div>,
         ...daysArray.map(day => {
-            return <StyledHeader>
-                <NavLink style={{textDecoration: 'none', color: '#1976d2'}} to={`/costo_pasto`}>
-                    {day}
+            return( 
+                <NavLink style={{textDecoration: 'none'}} to="/costo_pasto">
+                    <StyledHeader>
+                        {day}
+                    </StyledHeader>
                 </NavLink>
-            </StyledHeader>
+            );
         })
     ]
 

@@ -39,7 +39,7 @@ const CollapsableList = () => {
                     <ListItemText primary="Modifica Menù" />
                     <EditIcon color="action"/>                            
                 </ListItem>
-                <NavLink className={classes.link} activeStyle={{color: 'darkorange'}} to='/sintesi_menu'>
+                <NavLink className={classes.link} activeStyle={{color: '#d50000'}} to='/sintesi_menù'>
                     <ListItem button className={classes.nested}>
                         <ListItemText primary="Sintesi del Mese" />
                         <DateRangeIcon color="action"/>

@@ -1,25 +1,36 @@
 import React, { Fragment } from 'react';
-import { styled } from '@material-ui/core/styles';
-import TableCell from '@material-ui/core/TableCell';
+import { makeStyles } from '@material-ui/core/styles';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
+import StyledTableCell from '../../components/StyledTableCell';
 import Piatto from './Piatto';
 
-const StyledTableCell = styled(TableCell)({
-  position: 'sticky',
-  top: 0,
-  backgroundColor: '#eaf4f4'
-})
+const useStyles = makeStyles({
+  stickyCell: {
+    position: 'sticky',
+    top: 0
+  }
+});
+
+const colNames = [
+  "Ingredienti",
+  "Quantità",
+  "UM",
+  "Costo/UM",
+  "Totale per ingrediente"
+]
 
 const Portata = ({ rows }) => {
+  const classes = useStyles();
+  
     return(
         Object.keys(rows).map(portata => {
             return (
               <Fragment>
                 <TableRow >
-                  <StyledTableCell>
+                  <StyledTableCell className={classes.stickyCell}>
                     <b>{portata.toUpperCase()}</b>
                     <IconButton>
                       <NoteAddIcon />
@@ -32,11 +43,11 @@ const Portata = ({ rows }) => {
                       variant="outlined"
                     />
                   </StyledTableCell>
-                  <StyledTableCell><b>Ingredienti</b></StyledTableCell>
-                  <StyledTableCell><b>Quantità</b></StyledTableCell>
-                  <StyledTableCell><b>UM</b></StyledTableCell>
-                  <StyledTableCell><b>Costo/UM</b></StyledTableCell>
-                  <StyledTableCell><b>Totale per ingrediente</b></StyledTableCell>
+                  {
+                    colNames.map(colName => {
+                      return <StyledTableCell className={classes.stickyCell}><b>{colName}</b></StyledTableCell>
+                    })
+                  }
                 </TableRow>
                 <Fragment>
                   <Piatto rows={rows} portata={portata}/>

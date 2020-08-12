@@ -45,22 +45,22 @@ const SideDrawer = () => {
             <div className={classes.drawerContainer}>
                 <List>
                     {
-                        mainPages.map((tab, index) => (
-                            <div key={tab + 'view'} className="view">
-                                <NavLink 
-                                    to={`/${tab.toLowerCase()}`} 
-                                    className={classes.link} 
-                                    activeStyle={{color: '#d50000'}}
-                                >
-                                    <ListItem button key={tab}>
-                                        <ListItemText key={tab + index} primary={tab}/>
-                                        <IconButton>
-                                            <KeyboardArrowDownIcon />
-                                        </IconButton>
-                                    </ListItem>
-                                </NavLink>
-                                <Divider key={tab + 'divider'}/>
-                                { tab === 'Menù'? <CollapsableList /> : null }
+                        mainPages.map((page, index) => (
+                            <div key={page + 'view'} className="view">
+                                <ListItem key={page}>
+                                    <NavLink 
+                                        to={`/${page.toLowerCase()}`} 
+                                        className={classes.link} 
+                                        activeStyle={{color: '#d50000'}}
+                                    >
+                                        <ListItemText key={page + index} primary={page}/>
+                                    </NavLink>
+                                    <IconButton edge="end">
+                                        <KeyboardArrowDownIcon />
+                                    </IconButton>
+                                </ListItem>
+                                <Divider key={page + 'divider'}/>
+                                { page === 'Menù'? <CollapsableList /> : null }
                             </div>
                         ))
                     }

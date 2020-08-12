@@ -13,13 +13,12 @@ const useStyles = makeStyles((theme) => ({
       overflow: 'auto',
       maxHeight: 480,
     },
-    listSection: {
-      backgroundColor: 'inherit',
-    },
     ul: {
-      backgroundColor: 'inherit',
       padding: 0,
     },
+    subHeader: {
+        backgroundColor: theme.palette.primary.light
+    }
 }));
 
 const ItemList = () => {
@@ -27,7 +26,7 @@ const ItemList = () => {
 
     return(
         <List className={classes.root} subheader={<li />}>
-            <ListSubheader>{`Piatti`}</ListSubheader>
+            <ListSubheader className={classes.subHeader}>{`Piatti`}</ListSubheader>
             {
                 [0, 1, 2, 3].map((sectionId) => (
                     <li key={`section-${sectionId}`} className={classes.listSection}>
@@ -39,10 +38,10 @@ const ItemList = () => {
                     </li>
                 ))
             }
-            <ListSubheader>{`Ingredienti`}</ListSubheader>
+            <ListSubheader className={classes.subHeader}>{`Ingredienti`}</ListSubheader>
             {
                 [0, 1, 2, 3].map((sectionId) => (
-                    <li key={`section-${sectionId}`} className={classes.listSection}>
+                    <li key={`section-${sectionId}`}>
                         <ul className={classes.ul}>
                             {[0, 1, 2].map((item) => (
                                 <Item key={`item-${sectionId}-${item}`} />

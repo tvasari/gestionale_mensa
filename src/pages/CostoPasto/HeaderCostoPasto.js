@@ -10,7 +10,7 @@ import BackArrowButton from '../../components/BackArrowButton';
 
 const useStyles = makeStyles(theme => ({
   header: {
-    color: '#1976d2', 
+    color: theme.palette.primary.main, 
     fontWeight: '700',
     paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(4)
@@ -24,7 +24,7 @@ const HeaderCostoPasto = ({ sameOrigin }) => {
         <TableRow>
             <StyledTableCell colSpan={5} align="left">
               <div style={{display: 'flex', alignItems: 'center'}}>
-                <BackArrowButton path="Menù" />
+                <BackArrowButton path="menù" />
                 <h3 className={classes.header}><b>{sameOrigin} 7 Agosto 2020</b></h3>
                 <IconButton>
                   <EditIcon/>

@@ -8,11 +8,11 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import Selector from '../../components/Selector';
 import EditIcon from '@material-ui/icons/Edit';
 import SearchIcon from '@material-ui/icons/Search';
 import IconButton from '@material-ui/core/IconButton';
-import StyledTableCell from '../../components/StyledTableCell';
+import StyledTableCell from 'components/StyledTableCell';
+import Selector from 'components/Selector';
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const colNames = ["Giorno", "Cociv Badge", "Cociv Firme", "Tot. Cociv", "Tot."].map((colName, i) => {
-    return <Typography variant='body1' key={colName} color='primary'>{colName}</Typography>
+    return <Typography variant='body1' key={colName} color='primary'><b>{colName}</b></Typography>
 });
 
 const headerGenerator = (headers) => {

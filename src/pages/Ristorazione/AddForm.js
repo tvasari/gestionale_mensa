@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles, styled } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
@@ -11,13 +11,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Selector from '../../components/Selector';
 
 const useStyles = makeStyles(theme => ({
-    container: {
-      overflow: 'auto',
-      width: '80%',
-      padding: 0,
-      height: '60vh',
-      margin: 'auto'
-    },
     formControl: {
         margin: theme.spacing(1),
         minWidth: 120,
@@ -29,6 +22,15 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+const StyledBox = styled(Box)(({theme}) => ({
+    overflow: 'auto',
+    width: '70%',
+    padding: 0,
+    height: '60vh',
+    margin: 'auto',
+    borderColor: theme.palette.primary.main
+}));
+
 const names = [
     'formaggio'
 ];
@@ -37,7 +39,7 @@ const AddForm  = () => {
     const classes = useStyles();
 
     return(
-        <Box className={classes.container} border={1} borderColor="#1976d2">
+        <StyledBox border={1}>
             <form style={{display: 'grid'}} noValidate autoComplete="off">
                 <TextField className={classes.formControl} label="Nome"/>
                 <Selector type="Tipo" formControlStyle={classes.formControl}/>
@@ -64,7 +66,7 @@ const AddForm  = () => {
                     </Select>
                 </FormControl>
             </form>
-        </Box>
+        </StyledBox>
     );
 }
 
