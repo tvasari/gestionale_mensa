@@ -17,7 +17,7 @@ const HeaderMagazzino = () => {
             <StyledTableCell>
                 <Typography color="primary" variant="body1"><b>{oggi}</b></Typography>
             </StyledTableCell>
-            <StyledTableCell>
+            <StyledTableCell colSpan={3}>
                 <Selector type="Categoria"/>
             </StyledTableCell>
         </TableRow>
