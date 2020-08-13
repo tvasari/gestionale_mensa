@@ -11,6 +11,7 @@ import Ristorazione from 'pages/Ristorazione/Ristorazione';
 import Registrati from 'pages/Registrati';
 import Accedi from 'pages/Accedi';
 import AppTheme from 'utils/AppTheme';
+import Magazzino from 'pages/Magazzino/Magazzino';
 
 class App extends Component {
 
@@ -42,13 +43,17 @@ class App extends Component {
                 <Navbar />
                 <CostoPasto />
               </Route>
-              <Route path="/sintesi_menù">
+              <Route path="/sintesi_del_mese">
                 <Navbar />
                 <SintesiMenu />
               </Route>
               <Route path="/ristorazione">
                 <Navbar />
                 <Ristorazione />
+              </Route>
+              <Route path="/magazzino">
+                <Navbar />
+                <Magazzino />
               </Route>
             </Switch>
           </Router>

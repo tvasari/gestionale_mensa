@@ -32,6 +32,16 @@ const theme = createMuiTheme({
                 },
                 color: '#455a64',
             }
+        },
+        MuiTable: {
+            stickyHeader: {
+                borderCollapse: 'collapse'
+            }
+        }
+    },
+    props: {
+        MuiInput: {
+            disableUnderline: true
         }
     }
 })

@@ -45,6 +45,12 @@ const months = [
   'Dicembre'
 ];
 
+const categories = [
+  'Ortofrutta',
+  'Carne Gelo',
+  'Secco'
+]
+
 const yearsCreator = () => {
   const years = [];
 
@@ -55,8 +61,10 @@ const yearsCreator = () => {
   return years;
 };
 
-const Selector = ({ type, array, formControlStyle }) => {
+const Selector = ({ type, formControlStyle }) => {
   const classes = useStyles();
+
+  let array;
 
   switch(type) {
     case 'Anno':
@@ -74,6 +82,9 @@ const Selector = ({ type, array, formControlStyle }) => {
     case 'Presenze':
       array = attendance;
       break;
+    case 'Categoria':
+      array = categories;
+    break;
     default:
       throw new Error();
   }

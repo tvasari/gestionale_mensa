@@ -2,34 +2,31 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
 import AddIcon from '@material-ui/icons/Add';
+import StyledTableCell from 'components/StyledTableCell';
 import SearchBar from './SearchBar';
 
-const useStyles = makeStyles(theme => ({
-    headerCell: {
-      backgroundColor: theme.palette.primary.light,
-    },
+const useStyles = makeStyles({
     searchBarWidth: {
         width: '100px'
     }
-}));
+});
 
-const HeaderToolbar = () => {
+const HeaderRistorazione = () => {
     const classes = useStyles();
 
     return(
         <TableRow>
-            <TableCell className={`${classes.headerCell} ${classes.searchBarWidth}`}>
+            <StyledTableCell className={classes.searchBarWidth}>
                 <SearchBar />
-            </TableCell>
-            <TableCell className={classes.headerCell}>
+            </StyledTableCell>
+            <StyledTableCell>
                 <IconButton>
                     <AddIcon />
                 </IconButton>
-            </TableCell>
+            </StyledTableCell>
         </TableRow>
     );
 }
 
-export default HeaderToolbar;
+export default HeaderRistorazione;

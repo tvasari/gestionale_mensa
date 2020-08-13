@@ -3,14 +3,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import { NavLink } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Divider from '@material-ui/core/Divider';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import EditIcon from '@material-ui/icons/Edit';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import WeekPicker from './WeekPicker';
 import CollapsableList from './CollapsableList';
+import LinkToPage from './LinkToPage';
 
 const useStyles = makeStyles((theme) => ({
     drawer: {
@@ -23,14 +27,34 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerContainer: {
       overflow: 'auto',
-    },
-    link: {
-      textDecoration: 'none',
-      color: 'black'
     }
 }));
 
 const mainPages = ['Mese', 'Menù', 'Ristorazione', 'Magazzino', 'Statistiche', 'Account'];
+
+const menuSubList = [
+    <WeekPicker />, 
+    [<ListItemText primary="Nuovo Menù" />, <AddBoxIcon color="action"/>],  
+    [<ListItemText primary="Modifica Menù" />, <EditIcon color="action"/>],
+    <LinkToPage page="Sintesi del Mese" elemToAdd={<DateRangeIcon color="action"/>} />
+]
+
+const magazzinoSubList = [
+    <LinkToPage page="Storico"/>,
+    <LinkToPage page="Ordini"/>,
+    <LinkToPage page="Rimanenze"/>
+]
+
+const displaySubList = (page) => {
+    switch(page) {
+        case "Menù":
+            return <CollapsableList elemsToDispaly={menuSubList} />;
+        case "Magazzino":
+            return <CollapsableList elemsToDispaly={magazzinoSubList} />;
+        default:
+            return null;
+    }
+}
 
 const SideDrawer = () => {
     const classes = useStyles();
@@ -48,19 +72,13 @@ const SideDrawer = () => {
                         mainPages.map((page, index) => (
                             <div key={page + 'view'} className="view">
                                 <ListItem key={page}>
-                                    <NavLink 
-                                        to={`/${page.toLowerCase()}`} 
-                                        className={classes.link} 
-                                        activeStyle={{color: '#d50000'}}
-                                    >
-                                        <ListItemText key={page + index} primary={page}/>
-                                    </NavLink>
+                                    <LinkToPage page={page} key={page}/>
                                     <IconButton edge="end">
                                         <KeyboardArrowDownIcon />
                                     </IconButton>
                                 </ListItem>
                                 <Divider key={page + 'divider'}/>
-                                { page === 'Menù'? <CollapsableList /> : null }
+                                { displaySubList(page) }
                             </div>
                         ))
                     }
