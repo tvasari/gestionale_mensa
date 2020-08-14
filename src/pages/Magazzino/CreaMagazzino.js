@@ -8,7 +8,7 @@ import {
     InputLabel, Select, ButtonGroup, TextField, Toolbar, 
     AppBar, Dialog, Button 
 } from '@material-ui/core';
-
+import Selector from 'components/Selector';
 
 const useStyles = makeStyles((theme) => ({
     workBench: theme.workBench,
@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
         margin: '20px 50px'
     },
     inputMargin: {
+        display: 'inline',
         margin: '15px 0',
     },
     textField: {
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
-  });
+});
 
 const CreaMagazzino = ({ handleClickClose, open }) => {
     const classes = useStyles();
@@ -42,8 +43,8 @@ const CreaMagazzino = ({ handleClickClose, open }) => {
         <Dialog fullScreen open={open} onClose={() => handleClickClose()} TransitionComponent={Transition}>
             <AppBar className={classes.appBar}>
                 <Toolbar>
-                    <IconButton edge="start" color="inherit" onClick={() => handleClickClose()} aria-label="close">
-                    <CloseIcon />
+                    <IconButton edge="start" color="inherit" onClick={() => handleClickClose()}>
+                        <CloseIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
                         Nuovo Magazzino
@@ -55,33 +56,17 @@ const CreaMagazzino = ({ handleClickClose, open }) => {
             </AppBar>
             <FormGroup className={classes.formGroup}>
                 <TextField className={classes.textField} label="Nome" variant="outlined" />
-                <FormControl variant="outlined" className={classes.textField}>
-                    <InputLabel>Categoria</InputLabel>
-                    <Select label="Categoria" onChange={() => console.log('changed')} native>
-                        {
-                            ['Ortofrutta', 'Carne Gelo'].map(categoria => <option value={categoria}>{categoria}</option>)
-                        }
-                    </Select>
-                </FormControl>
-                <FormControl style={{display: 'inline'}} variant="outlined" className={classes.inputMargin}>
-                    <span className={classes.textField}>
-                        <InputLabel>Oggetto</InputLabel>
-                        <Select style={{width: '30%'}} label="Oggetto" onChange={() => console.log('changed')} native>
-                            {
-                                ['Uova', 'Tonno'].map(oggetto => <option value={oggetto}>{oggetto}</option>)
-                            }
-                        </Select>
-                        <TextField
-                            style={{width: '10%', marginLeft: '10px'}}
-                            label="Quantità"
-                            type="number"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                            variant="outlined"
-                        />
-                    </span>
-                </FormControl>
+                <Selector type="Categoria" variant="outlined" formControlStyle={classes.textField} />
+                <span>
+                    <Selector type="Oggetti" variant="outlined" formControlStyle={classes.textField} />
+                    <TextField
+                        style={{width: '10%', margin: '15px 10px'}}
+                        label="Quantità"
+                        type="number"
+                        InputLabelProps={{shrink: true}}
+                        variant="outlined"
+                    />
+                </span>
                 <ButtonGroup>
                     <IconButton>
                         <AddIcon />
@@ -90,8 +75,7 @@ const CreaMagazzino = ({ handleClickClose, open }) => {
                         <DoneIcon />
                     </IconButton>
                 </ButtonGroup>
-            </FormGroup>
-            
+            </FormGroup>    
         </Dialog>
     );
 }

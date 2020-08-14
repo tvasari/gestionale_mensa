@@ -51,6 +51,11 @@ const categories = [
   'Secco'
 ]
 
+const items = [
+  'Uova',
+  'Tonno'
+]
+
 const yearsCreator = () => {
   const years = [];
 
@@ -85,14 +90,17 @@ const Selector = ({ type, variant, formControlStyle }) => {
     case 'Categoria':
       array = categories;
     break;
+    case 'Oggetti':
+      array = items;
+    break;
     default:
       throw new Error();
   }
 
   return(
-    <FormControl className={formControlStyle}>
+    <FormControl variant={variant} className={formControlStyle}>
       <InputLabel>{type}</InputLabel>
-      <Select label={type} variant={variant} onChange={e => console.log(e.target.value)} native>
+      <Select label={type} onChange={e => console.log(e.target.value)} native>
         {
           array.map((data, i) => {
             return <option className={classes.fontColor} value={data} key={data + i}>{data}</option>
