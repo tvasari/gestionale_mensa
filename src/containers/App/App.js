@@ -12,7 +12,7 @@ import Registrati from 'pages/Registrati';
 import Accedi from 'pages/Accedi';
 import AppTheme from 'utils/AppTheme';
 import Magazzino from 'pages/Magazzino/Magazzino';
-import TuttiMagazzini from 'pages/Magazzino/TuttiMagazzini';
+import TuttiMagazzini from 'pages/Magazzino/ListaMagazzini';
 
 class App extends Component {
 

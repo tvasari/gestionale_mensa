@@ -61,7 +61,7 @@ const yearsCreator = () => {
   return years;
 };
 
-const Selector = ({ type, formControlStyle }) => {
+const Selector = ({ type, variant, formControlStyle }) => {
   const classes = useStyles();
 
   let array;
@@ -92,7 +92,7 @@ const Selector = ({ type, formControlStyle }) => {
   return(
     <FormControl className={formControlStyle}>
       <InputLabel>{type}</InputLabel>
-      <Select onChange={e => console.log(e.target.value)} native>
+      <Select label={type} variant={variant} onChange={e => console.log(e.target.value)} native>
         {
           array.map((data, i) => {
             return <option className={classes.fontColor} value={data} key={data + i}>{data}</option>
