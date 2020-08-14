@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import HeaderSintesiMese from './HeaderSintesiMenu';
 
 const useStyles = makeStyles(theme => ({
-  container: {...theme.container, ...theme.table},
+  container: {...theme.container, ...theme.workBench},
   datePadding: {
     padding: '0 0 0 16px'
   }

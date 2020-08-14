@@ -15,7 +15,7 @@ const theme = createMuiTheme({
         maxHeight: '90vh',
         overflow: 'auto'
     },
-    table: {
+    workBench: {
         width: '80%',
         float: 'right'
     },
@@ -31,11 +31,6 @@ const theme = createMuiTheme({
                     color: '#d50000'
                 },
                 color: '#455a64',
-            }
-        },
-        MuiTable: {
-            stickyHeader: {
-                borderCollapse: 'collapse'
             }
         }
     },

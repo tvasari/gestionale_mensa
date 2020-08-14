@@ -14,7 +14,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import WeekPicker from './WeekPicker';
 import CollapsableList from './CollapsableList';
-import LinkToPage from './LinkToPage';
+import LinkToPage from '../LinkToPage';
 
 const useStyles = makeStyles((theme) => ({
     drawer: {

@@ -12,6 +12,7 @@ import Registrati from 'pages/Registrati';
 import Accedi from 'pages/Accedi';
 import AppTheme from 'utils/AppTheme';
 import Magazzino from 'pages/Magazzino/Magazzino';
+import TuttiMagazzini from 'pages/Magazzino/TuttiMagazzini';
 
 class App extends Component {
 
@@ -52,6 +53,10 @@ class App extends Component {
                 <Ristorazione />
               </Route>
               <Route path="/magazzino">
+                <Navbar />
+                <TuttiMagazzini />
+              </Route>
+              <Route path="/arquata_1">
                 <Navbar />
                 <Magazzino />
               </Route>

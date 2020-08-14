@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import Item from './Item';
+import Item from 'components/Item';
 
 const useStyles = makeStyles((theme) => ({
     root: {

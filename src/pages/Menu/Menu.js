@@ -14,7 +14,7 @@ import HeaderMenu from './HeaderMenu';
 
 const useStyles = makeStyles(theme => ({
   container: theme.container,
-  table: theme.table,
+  workBench: theme.workBench,
   meal: {
     padding: '16px 0'
   },
@@ -49,7 +49,7 @@ const MenuTable = () => {
 
   return (
     <TableContainer component={Paper} className={classes.container}>
-      <Table className={classes.table} stickyHeader>
+      <Table className={classes.workBench} stickyHeader>
 
         <TableHead>
           <HeaderMenu daysArray={daysArray} />

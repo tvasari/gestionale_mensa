@@ -14,7 +14,7 @@ import AddForm from './AddForm';
 import StyledButton from '../../components/StyledButton';
 
 const useStyles = makeStyles(theme => ({
-    container: {...theme.container, ...theme.table},
+    container: {...theme.container, ...theme.workBench},
     cellPadding: {
         padding: 0
     }
