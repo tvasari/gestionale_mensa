@@ -1,13 +1,8 @@
 import React from 'react';
 import { makeStyles, styled } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import TextField from '@material-ui/core/TextField';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import Select from '@material-ui/core/Select';
-import Chip from '@material-ui/core/Chip';
-import MenuItem from '@material-ui/core/MenuItem';
+import {
+    Box, TextField, FormControl, InputLabel, Input, Select, Chip, MenuItem 
+} from '@material-ui/core/';
 import Selector from '../../components/Selector';
 
 const useStyles = makeStyles(theme => ({

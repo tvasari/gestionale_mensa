@@ -1,11 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper, Typography 
+  TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper 
 } from '@material-ui/core/';
 import getMonthDays from 'utils/getMonthDays';
 import createRows from 'utils/createRows';
-import HeaderPresenzeMese from 'pages/PresenzeMese/HeaderPresenzeMese'
+import HeaderStorico from 'pages/Storico/HeaderStorico'
 
 const useStyles = makeStyles(theme => ({
   container: {...theme.workBench, ...theme.container},
@@ -20,13 +20,14 @@ const primiPiatti = getMonthDays(2020, 8).map(day => 'uova ')
 const numeri = weekDays().map(day => (Math.random() * 101).toFixed(0))
 
 const oggetti = {
-  "Cociv Badge": [...numeri],
-  "Cociv Firme": [...numeri],
-  "Tot. Cociv": [...numeri],
-  "Tot.": [...numeri]
+  Uova: [...numeri],
+  Latte: [...numeri],
+  Olio: [...numeri],
+  Zucchero: [...numeri]
 }
 
-const PresenzeMese = () => {
+
+const Storico = () => {
   const classes = useStyles();
 
   return (
@@ -34,13 +35,24 @@ const PresenzeMese = () => {
       <Table>
 
         <TableHead>
-          <HeaderPresenzeMese colSpan={30}/>
+          <HeaderStorico colSpan={primiPiatti.length}/>
         </TableHead>
 
         <TableBody>
           <TableRow>
-            <TableCell></TableCell>
+            <TableCell colSpan={2}></TableCell>
             { weekDays(classes.datePadding) }
+          </TableRow>
+          <TableRow>
+            <TableCell rowSpan={Object.keys(oggetti).length + 1}>
+              Ortofrutta
+            </TableCell>
+          </TableRow>
+          { createRows(oggetti) }
+          <TableRow>
+            <TableCell rowSpan={Object.keys(oggetti).length + 1}>
+              Ortofrutta
+            </TableCell>
           </TableRow>
           { createRows(oggetti) }
         </TableBody>
@@ -50,4 +62,4 @@ const PresenzeMese = () => {
   );
 }
 
-export default PresenzeMese;
+export default Storico;

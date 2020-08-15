@@ -1,13 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import Paper from '@material-ui/core/Paper';
-import Portata from './Portata';
-import Totali from './Totali';
-import HeaderCostoPasto from './HeaderCostoPasto';
+import { Table, TableBody, TableContainer, TableHead, Paper } from '@material-ui/core/';
+import Portata from 'pages/CostoPasto/Portata';
+import Totali from 'pages/CostoPasto/Totali';
+import HeaderCostoPasto from 'pages/CostoPasto/HeaderCostoPasto';
 
 const useStyles = makeStyles(theme => ({
   table: {

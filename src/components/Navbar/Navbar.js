@@ -1,6 +1,6 @@
 import React from 'react';
-import TopBar from './TopBar.js';
-import SideDrawer from './SideDrawer.js';
+import TopBar from 'components/Navbar/TopBar';
+import SideDrawer from 'components/Navbar/SideDrawer';
 
 const Navbar = () => {
   return (

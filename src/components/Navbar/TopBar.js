@@ -1,12 +1,8 @@
 import React from 'react';
-import logo from '../../img/logo.png';
 import { NavLink } from 'react-router-dom';
+import logo from 'img/logo.png';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Box from '@material-ui/core/Box';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
+import { AppBar, Toolbar, Box, Avatar, Typography } from '@material-ui/core/';
 
 const useStyles = makeStyles((theme) => ({
     appBar: {

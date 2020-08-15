@@ -1,10 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { styled } from '@material-ui/core/styles';
-import TableRow from '@material-ui/core/TableRow';
-import Typography from '@material-ui/core/Typography';
-import StyledTableCell from '../../components/StyledTableCell';
-import StyledButton from '../../components/StyledButton';
+import { TableRow, Typography } from '@material-ui/core/';
+import StyledTableCell from 'components/StyledTableCell';
+import StyledButton from 'components/StyledButton';
 
 const StyledHeader = styled(Typography)(({theme}) => ({
     color: theme.palette.primary.main, 

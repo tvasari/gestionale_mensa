@@ -1,11 +1,11 @@
 import React from 'react';
-import TableRow from '@material-ui/core/TableRow';
-import IconButton from '@material-ui/core/IconButton';
-import StyledTableCell from 'components/StyledTableCell';
-import SearchIcon from '@material-ui/icons/Search';
+import { TableRow, IconButton } from '@material-ui/core/';
 import EditIcon from '@material-ui/icons/Edit';
 import Selector from 'components/Selector';
+import StyledTableCell from 'components/StyledTableCell';
 import headerGenerator from 'utils/headerGenerator';
+
+
 
 const selectors = [
     <Selector key="Mese" type="Mese"/>,
@@ -19,9 +19,6 @@ const HeaderPresenzeMese = () => {
         <TableRow>
             { headerGenerator(selectors) }
             <StyledTableCell>
-                <IconButton>
-                    <SearchIcon/>
-                </IconButton>
                 <IconButton>
                     <EditIcon/>
                 </IconButton>

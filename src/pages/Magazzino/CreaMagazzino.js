@@ -1,11 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AddIcon from '@material-ui/icons/Add';
-import DoneIcon from '@material-ui/icons/Done';
-import CloseIcon from '@material-ui/icons/Close';
+import { Add, Done, Close } from '@material-ui/icons/';
 import { 
-    IconButton, Typography, Slide, FormGroup, FormControl, 
-    InputLabel, Select, ButtonGroup, TextField, Toolbar, 
+    IconButton, Typography, Slide, FormGroup, 
+    ButtonGroup, TextField, Toolbar, 
     AppBar, Dialog, Button 
 } from '@material-ui/core';
 import Selector from 'components/Selector';
@@ -44,7 +42,7 @@ const CreaMagazzino = ({ handleClickClose, open }) => {
             <AppBar className={classes.appBar}>
                 <Toolbar>
                     <IconButton edge="start" color="inherit" onClick={() => handleClickClose()}>
-                        <CloseIcon />
+                        <Close/>
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
                         Nuovo Magazzino
@@ -69,10 +67,10 @@ const CreaMagazzino = ({ handleClickClose, open }) => {
                 </span>
                 <ButtonGroup>
                     <IconButton>
-                        <AddIcon />
+                        <Add />
                     </IconButton>
                     <IconButton>
-                        <DoneIcon />
+                        <Done />
                     </IconButton>
                 </ButtonGroup>
             </FormGroup>    

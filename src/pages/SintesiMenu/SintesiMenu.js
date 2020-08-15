@@ -1,13 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import HeaderSintesiMese from './HeaderSintesiMenu';
+import {
+  TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper 
+} from '@material-ui/core/';
+import HeaderSintesiMese from 'pages/SintesiMenu/HeaderSintesiMenu';
 import getMonthDays from 'utils/getMonthDays';
 
 const useStyles = makeStyles(theme => ({
@@ -36,6 +32,7 @@ const SintesiMese = () => {
             <TableCell colSpan={2}></TableCell>
             { weekDays(classes.datePadding) }
           </TableRow>
+
           <TableRow>
             <TableCell rowSpan={4}><b>Pranzo</b></TableCell>
             <TableCell rowSpan={2}><b>Primi</b></TableCell>
@@ -51,7 +48,9 @@ const SintesiMese = () => {
           <TableRow>
             { primiPiatti }
           </TableRow>
+
           <TableRow><TableCell colSpan={primiPiatti.length + 2}></TableCell></TableRow>
+
           <TableRow>
               <TableCell rowSpan={4}><b>Cena</b></TableCell>
             <TableCell rowSpan={2}><b>Primi</b></TableCell>
@@ -67,6 +66,7 @@ const SintesiMese = () => {
           <TableRow>
             { primiPiatti }
           </TableRow>
+          
         </TableBody>
 
       </Table>

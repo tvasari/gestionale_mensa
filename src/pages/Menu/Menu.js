@@ -1,16 +1,11 @@
 import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TableContainer from '@material-ui/core/TableContainer';
-import Table from '@material-ui/core/Table';
-import TableHead from '@material-ui/core/TableHead';
-import TableBody from '@material-ui/core/TableBody';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
-import Paper from '@material-ui/core/Paper';
+import { 
+  TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper 
+} from '@material-ui/core/';
 import IconButton from '@material-ui/core/IconButton';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import HeaderMenu from './HeaderMenu';
+import { KeyboardArrowUp, KeyboardArrowDown } from '@material-ui/icons/';
+import HeaderMenu from 'pages/Menu/HeaderMenu';
 
 const useStyles = makeStyles(theme => ({
   container: theme.container,
@@ -66,7 +61,7 @@ const MenuTable = () => {
                       row.name === 'Primi Piatti' || row.name === 'Secondi Piatti'
                       ? (
                           <IconButton size="small" onClick={() => handleCollapse()}>
-                              {true ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                              {true ? <KeyboardArrowUp/> : <KeyboardArrowDown/>}
                           </IconButton> 
                       )
                       : null

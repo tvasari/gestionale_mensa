@@ -1,12 +1,9 @@
 import React from 'react';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
+import { ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core/';
 import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import LinkToPage from './LinkToPage';
-import StyledButton from './StyledButton';
+import { Delete, Edit } from '@material-ui/icons/';
+import LinkToPage from 'components/LinkToPage';
+import StyledButton from 'components/StyledButton';
 
 
 const Item = ({ isMagazzino, nomeMagazzino }) => {
@@ -28,10 +25,10 @@ const Item = ({ isMagazzino, nomeMagazzino }) => {
             }
             <ListItemSecondaryAction>
                 <IconButton edge="end">
-                    <EditIcon />
+                    <Edit />
                 </IconButton>
                 <IconButton edge="end">
-                    <DeleteIcon />
+                    <Delete/>
                 </IconButton>
             </ListItemSecondaryAction>
         </ListItem>

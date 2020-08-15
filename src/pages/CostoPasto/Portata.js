@@ -1,11 +1,9 @@
 import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TableRow from '@material-ui/core/TableRow';
-import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton';
+import { TableRow, TextField, IconButton} from '@material-ui/core/';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
-import StyledTableCell from '../../components/StyledTableCell';
-import Piatto from './Piatto';
+import StyledTableCell from 'components/StyledTableCell';
+import Piatto from 'pages/CostoPasto/Piatto';
 
 const useStyles = makeStyles({
   stickyCell: {

@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import Item from 'components/Item';
-import IconButton from '@material-ui/core/IconButton';
+import { List, ListItem } from '@material-ui/core/';
+import { Typography, IconButton, Divider} from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add';
-import Typography from '@material-ui/core/Typography';
-import CreaMagazzino from './CreaMagazzino';
+import CreaMagazzino from 'pages/Magazzino/CreaMagazzino';
+import Item from 'components/Item';
 
 class ListaMagazzini extends Component {
     constructor(props) {

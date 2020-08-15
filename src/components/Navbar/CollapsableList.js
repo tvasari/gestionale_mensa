@@ -1,8 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Collapse from '@material-ui/core/Collapse';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import { List, ListItem } from '@material-ui/core/';
 import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({

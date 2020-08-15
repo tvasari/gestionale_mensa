@@ -1,9 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TableContainer from '@material-ui/core/TableContainer';
-import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import HeaderMagazzino from './HeaderMagazzino';
+import { TableContainer, Typography, Paper } from '@material-ui/core/';
+import HeaderMagazzino from 'pages/Magazzino/HeaderMagazzino';
 import SortingTableHeader from 'components/SortingTable/SortingTableHeader';
 import SortingTableBody from 'components/SortingTable/SortingTableBody';
 

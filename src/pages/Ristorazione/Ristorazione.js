@@ -1,17 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TableContainer from '@material-ui/core/TableContainer';
-import Table from '@material-ui/core/Table';
-import TableHead from '@material-ui/core/TableHead';
-import TableBody from '@material-ui/core/TableBody';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
-import Paper from '@material-ui/core/Paper';
+import {
+    TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper 
+} from '@material-ui/core/';
 import PublishIcon from '@material-ui/icons/Publish';
-import HeaderToolbar from './HeaderRistorazione';
-import ItemList from './ItemList';
-import AddForm from './AddForm';
-import StyledButton from '../../components/StyledButton';
+import HeaderToolbar from 'pages/Ristorazione/HeaderRistorazione';
+import ItemList from 'pages/Ristorazione/ItemList';
+import AddForm from 'pages/Ristorazione/AddForm';
+import StyledButton from 'components/StyledButton';
 
 const useStyles = makeStyles(theme => ({
     container: {...theme.container, ...theme.workBench},

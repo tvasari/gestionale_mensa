@@ -3,8 +3,7 @@ import format from "date-fns/format";
 import { it } from 'date-fns/locale'
 import startOfWeek from "date-fns/startOfWeek";
 import DateFnsUtils from "@date-io/date-fns";
-import { DatePicker } from "@material-ui/pickers";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 class LocalizedUtils extends DateFnsUtils {
   getDatePickerHeaderText(date) {

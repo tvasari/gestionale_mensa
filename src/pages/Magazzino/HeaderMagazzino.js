@@ -1,6 +1,5 @@
 import React from 'react';
-import TableRow from '@material-ui/core/TableRow';
-import Typography from '@material-ui/core/Typography';
+import { TableRow, Typography } from '@material-ui/core/';
 import StyledTableCell from 'components/StyledTableCell';
 import Selector from 'components/Selector';
 import { it } from 'date-fns/locale'

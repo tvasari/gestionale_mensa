@@ -1,14 +1,21 @@
 import React from 'react';
 import StyledTableCell from 'components/StyledTableCell';
 
-const headerGenerator = (headers) => {
+const headerGenerator = (headers, colSpan) => {
     return (
         headers.map((header, i) => {
-            return (
+            return i === headers[headers.length - 1] ?
+            (
+                <StyledTableCell colSpan={colSpan} key={header + i}>
+                    {header}
+                </StyledTableCell>
+            )
+            :
+            (
                 <StyledTableCell key={header + i}>
                     {header}
                 </StyledTableCell>
-            );
+            )
         })
     );
 };

@@ -3,21 +3,24 @@ import { TableRow, Box } from '@material-ui/core/';
 import Selector from 'components/Selector';
 import StyledTableCell from 'components/StyledTableCell';
 import BackArrowButton from 'components/BackArrowButton';
+import headerGenerator from 'utils/headerGenerator';
 
-const HeaderSintesiMese = ({ colSpan }) => {
+
+const selectors = [
+  <Selector key="Mese" type="Mese"/>,
+  <Selector key="Anno" type="Anno"/>,
+  <Selector key="Categoria" type="Categoria"/>,
+]
+
+const HeaderStorico = ({ colSpan }) => {
   return(
       <TableRow>
           <StyledTableCell colSpan={2} align="left">
-            <BackArrowButton path="Menù" />
+            <BackArrowButton path="arquata_1" />
           </StyledTableCell>
-          <StyledTableCell colSpan={colSpan}>
-            <Box mr={2} width="fit-content" display="inline">
-              <Selector type='Mese'/>
-            </Box>
-            <Selector type='Anno'/>
-          </StyledTableCell>
+          { headerGenerator(selectors, colSpan) }
       </TableRow>
   );
 }
 
-export default HeaderSintesiMese;
+export default HeaderStorico;

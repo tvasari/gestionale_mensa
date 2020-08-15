@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
+import 'App.css';
 
 import Navbar from 'components/Navbar/Navbar';
 import PresenzeMese from 'pages/PresenzeMese/PresenzeMese';
@@ -13,7 +13,7 @@ import Accedi from 'pages/Accedi';
 import AppTheme from 'utils/AppTheme';
 import Magazzino from 'pages/Magazzino/Magazzino';
 import TuttiMagazzini from 'pages/Magazzino/ListaMagazzini';
-import Storico from 'pages/Magazzino/Storico';
+import Storico from 'pages/Storico/Storico';
 
 const FramedRoute = ({ path, component }) => {
   return(
@@ -39,24 +39,10 @@ class App extends Component {
               <FramedRoute path="/menù" component={<Menu />} />
               <FramedRoute path="/costo_pasto" component={<CostoPasto />} />
               <FramedRoute path="/sintesi_del_mese" component={<SintesiMenu />} />
-              <FramedRoute path="/gestionale_mensa" component={<PresenzeMese />} />
-              <FramedRoute path="/gestionale_mensa" component={<PresenzeMese />} />
-              <Route path="/ristorazione">
-                <Navbar />
-                <Ristorazione />
-              </Route>
-              <Route path="/magazzino">
-                <Navbar />
-                <TuttiMagazzini />
-              </Route>
-              <Route path="/arquata_1">
-                <Navbar />
-                <Magazzino />
-              </Route>
-              <Route path="/storico">
-                <Navbar />
-                <Storico />
-              </Route>
+              <FramedRoute path="/ristorazione" component={<Ristorazione />} />
+              <FramedRoute path="/magazzino" component={<TuttiMagazzini />} />
+              <FramedRoute path="/arquata_1" component={<Magazzino />} />
+              <FramedRoute path="/storico" component={<Storico />} />
             </Switch>
           </Router>
         </AppTheme>

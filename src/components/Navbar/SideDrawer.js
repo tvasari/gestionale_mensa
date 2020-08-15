@@ -2,19 +2,15 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import { List, ListItem, ListItemText } from '@material-ui/core/';
 import IconButton from '@material-ui/core/IconButton';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import Divider from '@material-ui/core/Divider';
-import AddBoxIcon from '@material-ui/icons/AddBox';
-import EditIcon from '@material-ui/icons/Edit';
-import DateRangeIcon from '@material-ui/icons/DateRange';
-import WeekPicker from './WeekPicker';
-import CollapsableList from './CollapsableList';
-import LinkToPage from '../LinkToPage';
+import { 
+    AddBox, Edit, DateRange, KeyboardArrowDown, KeyboardArrowUp
+} from '@material-ui/icons/';
+import WeekPicker from 'components/Navbar/WeekPicker';
+import CollapsableList from 'components/Navbar/CollapsableList';
+import LinkToPage from 'components/LinkToPage';
 
 const useStyles = makeStyles((theme) => ({
     drawer: {
@@ -34,9 +30,9 @@ const mainPages = ['Mese', 'Menù', 'Ristorazione', 'Magazzino', 'Statistiche', 
 
 const menuSubList = [
     <WeekPicker />, 
-    [<ListItemText primary="Nuovo Menù" />, <AddBoxIcon color="action"/>],  
-    [<ListItemText primary="Modifica Menù" />, <EditIcon color="action"/>],
-    <LinkToPage page="Sintesi del Mese" elemToAdd={<DateRangeIcon color="action"/>} />
+    [<ListItemText primary="Nuovo Menù" />, <AddBox color="action"/>],  
+    [<ListItemText primary="Modifica Menù" />, <Edit color="action"/>],
+    <LinkToPage page="Sintesi del Mese" elemToAdd={<DateRange color="action"/>} />
 ]
 
 const magazzinoSubList = [
@@ -74,7 +70,7 @@ const SideDrawer = () => {
                                 <ListItem key={page}>
                                     <LinkToPage page={page} key={page}/>
                                     <IconButton edge="end">
-                                        <KeyboardArrowDownIcon />
+                                        <KeyboardArrowDown />
                                     </IconButton>
                                 </ListItem>
                                 <Divider key={page + 'divider'}/>

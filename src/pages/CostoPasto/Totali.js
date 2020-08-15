@@ -1,12 +1,8 @@
 import React, { Fragment } from 'react';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
+import { Table, TableBody, TableRow, TableCell} from '@material-ui/core/';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
-import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
+import { KeyboardArrowUp, KeyboardArrowDown } from '@material-ui/icons/';
 
 const numPasti = 144;
 const costoPasto = 129;
@@ -26,7 +22,7 @@ const Totali = () => {
                 <TableCell>
                     <b>Costo Totale</b>
                     <IconButton>
-                        <KeyboardArrowDownIcon />
+                        <KeyboardArrowDown />
                     </IconButton>
                 </TableCell>
                 <TableCell align="right"><b>{ costoTot }</b></TableCell>
