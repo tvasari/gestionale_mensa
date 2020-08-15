@@ -7,7 +7,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import HeaderSintesiMese from './HeaderSintesiMenu';
 import getMonthDays from 'utils/getMonthDays';
 
 const useStyles = makeStyles(theme => ({
@@ -20,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 const primiPiatti = getMonthDays(2020, 8).map(day => <TableCell>Pasta aglio olio e peperoncino</TableCell>)
 const weekDays = (style) => getMonthDays(2020, 8).map(day => <TableCell className={style}><b>{day}</b></TableCell>)
 
-const SintesiMese = () => {
+const Storico = () => {
   const classes = useStyles();
 
   return (
@@ -28,7 +27,7 @@ const SintesiMese = () => {
       <Table>
 
         <TableHead>
-          <HeaderSintesiMese colSpan={primiPiatti.length + 2}/>
+          {/* inserici header */}
         </TableHead>
 
         <TableBody>
@@ -37,7 +36,7 @@ const SintesiMese = () => {
             { weekDays(classes.datePadding) }
           </TableRow>
           <TableRow>
-            <TableCell rowSpan={4}><b>Pranzo</b></TableCell>
+            <TableCell rowSpan={4}><b>Ortofrutta</b></TableCell>
             <TableCell rowSpan={2}><b>Primi</b></TableCell>
             { primiPiatti }
           </TableRow>
@@ -74,4 +73,4 @@ const SintesiMese = () => {
   );
 }
 
-export default SintesiMese;
+export default Storico;

@@ -13,6 +13,16 @@ import Accedi from 'pages/Accedi';
 import AppTheme from 'utils/AppTheme';
 import Magazzino from 'pages/Magazzino/Magazzino';
 import TuttiMagazzini from 'pages/Magazzino/ListaMagazzini';
+import Storico from 'pages/Magazzino/Storico';
+
+const FramedRoute = ({ path, component }) => {
+  return(
+    <Route path={path}>
+      <Navbar />
+      { component }
+    </Route>
+  );
+}
 
 class App extends Component {
 
@@ -22,32 +32,15 @@ class App extends Component {
         <AppTheme>
           <Router>
             <Switch>
-              <Route path="/registrati">
-                <Registrati />
-              </Route>
-              <Route path="/accedi">
-                <Accedi />
-              </Route>
-              <Route exact path="/gestionale_mensa">
-                <Navbar />
-                <PresenzeMese />
-              </Route>
-              <Route path="/mese">
-                <Navbar />
-                <PresenzeMese />
-              </Route>
-              <Route path="/menù">
-                <Navbar />
-                <Menu />
-              </Route>
-              <Route path="/costo_pasto">
-                <Navbar />
-                <CostoPasto />
-              </Route>
-              <Route path="/sintesi_del_mese">
-                <Navbar />
-                <SintesiMenu />
-              </Route>
+              <Route path="/registrati" component={Registrati} />
+              <Route path="/accedi" component={Accedi} />
+              <FramedRoute path="/gestionale_mensa" component={<PresenzeMese />} />
+              <FramedRoute path="/mese" component={<PresenzeMese />} />
+              <FramedRoute path="/menù" component={<Menu />} />
+              <FramedRoute path="/costo_pasto" component={<CostoPasto />} />
+              <FramedRoute path="/sintesi_del_mese" component={<SintesiMenu />} />
+              <FramedRoute path="/gestionale_mensa" component={<PresenzeMese />} />
+              <FramedRoute path="/gestionale_mensa" component={<PresenzeMese />} />
               <Route path="/ristorazione">
                 <Navbar />
                 <Ristorazione />
@@ -59,6 +52,10 @@ class App extends Component {
               <Route path="/arquata_1">
                 <Navbar />
                 <Magazzino />
+              </Route>
+              <Route path="/storico">
+                <Navbar />
+                <Storico />
               </Route>
             </Switch>
           </Router>
