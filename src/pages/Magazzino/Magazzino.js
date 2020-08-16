@@ -1,62 +1,41 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { TableContainer, Typography, Paper } from '@material-ui/core/';
-import HeaderMagazzino from 'pages/Magazzino/HeaderMagazzino';
-import SortingTableHeader from 'components/SortingTable/SortingTableHeader';
-import SortingTableBody from 'components/SortingTable/SortingTableBody';
+import { TableCell, Typography } from '@material-ui/core/';
+import SortingTable from 'components/SortingTable/SortingTable';
+import Selector from 'components/Selector';
+import { it } from 'date-fns/locale'
+import format from "date-fns/format";
 
-const useStyles = makeStyles(theme => ({
-    container: theme.container,
-}));
+const oggi = format(new Date(), "d MMM yyyy", { locale: it })
 
 const colNames = ["Ortofrutta", "UM", "Quantità", "Costo/UM", "Tot."].map((colName, i) => {
-    return <Typography variant='body1' key={colName} color='primary'><b>{colName}</b></Typography>
+    return <TableCell style={{padding: '8px 16px'}} key={colName}><b>{colName}</b></TableCell>
 });
 
-const stockItems = [
-    "Uova",
-    "Latte",
-    "Olio",
-    "Uva",
-    "Uova",
-    "Latte",
-    "Olio",
-    "Uva",
-    "Uova",
-    "Latte",
-    "Olio",
-    "Uva",
-    "Uova",
-    "Latte",
-    "Olio",
-    "Uva",
-    "Uova",
-    "Latte",
-    "Olio",
-    "Uva",
-    "Uova",
-    "Latte",
-    "Olio",
-    "Uva",
-    "Uova",
-    "Latte",
-    "Olio",
-    "Uva",
-    "Uova",
-    "Latte",
-    "Olio",
-    "Uva",
+const numeri = colNames.map(day => (Math.random() * 101).toFixed(0))
+
+numeri.pop()
+
+const objEntries = {
+  "Olive": [...numeri],
+  "Fagioli": [...numeri],
+  "Tonno": [...numeri],
+  "Pomodori": [...numeri]
+}
+
+const headers = [
+  <Typography color="primary" variant="body1"><b>Nome_Magazzino</b></Typography>,
+  <Typography color="primary" variant="body1"><b>{oggi}</b></Typography>,
+  <Selector type="Categoria"/>
 ]
 
 const Magazzino = () => {
-  const classes = useStyles();
-
   return (
-    <TableContainer component={Paper} className={classes.container}>
-        <SortingTableHeader headerElem={<HeaderMagazzino />} />
-        <SortingTableBody colNames={colNames} rowsArray={stockItems}/>
-        <SortingTableBody colNames={colNames} rowsArray={stockItems}/>
-    </TableContainer>
+    <SortingTable 
+      objEntries={objEntries} 
+      colArray={colNames} 
+      headers={headers} 
+      colSpan={colNames.length}
+    />
   );
 }
 

@@ -16,7 +16,11 @@ const LinkToPage = ({ page, elemToAdd }) => {
     const classes = useStyles();
 
     return(
-        <NavLink to={`/${page.toLowerCase().replace(/\s/g, '_')}`} activeStyle={{color: '#d50000'}} className={classes.link}>
+        <NavLink 
+            to={`/${page.toLowerCase().replace(/\s/g, '_')}`} 
+            activeStyle={{color: '#d50000'}} 
+            className={classes.link}
+        >
             <ListItemText primary={page}></ListItemText>
             { !elemToAdd ? null : elemToAdd }
         </NavLink>

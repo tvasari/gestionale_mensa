@@ -1,18 +1,14 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
+import { TableHead, TableRow } from '@material-ui/core/';
+import headerGenerator from 'utils/headerGenerator';
 
-const useStyles = makeStyles(theme => ({
-    workBench: theme.workBench
-}));
-
-const SortingTableHeader = ({ headerElem }) => {
-    const classes = useStyles();
-
+const SortingTableHeader = ({ headers, colSpan }) => {
     return(
-        <Table className={classes.workBench}>
-            { headerElem }
-        </Table>
+        <TableHead>
+            <TableRow>
+                { headerGenerator(headers, colSpan) }
+            </TableRow>
+        </TableHead>
     );
 }
 

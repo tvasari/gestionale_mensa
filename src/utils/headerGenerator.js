@@ -4,15 +4,13 @@ import StyledTableCell from 'components/StyledTableCell';
 const headerGenerator = (headers, colSpan) => {
     return (
         headers.map((header, i) => {
-            return i === headers[headers.length - 1] ?
-            (
+            return i === headers.length - 1 
+            ? ( 
                 <StyledTableCell colSpan={colSpan} key={header + i}>
                     {header}
                 </StyledTableCell>
-            )
-            :
-            (
-                <StyledTableCell key={header + i}>
+            ) : (
+                <StyledTableCell colSpan={3} key={header + i}>
                     {header}
                 </StyledTableCell>
             )

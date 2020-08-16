@@ -4,12 +4,12 @@ import StyledTableRow from 'components/StyledTableRow';
 import TableCell from '@material-ui/core/TableCell';
 
 const CompressedCell = styled(TableCell)(() => ({
-    padding: '4px 16px'
+    padding: '2px 16px'
 }));
 
-function createRows(allItemsAndValues) {
-    const allItems = Object.keys(allItemsAndValues);
-    const allValues = Object.values(allItemsAndValues);
+function createRows(objEntries) {
+    const allItems = Object.keys(objEntries);
+    const allValues = Object.values(objEntries);
 
     return allItems.map((item, i) => {
         return(
@@ -17,7 +17,7 @@ function createRows(allItemsAndValues) {
                 <CompressedCell key={item + i}>{item}</CompressedCell>
                 {
                     allValues[i].map((value, i) => {
-                        return <CompressedCell key={value}>{value}</CompressedCell>
+                        return <CompressedCell align="right" key={value}>{value}</CompressedCell>
                     })
                 }
             </StyledTableRow>
