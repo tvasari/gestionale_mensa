@@ -2,13 +2,10 @@ import React from 'react';
 import { TableBody, TableRow } from '@material-ui/core/';
 import createRows from 'utils/createRows';
 
-const SortingTableBody = ({ objEntries, colArray }) => {
+const SortingTableBody = ({ rows }) => {
   return (
     <TableBody>
-      <TableRow>
-        { colArray }
-      </TableRow>
-      { createRows(objEntries) }
+      { createRows(rows) }
     </TableBody>
   );
 }

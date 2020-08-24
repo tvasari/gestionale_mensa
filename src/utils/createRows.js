@@ -1,23 +1,34 @@
 import React from 'react';
 import { styled } from '@material-ui/core/styles';
 import StyledTableRow from 'components/StyledTableRow';
-import TableCell from '@material-ui/core/TableCell';
+import { TableCell, Link } from '@material-ui/core/';
 
 const CompressedCell = styled(TableCell)(() => ({
     padding: '2px 16px'
 }));
 
-function createRows(objEntries) {
-    const allItems = Object.keys(objEntries);
-    const allValues = Object.values(objEntries);
+function createRows(rows) {
+    const allItems = Object.keys(rows);
+    const allValues = Object.values(rows);
+    console.log(parseInt(allItems))
 
-    return allItems.map((item, i) => {
+    return allItems.map((item, itemIndex) => {
         return(
             <StyledTableRow key={item}>
-                <CompressedCell key={item + i}>{item}</CompressedCell>
+                <CompressedCell key={item + itemIndex}>
+                    { 
+                        typeof parseInt(item) === 'number' && !isNaN(parseInt(item))
+                        ? <Link href="#">{ item }</Link> 
+                        : item 
+                    }
+                </CompressedCell>
                 {
-                    allValues[i].map((value, i) => {
-                        return <CompressedCell align="right" key={value}>{value}</CompressedCell>
+                    allValues[itemIndex].map((value, valueIndex) => {
+                        return(
+                            <CompressedCell align={typeof value === 'number' ? "right" : "inherit"} key={value}>
+                                { value }
+                            </CompressedCell>
+                        )
                     })
                 }
             </StyledTableRow>

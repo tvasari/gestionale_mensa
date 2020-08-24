@@ -1,12 +1,11 @@
 import React from 'react';
 import { TableHead, TableRow } from '@material-ui/core/';
-import headerGenerator from 'utils/headerGenerator';
 
-const SortingTableHeader = ({ headers, colSpan }) => {
+const SortingTableHeader = ({ columns }) => {
     return(
         <TableHead>
             <TableRow>
-                { headerGenerator(headers, colSpan) }
+                { columns }
             </TableRow>
         </TableHead>
     );

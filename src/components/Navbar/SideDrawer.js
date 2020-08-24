@@ -37,7 +37,7 @@ const menuSubList = [
 
 const magazzinoSubList = [
     <LinkToPage page="Storico"/>,
-    <LinkToPage page="Ordini"/>,
+    <LinkToPage page="DDT"/>,
     <LinkToPage page="Rimanenze"/>
 ]
 

@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import getMonthDays from 'utils/getMonthDays';
 import BackArrowButton from 'components/BackArrowButton';
 import SortingTable from 'components/SortingTable/SortingTable';
 import Selector from 'components/Selector';
+import WorkBenchTopBar from 'components/WorkBenchTopBar';
 
-const weekDays = [<TableCell></TableCell>, ...getMonthDays(2020, 8).map(day => <TableCell align="right" style={{padding: '4px 16px'}}><b>{day}</b></TableCell>)]
-const primiPiatti = getMonthDays(2020, 8).map(day => 'uova ')
+const weekDays = [
+  <TableCell></TableCell>, 
+  ...getMonthDays(2020, 8).map(day => {
+    return(
+      <TableCell align="right" style={{padding: '4px 16px'}}>
+        <b>{ day }</b>
+      </TableCell>
+    );
+  })
+];
 
-const numeri = weekDays.map(day => (Math.random() * 101).toFixed(0))
+const numeri = weekDays.map(day => parseInt((Math.random() * 101).toFixed(0)))
 
 numeri.pop()
 
-const oggetti = {
+const rows = {
   Uova: [...numeri],
   Latte: [...numeri],
   Olio: [...numeri],
@@ -29,12 +38,13 @@ const headers = [
 
 const Storico = () => {
   return (
-    <SortingTable 
-      objEntries={oggetti} 
-      colArray={weekDays} 
-      headers={headers} 
-      colSpan={primiPiatti.length}
-    />
+    <Fragment>
+      <WorkBenchTopBar headers={headers}/>
+      <SortingTable 
+        rows={rows} 
+        columns={weekDays} 
+      />
+    </Fragment>
   );
 }
 

@@ -6,14 +6,8 @@ import Totali from 'pages/CostoPasto/Totali';
 import HeaderCostoPasto from 'pages/CostoPasto/HeaderCostoPasto';
 
 const useStyles = makeStyles(theme => ({
-  table: {
-    width: '80%',
-    float: 'right'
-  },
-  container: {
-    maxHeight: '90vh',
-    overflow: 'auto'
-  }
+  table: theme.workBench,
+  container: theme.container
 }));
 
 const rows = {
