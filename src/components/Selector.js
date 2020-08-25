@@ -54,6 +54,11 @@ const items = [
   'Tonno'
 ]
 
+const options = [
+  'Piatto',
+  'Ingrediente'
+]
+
 const yearsCreator = () => {
   const years = [];
 
@@ -64,7 +69,7 @@ const yearsCreator = () => {
   return years;
 };
 
-const Selector = ({ type, variant, formControlStyle }) => {
+const Selector = ({ type, variant, formControlStyle, fullWidth }) => {
   const classes = useStyles();
 
   let array;
@@ -91,12 +96,15 @@ const Selector = ({ type, variant, formControlStyle }) => {
     case 'Oggetti':
       array = items;
     break;
+    case 'Aggiungi':
+      array = options;
+    break;
     default:
       throw new Error();
   }
 
   return(
-    <FormControl variant={variant} className={formControlStyle}>
+    <FormControl fullWidth={fullWidth ? true : false} variant={variant} className={formControlStyle}>
       <InputLabel>{type}</InputLabel>
       <Select label={type} onChange={e => console.log(e.target.value)} native>
         {
