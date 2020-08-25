@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { TableContainer, Table, Paper } from '@material-ui/core/';
-import NewSortingTableHeader from 'components/SortingTable/SortingTableHeader';
+import SortingTableHeader from 'components/SortingTable/SortingTableHeader';
 import SortingTableBody from 'components/SortingTable/SortingTableBody';
 
 const useStyles = makeStyles(theme => ({
@@ -14,7 +14,7 @@ const SortingTable = ({ rows, columns }) => {
   return (
     <TableContainer component={Paper} className={classes.container}>
       <Table>
-            <NewSortingTableHeader columns={columns}/>
+            <SortingTableHeader columns={columns}/>
             <SortingTableBody rows={rows} columns={columns}/>
       </Table>
     </TableContainer>

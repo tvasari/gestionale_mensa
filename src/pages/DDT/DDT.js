@@ -4,6 +4,8 @@ import BackArrowButton from 'components/BackArrowButton';
 import SortingTable from 'components/SortingTable/SortingTable';
 import Selector from 'components/Selector';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
+import NewDDTDialog from 'pages/DDT/NewDDTDialog';
+import AddIcon from '@material-ui/icons/Add';
 
 const headCells = [
   { id: 'id', label: 'N°' },
@@ -39,7 +41,9 @@ const headers = [
   <BackArrowButton path="arquata_1" />,
   <Selector key="Mese" type="Mese"/>,
   <Selector key="Anno" type="Anno"/>,
-  <Selector key="Categoria" type="Categoria"/>
+  <Selector key="Categoria" type="Categoria"/>,
+  <NewDDTDialog trigger={<AddIcon color="primary"/>} />
+
 ]
 
 

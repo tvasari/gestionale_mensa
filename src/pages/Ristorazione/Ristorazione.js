@@ -27,11 +27,6 @@ const Ristorazione  = () => {
                         <TableCell colSpan={3} className={classes.cellPadding}>
                             <ItemList />
                         </TableCell>
-                        {/*<TableCell align="center">
-                            <StyledButton startIcon={<PublishIcon />}>
-                                Aggiungi
-                            </StyledButton>
-                        </TableCell>*/}
                     </TableRow>
                 </TableBody>
             </Table>

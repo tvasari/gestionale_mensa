@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { List, ListItem } from '@material-ui/core/';
 import { Typography, IconButton, Divider} from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add';
-import CreaMagazzino from 'pages/Magazzino/CreaMagazzino';
+import NewStorageDialog from 'pages/Magazzino/NewStorageDialog';
 import Item from 'components/Item';
 
 class ListaMagazzini extends Component {
@@ -35,7 +35,7 @@ class ListaMagazzini extends Component {
                     <IconButton onClick={this.handleClickOpen}>
                         <AddIcon />
                     </IconButton>
-                    <CreaMagazzino open={this.state.open} handleClickClose={this.handleClickClose}/>
+                    <NewStorageDialog open={this.state.open} handleClickClose={this.handleClickClose}/>
                 </ListItem>
             </List>
         );

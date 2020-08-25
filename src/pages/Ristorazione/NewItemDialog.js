@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
-    Dialog, DialogTitle, DialogContent, FormControl, InputLabel, Input, Chip, MenuItem, Select, TextField, DialogActions, Button 
+    Dialog, DialogTitle, DialogContent, FormControl, 
+    InputLabel, Input, Chip, MenuItem, Select, TextField, 
+    DialogActions, Button 
 } from '@material-ui/core/';
 import Selector from 'components/Selector';
 
@@ -17,7 +19,7 @@ const names = [
     'insalata'
 ];
 
-const DialogForm = ({ item }) => {
+const NewItemDialog = ({ trigger }) => {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -31,7 +33,7 @@ const DialogForm = ({ item }) => {
 
     return(
         <Fragment>
-            <Button onClick={handleClickOpen} variant="text"><b>{ item }</b></Button>
+            <Button onClick={handleClickOpen} variant="text"><b>{ trigger }</b></Button>
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Aggiungi Oggetto</DialogTitle>
                 <DialogContent>
@@ -70,6 +72,6 @@ const DialogForm = ({ item }) => {
     );
 }
 
-export default DialogForm;
+export default NewItemDialog;
 
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from '@material-ui/core/styles';
 import StyledTableRow from 'components/StyledTableRow';
 import TableCell from '@material-ui/core/TableCell';
-import DialogForm from 'components/DialogForm';
+import NewDDTDialog from 'pages/DDT/NewDDTDialog';
 
 const CompressedCell = styled(TableCell)(() => ({
     padding: '2px 16px'
@@ -18,7 +18,7 @@ function createRows(rows) {
                 <CompressedCell key={item + itemIndex}>
                     { 
                         typeof parseInt(item) === 'number' && !isNaN(parseInt(item))
-                        ? <DialogForm item={item} />
+                        ? <NewDDTDialog trigger={item} />
                         : item 
                     }
                 </CompressedCell>
