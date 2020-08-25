@@ -1,9 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { IconButton, TableRow } from '@material-ui/core/';
+import TableRow  from '@material-ui/core/TableRow';
 import AddIcon from '@material-ui/icons/Add';
 import StyledTableCell from 'components/StyledTableCell';
 import SearchBar from 'pages/Ristorazione/SearchBar';
+import DialogForm from 'components/DialogForm';
 
 const useStyles = makeStyles({
     searchBarWidth: {
@@ -20,9 +21,7 @@ const HeaderRistorazione = () => {
                 <SearchBar />
             </StyledTableCell>
             <StyledTableCell>
-                <IconButton>
-                    <AddIcon />
-                </IconButton>
+                <DialogForm item={<AddIcon color="primary"/>} />
             </StyledTableCell>
         </TableRow>
     );

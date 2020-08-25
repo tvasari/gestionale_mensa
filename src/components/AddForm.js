@@ -3,7 +3,7 @@ import { makeStyles, styled } from '@material-ui/core/styles';
 import {
     Box, TextField, FormControl, InputLabel, Input, Select, Chip, MenuItem 
 } from '@material-ui/core/';
-import Selector from '../../components/Selector';
+import Selector from 'components/Selector';
 
 const useStyles = makeStyles(theme => ({
     formControl: {

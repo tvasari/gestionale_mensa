@@ -3,11 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
     TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper 
 } from '@material-ui/core/';
-import PublishIcon from '@material-ui/icons/Publish';
-import HeaderToolbar from 'pages/Ristorazione/HeaderRistorazione';
+import HeaderRistorazione from 'pages/Ristorazione/HeaderRistorazione';
 import ItemList from 'pages/Ristorazione/ItemList';
-import AddForm from 'pages/Ristorazione/AddForm';
-import StyledButton from 'components/StyledButton';
 
 const useStyles = makeStyles(theme => ({
     container: {...theme.container, ...theme.workBench},
@@ -23,19 +20,18 @@ const Ristorazione  = () => {
         <TableContainer component={Paper} className={classes.container}>
             <Table>
                 <TableHead>
-                    <HeaderToolbar />
+                    <HeaderRistorazione />
                 </TableHead>
                 <TableBody>
                     <TableRow> 
-                        <TableCell className={classes.cellPadding}>
+                        <TableCell colSpan={3} className={classes.cellPadding}>
                             <ItemList />
                         </TableCell>
-                        <TableCell align="center">
-                            <AddForm />
+                        {/*<TableCell align="center">
                             <StyledButton startIcon={<PublishIcon />}>
                                 Aggiungi
                             </StyledButton>
-                        </TableCell>
+                        </TableCell>*/}
                     </TableRow>
                 </TableBody>
             </Table>

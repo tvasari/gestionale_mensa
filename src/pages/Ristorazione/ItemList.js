@@ -5,8 +5,6 @@ import Item from 'components/Item';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-      width: '100%',
-      maxWidth: 640,
       backgroundColor: theme.palette.background.paper,
       position: 'relative',
       overflow: 'auto',
