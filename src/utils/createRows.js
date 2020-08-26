@@ -8,32 +8,37 @@ const CompressedCell = styled(TableCell)(() => ({
     padding: '2px 16px'
 }));
 
-function createRows(rows) {
-    const allItems = Object.keys(rows);
-    const allValues = Object.values(rows);
+const separateItemsFromValues = (rows) => {
+  const allItems = Object.keys(rows);
+  const allValues = Object.values(rows);
+  return [allItems, allValues];
+}
 
-    return allItems.map((item, itemIndex) => {
-        return(
-            <StyledTableRow key={item}>
-                <CompressedCell key={item + itemIndex}>
-                    { 
-                        typeof parseInt(item) === 'number' && !isNaN(parseInt(item))
-                        ? <NewDDTDialog trigger={item} />
-                        : item 
-                    }
-                </CompressedCell>
-                {
-                    allValues[itemIndex].map((value, valueIndex) => {
-                        return(
-                            <CompressedCell align={typeof value === 'number' ? "right" : "inherit"} key={value}>
-                                { value }
-                            </CompressedCell>
-                        )
-                    })
-                }
-            </StyledTableRow>
-        );
-    })
+function createRows(rows) {
+  const [allItems, allValues] = separateItemsFromValues(rows);
+
+  return allItems.map((item, itemIndex) => {
+    return(
+      <StyledTableRow key={item}>
+        <CompressedCell key={item + itemIndex}>
+          { 
+            typeof parseInt(item) === 'number' && !isNaN(parseInt(item))
+            ? <NewDDTDialog trigger={item} />
+            : item 
+          }
+        </CompressedCell>
+        {
+          allValues[itemIndex].map((value, valueIndex) => {
+            return(
+              <CompressedCell align={typeof value === 'number' ? "right" : "inherit"} key={value}>
+                { value }
+              </CompressedCell>
+            )
+          })
+        }
+      </StyledTableRow>
+    );
+  })
 
 }
 

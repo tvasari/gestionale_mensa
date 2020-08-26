@@ -1,45 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem } from '@material-ui/core/';
-import { Typography, IconButton, Divider} from '@material-ui/core/';
+import { Typography, Divider} from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add';
 import NewStorageDialog from 'pages/Magazzino/NewStorageDialog';
 import Item from 'components/Item';
 
-class ListaMagazzini extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            open: false
-        }
-        this.handleClickOpen = this.handleClickOpen.bind(this)
-        this.handleClickClose = this.handleClickClose.bind(this)
-    }
+const useStyles = makeStyles((theme) => ({
+  workBench: theme.workBench
+}));
 
-    handleClickOpen() {
-        this.setState({open: true});
-    };
+const ListaMagazzini = () => {
+  const classes = useStyles();
 
-    handleClickClose() {
-        this.setState({open: false});
-    }
-
-    render() {
-        return (
-            <List style={{width: '80%', float: 'right'}}>
-                <Item isMagazzino={true} nomeMagazzino="Arquata_1"/>
-                <Divider />
-                <Item isMagazzino={true} nomeMagazzino="Arquata_2"/>
-                <Divider />
-                <ListItem>
-                    <Typography color="primary">Aggiungi nuovo</Typography>
-                    <IconButton onClick={this.handleClickOpen}>
-                        <AddIcon />
-                    </IconButton>
-                    <NewStorageDialog open={this.state.open} handleClickClose={this.handleClickClose}/>
-                </ListItem>
-            </List>
-        );
-    }
+  return (
+    <List className={classes.workBench}>
+      <Item isMagazzino={true} nomeMagazzino="Arquata_1"/>
+      <Divider />
+      <Item isMagazzino={true} nomeMagazzino="Arquata_2"/>
+      <Divider />
+      <ListItem>
+        <Typography color="primary">Aggiungi nuovo</Typography>
+        <NewStorageDialog trigger={<AddIcon color="primary"/>}/>
+      </ListItem>
+    </List>
+  );
 }
 
 export default ListaMagazzini;

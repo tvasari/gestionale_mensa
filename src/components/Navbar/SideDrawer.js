@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -29,16 +29,22 @@ const useStyles = makeStyles((theme) => ({
 const mainPages = ['Mese', 'Menù', 'Ristorazione', 'Magazzino', 'Statistiche', 'Account'];
 
 const menuSubList = [
-    <WeekPicker />, 
-    [<ListItemText primary="Nuovo Menù" />, <AddBox color="action"/>],  
-    [<ListItemText primary="Modifica Menù" />, <Edit color="action"/>],
-    <LinkToPage page="Sintesi del Mese" elemToAdd={<DateRange color="action"/>} />
+    <WeekPicker id="weekPicker"/>, 
+    <Fragment key="nuovoMenù">
+      <ListItemText primary="Nuovo Menù" />
+      <AddBox id="addBoxIcon" color="action"/>
+    </Fragment>,  
+    <Fragment key="modificaMenù">
+      <ListItemText primary="Modifica Menù" /> 
+      <Edit id="editIcon" color="action"/>
+    </Fragment>,
+    <LinkToPage id="sintesiDelMese" page="Sintesi del Mese" elemToAdd={<DateRange color="action"/>} />
 ]
 
 const magazzinoSubList = [
-    <LinkToPage page="Storico"/>,
-    <LinkToPage page="DDT"/>,
-    <LinkToPage page="Rimanenze"/>
+    <LinkToPage id="storico" page="Storico"/>,
+    <LinkToPage id="ddt" page="DDT"/>,
+    <LinkToPage id="rimanenze" page="Rimanenze"/>
 ]
 
 const displaySubList = (page) => {

@@ -35,7 +35,7 @@ const CompressedCell = styled(TableCell)(() => ({
     padding: '2px 0'
 }));
 
-const NewDDTItemList = () => {
+const StockItemList = () => {
   const classes = useStyles();
   
   const [oggetto, nuovoOggetto] = useState('Uova');
@@ -92,4 +92,4 @@ const NewDDTItemList = () => {
   );
 }
 
-export default NewDDTItemList;
+export default StockItemList;

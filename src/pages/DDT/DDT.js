@@ -38,14 +38,13 @@ const rows = {
 }
 
 const headers = [
-  <BackArrowButton path="arquata_1" />,
-  <Selector key="Mese" type="Mese"/>,
-  <Selector key="Anno" type="Anno"/>,
-  <Selector key="Categoria" type="Categoria"/>,
-  <NewDDTDialog trigger={<AddIcon color="primary"/>} />
+  <BackArrowButton id="arquata1" path="arquata_1" />,
+  <Selector id="mese" key="Mese" type="Mese"/>,
+  <Selector id="anno" key="Anno" type="Anno"/>,
+  <Selector id="categoria" key="Categoria" type="Categoria"/>,
+  <NewDDTDialog id="newDDTDialog" trigger={<AddIcon color="primary"/>} />
 
 ]
-
 
 const DDT = () => {
   return (

@@ -33,9 +33,9 @@ const rows = {
 }
 
 const headers = [
-  <Typography color="primary" variant="body1"><b>Nome_Magazzino</b></Typography>,
-  <Typography color="primary" variant="body1"><b>{oggi}</b></Typography>,
-  <Selector type="Categoria"/>
+  <Typography id="nomeMagazzino" color="primary" variant="body1"><b>Nome_Magazzino</b></Typography>,
+  <Typography id="dataDiOggi" color="primary" variant="body1"><b>{ oggi }</b></Typography>,
+  <Selector id="categoria" type="Categoria"/>
 ]
 
 const Magazzino = () => {

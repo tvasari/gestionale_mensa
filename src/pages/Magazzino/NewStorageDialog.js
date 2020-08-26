@@ -1,81 +1,86 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Add, Done, Close } from '@material-ui/icons/';
 import { 
-    IconButton, Typography, Slide, FormGroup, 
-    ButtonGroup, TextField, Toolbar, 
-    AppBar, Dialog, Button 
-} from '@material-ui/core';
+    Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button 
+} from '@material-ui/core/';
 import Selector from 'components/Selector';
+import DateFnsUtils from "@date-io/date-fns";
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
+import { it } from 'date-fns/locale'
+import format from "date-fns/format";
+import StockItemList from 'components/StockItemList';
 
-const useStyles = makeStyles((theme) => ({
-    workBench: theme.workBench,
-    appBar: {
-        position: 'relative',
-    },
-    title: {
-        marginLeft: theme.spacing(2),
-        flex: 1,
-    },
-    formGroup: {
-        margin: '20px 50px'
-    },
-    inputMargin: {
-        display: 'inline',
-        margin: '15px 0',
-    },
-    textField: {
-        margin: '15px 0',
-        width: '30%'
-    }
-}));
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
-
-const CreaMagazzino = ({ handleClickClose, open }) => {
-    const classes = useStyles();
-
-    return(
-        <Dialog fullScreen open={open} onClose={() => handleClickClose()} TransitionComponent={Transition}>
-            <AppBar className={classes.appBar}>
-                <Toolbar>
-                    <IconButton edge="start" color="inherit" onClick={() => handleClickClose()}>
-                        <Close/>
-                    </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                        Nuovo Magazzino
-                    </Typography>
-                    <Button autoFocus color="inherit" onClick={() => handleClickClose()}>
-                        Conferma
-                    </Button>
-                </Toolbar>
-            </AppBar>
-            <FormGroup className={classes.formGroup}>
-                <TextField className={classes.textField} label="Nome" variant="outlined" />
-                <Selector type="Categoria" variant="outlined" formControlStyle={classes.textField} />
-                <span>
-                    <Selector type="Oggetti" variant="outlined" formControlStyle={classes.textField} />
-                    <TextField
-                        style={{width: '10%', margin: '15px 10px'}}
-                        label="Quantità"
-                        type="number"
-                        InputLabelProps={{shrink: true}}
-                        variant="outlined"
-                    />
-                </span>
-                <ButtonGroup>
-                    <IconButton>
-                        <Add />
-                    </IconButton>
-                    <IconButton>
-                        <Done />
-                    </IconButton>
-                </ButtonGroup>
-            </FormGroup>    
-        </Dialog>
-    );
+class LocalizedUtils extends DateFnsUtils {
+  getDatePickerHeaderText(date) {
+    return format(date, "DDD MMM yyyy", { locale: this.locale });
+  }
 }
 
-export default CreaMagazzino;
+const useStyles = makeStyles({
+  elemMargin: {
+    margin: '8px 0'
+  },
+  container:{
+    display: 'grid'
+  }
+});
+
+const NewStorageDialog = ({ trigger }) => {
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [selectedDate, handleDateChange] = useState(new Date());
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return(
+    <Fragment>
+      <Button onClick={handleClickOpen} variant="text"><b>{ trigger }</b></Button>
+      <Dialog fullWidth open={open} onClose={handleClose}>
+        <DialogTitle>Aggiungi Magazzino</DialogTitle>
+        <DialogContent className={classes.container}>
+          <MuiPickersUtilsProvider utils={LocalizedUtils} locale={it}>
+            <DatePicker
+              label="Data"
+              labelFunc={() => format(new Date(), "d MMM Y", {locale: it})}
+              value={selectedDate}
+              onChange={handleDateChange}
+              showTodayButton
+              todayLabel="Oggi"
+              cancelLabel="Annulla"
+              disableToolbar
+            />
+          </MuiPickersUtilsProvider>
+          <TextField
+            color="primary"
+            autoComplete 
+            required 
+            placeholder="Nome Magazzino"
+            className={classes.elemMargin} 
+          />
+          <Selector
+            fullWidth={true}
+            type="Categoria" 
+            formControlStyle={classes.elemMargin} 
+          />
+          <StockItemList />
+          <Button color="primary"><b>Aggiungi Categoria</b></Button>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Conferma
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </Fragment>
+  );
+}
+
+export default NewStorageDialog;
+
+

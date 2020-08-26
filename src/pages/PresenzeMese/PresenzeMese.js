@@ -7,13 +7,13 @@ import SortingTable from 'components/SortingTable/SortingTable';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
 
 const headers = [
-  <IconButton>
+  <IconButton id="edit">
       <EditIcon/>
   </IconButton>,
-  <Selector key="Mese" type="Mese"/>,
-  <Selector key="Anno" type="Anno"/>,
-  <Selector key="Filtra" type="Filtra"/>,
-  <Selector key="Presenze" type="Presenze"/>,
+  <Selector id="mese" key="Mese" type="Mese"/>,
+  <Selector id="anno" key="Anno" type="Anno"/>,
+  <Selector id="filtra" key="Filtra" type="Filtra"/>,
+  <Selector id="presenze" key="Presenze" type="Presenze"/>,
 ]
 
 

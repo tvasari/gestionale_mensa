@@ -21,7 +21,7 @@ const WorkBenchTopBar = ({ headers }) => {
             <Toolbar>
                 {
                     headers.map((header, i) => {
-                        return <div className={classes.header}>{ header }</div>
+                        return <div key={header.props.id} className={classes.header}>{ header }</div>
                     })
                 }
             </Toolbar>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TableBody, TableRow } from '@material-ui/core/';
+import TableBody from '@material-ui/core/TableBody';
 import createRows from 'utils/createRows';
 
 const SortingTableBody = ({ rows }) => {
