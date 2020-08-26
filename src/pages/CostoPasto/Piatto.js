@@ -1,20 +1,20 @@
 import React, { Fragment } from 'react';
 import { TableRow, TableCell } from '@material-ui/core/';
 
-const Piatto = ({ rows, portata }) => {
+const Piatto = ({ elementiRistorazione, portata }) => {
   let totIngrArray = []
 
   const multiply = (qty, costoUm) => qty * costoUm;
   const sum = (array) => array.reduce((acc, num) => acc + num, 0).toFixed(1);
 
   return(
-      Object.keys(rows[portata]).map(piatto => {
+      Object.keys(elementiRistorazione[portata]).map(piatto => {
         totIngrArray = []
           return(
             <Fragment>
               {
-                Object.keys(rows[portata][piatto]['ingredienti']).map((ingrediente, index) => {
-                  const { qty, um, costoUm } =  rows[portata][piatto]['ingredienti'][ingrediente]
+                Object.keys(elementiRistorazione[portata][piatto]['ingredienti']).map((ingrediente, index) => {
+                  const { qty, um, costoUm } =  elementiRistorazione[portata][piatto]['ingredienti'][ingrediente]
                   const totIngr = multiply(qty, costoUm);
                   totIngrArray.push(totIngr)
 
@@ -48,7 +48,8 @@ const Piatto = ({ rows, portata }) => {
                 <TableCell colSpan={4}></TableCell>
                 <TableCell></TableCell>
                 <TableCell style={{display: 'flex', justifyContent: 'space-between', borderBottom: 0}}>
-                  <b>Somma</b><b>{ sum(totIngrArray) }</b>
+                  <b>Somma</b>
+                  <b>{ sum(totIngrArray) }</b>
                 </TableCell>
               </TableRow>
               <TableRow><TableCell colSpan={8}></TableCell></TableRow>

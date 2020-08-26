@@ -4,6 +4,7 @@ import { TableRow, TextField, IconButton} from '@material-ui/core/';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 import StyledTableCell from 'components/StyledTableCell';
 import Piatto from 'pages/CostoPasto/Piatto';
+import { costoPastoHeaderLabels } from 'utils/fakeData';
 
 const useStyles = makeStyles({
   stickyCell: {
@@ -12,19 +13,11 @@ const useStyles = makeStyles({
   }
 });
 
-const colNames = [
-  "Ingredienti",
-  "Quantità",
-  "UM",
-  "Costo/UM",
-  "Totale per ingrediente"
-]
-
-const Portata = ({ rows }) => {
+const Portata = ({ elementiRistorazione }) => {
   const classes = useStyles();
   
     return(
-        Object.keys(rows).map(portata => {
+        Object.keys(elementiRistorazione).map(portata => {
             return (
               <Fragment>
                 <TableRow >
@@ -42,13 +35,17 @@ const Portata = ({ rows }) => {
                     />
                   </StyledTableCell>
                   {
-                    colNames.map(colName => {
-                      return <StyledTableCell className={classes.stickyCell}><b>{colName}</b></StyledTableCell>
+                    costoPastoHeaderLabels.map(headerLabel => {
+                      return(
+                        <StyledTableCell className={classes.stickyCell}>
+                          <b>{ headerLabel }</b>
+                        </StyledTableCell>
+                      );
                     })
                   }
                 </TableRow>
                 <Fragment>
-                  <Piatto rows={rows} portata={portata}/>
+                  <Piatto elementiRistorazione={elementiRistorazione} portata={portata}/>
                 </Fragment>
               </Fragment>
             );

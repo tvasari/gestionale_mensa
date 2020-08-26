@@ -4,7 +4,7 @@ import TableRow  from '@material-ui/core/TableRow';
 import AddIcon from '@material-ui/icons/Add';
 import StyledTableCell from 'components/StyledTableCell';
 import SearchBar from 'pages/Ristorazione/SearchBar';
-import NewItemDialog from 'pages/Ristorazione/NewItemDialog';
+import AddItemDialog from 'pages/Ristorazione/AddItemDialog';
 
 const useStyles = makeStyles({
     searchBarWidth: {
@@ -21,7 +21,7 @@ const HeaderRistorazione = () => {
                 <SearchBar />
             </StyledTableCell>
             <StyledTableCell>
-                <NewItemDialog trigger={<AddIcon color="primary"/>} />
+                <AddItemDialog trigger={<AddIcon color="primary"/>} />
             </StyledTableCell>
         </TableRow>
     );

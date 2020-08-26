@@ -16,28 +16,28 @@ const theme = createMuiTheme({
         overflow: 'auto'
     },
     workBench: {
-        width: '80%',
-        float: 'right'
+      width: '80%',
+      float: 'right'
     },
     overrides: {
-        MuiInputBase: {
-            root: {
-                color: '#455a64'
-            }
-        },
-        MuiFormLabel: {
-            root: {
-                '&$focused': {
-                    color: '#d50000'
-                },
-                color: '#455a64',
-            }
+      MuiInputBase: {
+        root: {
+          color: '#455a64'
         }
+      },
+      MuiFormLabel: {
+        root: {
+          '&$focused': {
+            color: '#d50000'
+          },
+          color: '#455a64',
+        }
+      }
     },
     props: {
-        MuiInput: {
-            disableUnderline: true
-        }
+      MuiInput: {
+        disableUnderline: true
+      }
     }
 })
 

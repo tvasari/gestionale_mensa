@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from '@material-ui/core/styles';
 import StyledTableRow from 'components/StyledTableRow';
 import TableCell from '@material-ui/core/TableCell';
-import NewDDTDialog from 'pages/DDT/NewDDTDialog';
+import DDTDisplayDialog from 'pages/DDT/DDTDisplayDialog';
 
 const CompressedCell = styled(TableCell)(() => ({
     padding: '2px 16px'
@@ -23,12 +23,16 @@ function createRows(rows) {
         <CompressedCell key={item + itemIndex}>
           { 
             typeof parseInt(item) === 'number' && !isNaN(parseInt(item))
-            ? <NewDDTDialog trigger={item} />
+            ? <DDTDisplayDialog 
+                trigger={item}
+                title="Magazzino"
+                textFieldPlaceholder="Magazzino"
+              />
             : item 
           }
         </CompressedCell>
         {
-          allValues[itemIndex].map((value, valueIndex) => {
+          allValues[itemIndex].map(value => {
             return(
               <CompressedCell align={typeof value === 'number' ? "right" : "inherit"} key={value}>
                 { value }

@@ -25,11 +25,12 @@ const theme = createMuiTheme({
   }
 })
 
-const useStyles = makeStyles({
-  fontSize:{
-    fontSize: '0.9rem'
+const useStyles = makeStyles((theme) => ({
+  item:{
+    fontSize: '0.9rem',
+    color: theme.palette.primary.main
   }
-})
+}));
 
 const CompressedCell = styled(TableCell)(() => ({
     padding: '2px 0'
@@ -49,8 +50,8 @@ const StockItemList = () => {
       <Table>
         <TableHead>
           <TableRow>
-            <CompressedCell className={classes.fontSize}>Oggetto</CompressedCell>
-            <CompressedCell className={classes.fontSize}>Quantità</CompressedCell>
+            <CompressedCell className={classes.item}>Oggetto</CompressedCell>
+            <CompressedCell className={classes.item}>Quantità</CompressedCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -58,7 +59,7 @@ const StockItemList = () => {
             <ThemeProvider theme={theme}>
               <CompressedCell>
                 <Select
-                  className={classes.fontSize}
+                  className={classes.item}
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={oggetto}
@@ -66,9 +67,9 @@ const StockItemList = () => {
                   native
                   autoWidth
                 >
-                  <option className={classes.fontSize}>Uova</option>
-                  <option className={classes.fontSize}>Olive</option>
-                  <option className={classes.fontSize}>Prosciutto</option>
+                  <option className={classes.item}>Uova</option>
+                  <option className={classes.item}>Olive</option>
+                  <option className={classes.item}>Prosciutto</option>
                 </Select>
               </CompressedCell>
               <CompressedCell>

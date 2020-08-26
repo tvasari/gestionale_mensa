@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   }
 });
 
-const NewStorageDialog = ({ trigger }) => {
+const AddFormDialog = ({ trigger, title, textFieldPlaceholder }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [selectedDate, handleDateChange] = useState(new Date());
@@ -42,7 +42,7 @@ const NewStorageDialog = ({ trigger }) => {
     <Fragment>
       <Button onClick={handleClickOpen} variant="text"><b>{ trigger }</b></Button>
       <Dialog fullWidth open={open} onClose={handleClose}>
-        <DialogTitle>Aggiungi Magazzino</DialogTitle>
+        <DialogTitle>Aggiungi { title }</DialogTitle>
         <DialogContent className={classes.container}>
           <MuiPickersUtilsProvider utils={LocalizedUtils} locale={it}>
             <DatePicker
@@ -60,7 +60,7 @@ const NewStorageDialog = ({ trigger }) => {
             color="primary"
             autoComplete 
             required 
-            placeholder="Nome Magazzino"
+            placeholder={`Nome ${textFieldPlaceholder}`}
             className={classes.elemMargin} 
           />
           <Selector
@@ -81,6 +81,6 @@ const NewStorageDialog = ({ trigger }) => {
   );
 }
 
-export default NewStorageDialog;
+export default AddFormDialog;
 
 

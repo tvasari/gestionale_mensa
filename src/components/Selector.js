@@ -1,63 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, Select, InputLabel } from '@material-ui/core/';
+import { months, meals, courses, attendance, categories, options, magazzinoRows, um } from 'utils/fakeData';
 
 const useStyles = makeStyles((theme) => ({
   fontColor: {
       color: theme.palette.primary.main
   }
 }));
-
-const meals = [
-  "Colazione", 
-  "Pranzo", 
-  "Cena", 
-  "Spuntini"
-];
-
-const courses = [
-  'Primo Piatto',
-  'Secondo Piatto',
-  'Contorno',
-  'Frutta/Dessert'
-]
-
-const attendance = [
-  'Cociv',
-  'Radimero',
-  'Altri'
-];
-
-const months = [
-  'Gennaio', 
-  'Febbraio', 
-  'Marzo', 
-  'Aprile', 
-  'Maggio', 
-  'Giugno', 
-  'Luglio', 
-  'Agosto', 
-  'Settembre', 
-  'Ottobre', 
-  'Novembre', 
-  'Dicembre'
-];
-
-const categories = [
-  'Ortofrutta',
-  'Carne Gelo',
-  'Secco'
-]
-
-const items = [
-  'Uova',
-  'Tonno'
-]
-
-const options = [
-  'Piatto',
-  'Ingrediente'
-]
 
 const yearsCreator = () => {
   const years = [];
@@ -69,7 +19,7 @@ const yearsCreator = () => {
   return years;
 };
 
-const Selector = ({ type, variant, formControlStyle, fullWidth }) => {
+const Selector = ({ type, variant, formControlStyle, fullWidth=false }) => {
   const classes = useStyles();
 
   let array;
@@ -84,7 +34,7 @@ const Selector = ({ type, variant, formControlStyle, fullWidth }) => {
     case 'Filtra':
       array = meals;
       break;
-    case 'Tipo':
+    case 'Tipo':  
       array = courses;
       break;
     case 'Presenze':
@@ -94,17 +44,20 @@ const Selector = ({ type, variant, formControlStyle, fullWidth }) => {
       array = categories;
     break;
     case 'Oggetti':
-      array = items;
+      array = Object.keys(magazzinoRows);
     break;
     case 'Aggiungi':
       array = options;
+    break;
+    case 'UM':
+      array = um;
     break;
     default:
       throw new Error();
   }
 
   return(
-    <FormControl fullWidth={fullWidth ? true : false} variant={variant} className={formControlStyle}>
+    <FormControl fullWidth={fullWidth} variant={variant} className={formControlStyle}>
       <InputLabel>{type}</InputLabel>
       <Select label={type} onChange={e => console.log(e.target.value)} native>
         {

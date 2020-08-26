@@ -4,7 +4,7 @@ import BackArrowButton from 'components/BackArrowButton';
 import SortingTable from 'components/SortingTable/SortingTable';
 import Selector from 'components/Selector';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
-import NewDDTDialog from 'pages/DDT/NewDDTDialog';
+import AddFormDialog from 'components/AddFormDialog';
 import AddIcon from '@material-ui/icons/Add';
 
 const headCells = [
@@ -42,8 +42,12 @@ const headers = [
   <Selector id="mese" key="Mese" type="Mese"/>,
   <Selector id="anno" key="Anno" type="Anno"/>,
   <Selector id="categoria" key="Categoria" type="Categoria"/>,
-  <NewDDTDialog id="newDDTDialog" trigger={<AddIcon color="primary"/>} />
-
+  <AddFormDialog 
+    id="addFormDialog" 
+    trigger={<AddIcon color="primary"/>} 
+    title="DDT"
+    textFieldPlaceholder="Fornitore"
+  />
 ]
 
 const DDT = () => {

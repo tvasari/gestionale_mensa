@@ -6,16 +6,21 @@ import SortingTableBody from 'components/SortingTable/SortingTableBody';
 
 const useStyles = makeStyles(theme => ({
   container: {...theme.workBench, ...theme.container},
+  dialog: {
+    float: 'right', 
+    width: '100%', 
+    ...theme.container
+  }
 }));
 
-const SortingTable = ({ rows, columns }) => {
+const SortingTable = ({ rows, columns, dialog=false }) => {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper} className={classes.container}>
+    <TableContainer component={Paper} className={dialog ? classes.dialog : classes.container}>
       <Table>
-            <SortingTableHeader columns={columns}/>
-            <SortingTableBody rows={rows} columns={columns}/>
+        <SortingTableHeader columns={columns}/>
+        <SortingTableBody rows={rows} columns={columns}/>
       </Table>
     </TableContainer>
   );

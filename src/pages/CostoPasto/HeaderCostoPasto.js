@@ -12,34 +12,42 @@ const useStyles = makeStyles(theme => ({
     fontWeight: '700',
     paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(4)
+  },
+  barStart:{
+    display: 'flex', 
+    alignItems: 'center'
+  },
+  barEnd:{
+    display: 'flex', 
+    justifyContent: 'space-around'
   }
 }));
 
-const HeaderCostoPasto = ({ sameOrigin }) => {
+const HeaderCostoPasto = () => {
   const classes = useStyles();
 
     return(
-        <TableRow>
-            <StyledTableCell colSpan={5} align="left">
-              <div style={{display: 'flex', alignItems: 'center'}}>
-                <BackArrowButton path="menù" />
-                <h3 className={classes.header}><b>{sameOrigin} 7 Agosto 2020</b></h3>
-                <IconButton>
-                  <Edit/>
-                </IconButton>
-              </div>
-            </StyledTableCell>
-            <StyledTableCell>
-              <div style={{display: 'flex', justifyContent: 'space-around'}}>
-                <IconButton>
-                  <KeyboardArrowLeft/>
-                </IconButton>
-                <IconButton>
-                  <KeyboardArrowRight/>
-                </IconButton>
-              </div>
-            </StyledTableCell>
-          </TableRow>
+      <TableRow>
+        <StyledTableCell colSpan={5} align="left">
+          <div className={classes.barStart}>
+            <BackArrowButton path="menù" />
+            <h3 className={classes.header}><b>Pranzo(o Cena) 7 Agosto 2020</b></h3>
+            <IconButton>
+              <Edit/>
+            </IconButton>
+          </div>
+        </StyledTableCell>
+        <StyledTableCell>
+          <div className={classes.barEnd}>
+            <IconButton>
+              <KeyboardArrowLeft/>
+            </IconButton>
+            <IconButton>
+              <KeyboardArrowRight/>
+            </IconButton>
+          </div>
+        </StyledTableCell>
+      </TableRow>
     );
 }
 

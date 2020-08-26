@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem } from '@material-ui/core/';
 import { Typography, Divider} from '@material-ui/core/';
 import AddIcon from '@material-ui/icons/Add';
-import NewStorageDialog from 'pages/Magazzino/NewStorageDialog';
+import AddFormDialog from 'components/AddFormDialog';
 import Item from 'components/Item';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +21,11 @@ const ListaMagazzini = () => {
       <Divider />
       <ListItem>
         <Typography color="primary">Aggiungi nuovo</Typography>
-        <NewStorageDialog trigger={<AddIcon color="primary"/>}/>
+        <AddFormDialog 
+          trigger={<AddIcon color="primary"/>}
+          title="Magazzino"
+          textFieldPlaceholder="Magazzino"
+        />
       </ListItem>
     </List>
   );
