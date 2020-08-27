@@ -15,6 +15,7 @@ import Magazzino from 'pages/Magazzino/Magazzino';
 import TuttiMagazzini from 'pages/Magazzino/ListaMagazzini';
 import Storico from 'pages/Storico/Storico';
 import DDT from 'pages/DDT/DDT';
+import Rimanenze from 'pages/Rimanenze/Rimanenze';
 
 const FramedRoute = ({ path, component }) => {
   return(
@@ -45,6 +46,7 @@ class App extends Component {
               <FramedRoute path="/arquata_1" component={<Magazzino />} />
               <FramedRoute path="/storico" component={<Storico />} />
               <FramedRoute path="/ddt" component={<DDT />} />
+              <FramedRoute path="/rimanenze" component={<Rimanenze />} />
             </Switch>
           </Router>
         </AppTheme>
