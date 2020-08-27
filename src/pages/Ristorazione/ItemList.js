@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { List, ListSubheader, ListItemText } from '@material-ui/core/';
-import ListItemWrapper from 'components/ListItemWrapper';
+import { 
+  List, ListItem, ListSubheader, ListItemText, ListItemSecondaryAction, IconButton 
+} from '@material-ui/core/';
 import { Edit, Delete } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
@@ -30,12 +31,20 @@ const ItemList = () => {
           <li key={`section-${sectionId}`} className={classes.listSection}>
             <ul className={classes.ul}>
               {[0, 1, 2].map((item) => (
-                <ListItemWrapper key={`item-${sectionId}-${item}`} iconAction1={<Edit />} iconAction2={<Delete />}>
+                <ListItem>
                   <ListItemText
                     primary="Nome del piatto o ingrediente"
                     secondary="ingredienti del piatto o um e costo/um dell'ingrediente"
                   />
-                </ListItemWrapper>
+                  <ListItemSecondaryAction>
+                    <IconButton edge="end">
+                      <Edit />
+                    </IconButton>
+                    <IconButton edge="end">
+                      <Delete />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
               ))}
             </ul>
           </li>
@@ -47,12 +56,20 @@ const ItemList = () => {
           <li key={`section-${sectionId}`}>
             <ul className={classes.ul}>
               {[0, 1, 2].map((item) => (
-                <ListItemWrapper key={`item-${sectionId}-${item}`} iconAction1={<Edit />} iconAction2={<Delete />}>
+                <ListItem>
                   <ListItemText
                     primary="Nome del piatto o ingrediente"
                     secondary="ingredienti del piatto o um e costo/um dell'ingrediente"
                   />
-                </ListItemWrapper>
+                  <ListItemSecondaryAction>
+                    <IconButton edge="end">
+                      <Edit />
+                    </IconButton>
+                    <IconButton edge="end">
+                      <Delete />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+                </ListItem>
               ))}
             </ul>
           </li>

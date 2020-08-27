@@ -16,6 +16,8 @@ import TuttiMagazzini from 'pages/Magazzino/ListaMagazzini';
 import Storico from 'pages/Storico/Storico';
 import DDT from 'pages/DDT/DDT';
 import Rimanenze from 'pages/Rimanenze/Rimanenze';
+import DisplayRimanenza from 'pages/Rimanenze/DisplayRimanenza';
+import Statistiche from 'pages/Statistiche/Statistiche';
 
 const FramedRoute = ({ path, component }) => {
   return(
@@ -47,6 +49,8 @@ class App extends Component {
               <FramedRoute path="/storico" component={<Storico />} />
               <FramedRoute path="/ddt" component={<DDT />} />
               <FramedRoute path="/rimanenze" component={<Rimanenze />} />
+              <FramedRoute path="/display_rimanenza" component={<DisplayRimanenza />} />
+              <FramedRoute path="/statistiche" component={<Statistiche />} />
             </Switch>
           </Router>
         </AppTheme>
