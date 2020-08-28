@@ -2,18 +2,18 @@ import React, { Fragment } from 'react';
 import { IconButton, TableCell } from '@material-ui/core/';
 import EditIcon from '@material-ui/icons/Edit';
 import getMonthDays from 'utils/getMonthDays';
-import Selector from 'components/Selector';
 import SortingTable from 'components/SortingTable/SortingTable';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
+import { SelectorPresenze, SelectorMese, SelectorAnno, SelectorPasti } from 'components/Selectors';
 
 const headers = [
   <IconButton id="edit">
       <EditIcon/>
   </IconButton>,
-  <Selector id="mese" key="Mese" type="Mese"/>,
-  <Selector id="anno" key="Anno" type="Anno"/>,
-  <Selector id="filtra" key="Filtra" type="Filtra"/>,
-  <Selector id="presenze" key="Presenze" type="Presenze"/>,
+  <SelectorMese/>,
+  <SelectorAnno/>,
+  <SelectorPasti/>,
+  <SelectorPresenze/>,
 ]
 
 

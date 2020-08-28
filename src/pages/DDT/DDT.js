@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { TableCell, TableSortLabel } from '@material-ui/core/';
 import BackArrowButton from 'components/BackArrowButton';
 import SortingTable from 'components/SortingTable/SortingTable';
-import Selector from 'components/Selector';
+import { SelectorCategoria, SelectorAnno, SelectorMese } from 'components/Selectors';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import AddFormDialog from 'components/AddFormDialog';
 import AddIcon from '@material-ui/icons/Add';
@@ -39,9 +39,9 @@ const rows = {
 
 const headers = [
   <BackArrowButton id="arquata1" path="arquata_1" />,
-  <Selector id="mese" key="Mese" type="Mese"/>,
-  <Selector id="anno" key="Anno" type="Anno"/>,
-  <Selector id="categoria" key="Categoria" type="Categoria"/>,
+  <SelectorMese/>,
+  <SelectorAnno/>,
+  <SelectorCategoria/>,
   <AddFormDialog 
     id="addFormDialog" 
     trigger={<AddIcon color="primary"/>} 

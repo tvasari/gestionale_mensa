@@ -3,7 +3,7 @@ import TableCell from '@material-ui/core/TableCell';
 import getMonthDays from 'utils/getMonthDays';
 import BackArrowButton from 'components/BackArrowButton';
 import SortingTable from 'components/SortingTable/SortingTable';
-import Selector from 'components/Selector';
+import { SelectorCategoria, SelectorAnno, SelectorMese } from 'components/Selectors';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
 
 const weekDays = [
@@ -30,9 +30,9 @@ const rows = {
 
 const headers = [
   <BackArrowButton id="arquata_1" path="arquata_1" />,
-  <Selector id="mese" key="Mese" type="Mese"/>,
-  <Selector id="anno" key="Anno" type="Anno"/>,
-  <Selector id="categoria" key="Categoria" type="Categoria"/>
+  <SelectorMese/>,
+  <SelectorAnno/>,
+  <SelectorCategoria/>
 ]
 
 

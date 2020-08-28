@@ -3,12 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { 
     Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button 
 } from '@material-ui/core/';
-import Selector from 'components/Selector';
 import DateFnsUtils from "@date-io/date-fns";
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import { it } from 'date-fns/locale'
 import format from "date-fns/format";
 import StockItemList from 'components/StockItemList';
+import { SelectorCategoria } from 'components/Selectors';
 
 class LocalizedUtils extends DateFnsUtils {
   getDatePickerHeaderText(date) {
@@ -63,11 +63,7 @@ const AddFormDialog = ({ trigger, title, textFieldPlaceholder }) => {
             placeholder={`Nome ${textFieldPlaceholder}`}
             className={classes.elemMargin} 
           />
-          <Selector
-            fullWidth={true}
-            type="Categoria" 
-            formControlStyle={classes.elemMargin} 
-          />
+          <SelectorCategoria/>
           <StockItemList />
           <Button color="primary"><b>Aggiungi Categoria</b></Button>
         </DialogContent>

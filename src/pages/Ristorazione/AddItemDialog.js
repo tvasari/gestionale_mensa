@@ -5,7 +5,7 @@ import {
   InputLabel, Input, Chip, MenuItem, Select, TextField, 
   DialogActions, Button, InputAdornment  
 } from '@material-ui/core/';
-import Selector from 'components/Selector';
+import { SelectorRistorazione, SelectorUM } from 'components/Selectors';
 import { magazzinoRows } from 'utils/fakeData';
 
 const useStyles = makeStyles({
@@ -48,7 +48,7 @@ const AddItemDialog = ({ trigger }) => {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Aggiungi Oggetto</DialogTitle>
         <DialogContent>
-          <Selector className={classes.margin} fullWidth={true} type="Aggiungi"/>
+          <SelectorRistorazione className={classes.margin}/>
           <TextField className={classes.margin} fullWidth label="Nome"/>
           <FormControl className={classes.margin} fullWidth>
             <InputLabel>Ingredienti</InputLabel>
@@ -62,7 +62,7 @@ const AddItemDialog = ({ trigger }) => {
               { ingredientOptions }
             </Select>
           </FormControl>
-          <Selector type="UM" />
+          <SelectorUM />
           <FormControl fullWidth className={classes.margin}>
             <InputLabel htmlFor="standard-adornment-amount">Costo/UM</InputLabel>
             <Input

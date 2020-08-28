@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-  TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Paper 
+  TableContainer, Table, TableBody, TableRow, TableCell, Paper 
 } from '@material-ui/core/';
-import HeaderSintesiMese from 'pages/SintesiMenu/HeaderSintesiMenu';
 import getMonthDays from 'utils/getMonthDays';
+import BackArrowButton from 'components/BackArrowButton';
+import { SelectorAnno, SelectorMese } from 'components/Selectors';
+import WorkBenchTopBar from 'components/WorkBenchTopBar';
 
 const useStyles = makeStyles(theme => ({
-  container: {...theme.workBench, ...theme.container},
+  container: {...theme.workBench, overflow: 'auto', maxHeight: '80vh'},
   datePadding: {
     padding: '0 0 0 16px'
   }
@@ -16,61 +18,65 @@ const useStyles = makeStyles(theme => ({
 const primiPiatti = getMonthDays(2020, 8).map(day => <TableCell>Pasta aglio olio e peperoncino</TableCell>)
 const weekDays = (style) => getMonthDays(2020, 8).map(day => <TableCell className={style}><b>{day}</b></TableCell>)
 
+const headers = [
+  <BackArrowButton path="menù" />,
+  <SelectorMese/>,
+  <SelectorAnno/>
+]
+
 const SintesiMese = () => {
   const classes = useStyles();
 
   return (
-    <TableContainer component={Paper} className={classes.container}>
-      <Table>
+    <Fragment>
+      <WorkBenchTopBar headers={headers}/>
+      <TableContainer component={Paper} className={classes.container}>
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell colSpan={2}></TableCell>
+              { weekDays(classes.datePadding) }
+            </TableRow>
 
-        <TableHead>
-          <HeaderSintesiMese colSpan={primiPiatti.length + 2}/>
-        </TableHead>
+            <TableRow>
+              <TableCell rowSpan={4}><b>Pranzo</b></TableCell>
+              <TableCell rowSpan={2}><b>Primi</b></TableCell>
+              { primiPiatti }
+            </TableRow>
+            <TableRow>
+              { primiPiatti }
+            </TableRow>
+            <TableRow>
+              <TableCell rowSpan={2}><b>Secondi</b></TableCell>
+              { primiPiatti }
+            </TableRow>
+            <TableRow>
+              { primiPiatti }
+            </TableRow>
 
-        <TableBody>
-          <TableRow>
-            <TableCell colSpan={2}></TableCell>
-            { weekDays(classes.datePadding) }
-          </TableRow>
+            <TableRow><TableCell colSpan={primiPiatti.length + 2}></TableCell></TableRow>
 
-          <TableRow>
-            <TableCell rowSpan={4}><b>Pranzo</b></TableCell>
-            <TableCell rowSpan={2}><b>Primi</b></TableCell>
-            { primiPiatti }
-          </TableRow>
-          <TableRow>
-            { primiPiatti }
-          </TableRow>
-          <TableRow>
-            <TableCell rowSpan={2}><b>Secondi</b></TableCell>
-            { primiPiatti }
-          </TableRow>
-          <TableRow>
-            { primiPiatti }
-          </TableRow>
+            <TableRow>
+                <TableCell rowSpan={4}><b>Cena</b></TableCell>
+              <TableCell rowSpan={2}><b>Primi</b></TableCell>
+              { primiPiatti }
+            </TableRow>
+            <TableRow>
+              { primiPiatti }
+            </TableRow>
+            <TableRow>
+              <TableCell rowSpan={2}><b>Secondi</b></TableCell>
+              { primiPiatti }
+            </TableRow>
+            <TableRow>
+              { primiPiatti }
+            </TableRow>
+            
+          </TableBody>
 
-          <TableRow><TableCell colSpan={primiPiatti.length + 2}></TableCell></TableRow>
-
-          <TableRow>
-              <TableCell rowSpan={4}><b>Cena</b></TableCell>
-            <TableCell rowSpan={2}><b>Primi</b></TableCell>
-            { primiPiatti }
-          </TableRow>
-          <TableRow>
-            { primiPiatti }
-          </TableRow>
-          <TableRow>
-            <TableCell rowSpan={2}><b>Secondi</b></TableCell>
-            { primiPiatti }
-          </TableRow>
-          <TableRow>
-            { primiPiatti }
-          </TableRow>
-          
-        </TableBody>
-
-      </Table>
-    </TableContainer>
+        </Table>
+      </TableContainer>
+    </Fragment>
   );
 }
 

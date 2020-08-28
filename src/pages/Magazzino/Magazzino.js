@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { TableCell, Typography } from '@material-ui/core/';
 import SortingTable from 'components/SortingTable/SortingTable';
-import Selector from 'components/Selector';
+import { SelectorCategoria } from 'components/Selectors';
 import { it } from 'date-fns/locale'
 import format from "date-fns/format";
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
@@ -12,7 +12,7 @@ const oggi = format(new Date(), "d MMM yyyy", { locale: it });
 const headers = [
   <Typography id="nomeMagazzino" color="primary" variant="body1"><b>Nome_Magazzino</b></Typography>,
   <Typography id="dataDiOggi" color="primary" variant="body1"><b>{ oggi }</b></Typography>,
-  <Selector id="categoria" type="Categoria"/>
+  <SelectorCategoria/>
 ];
 
 const headerLabels = magazzinoHeaderLabels.map((headerLabel, i) => {

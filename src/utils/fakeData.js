@@ -94,7 +94,7 @@ const magazzinoRows = {
   "Pomodori": [...numeriRandom]
 }
 
-const meals = [
+const pasti = [
   "Colazione", 
   "Pranzo", 
   "Cena", 
@@ -108,13 +108,13 @@ const courses = [
   'Frutta/Dessert'
 ]
 
-const attendance = [
+const presenze = [
   'Cociv',
   'Radimero',
   'Altri'
 ];
 
-const months = [
+const mesi = [
   'Gennaio', 
   'Febbraio', 
   'Marzo', 
@@ -129,13 +129,13 @@ const months = [
   'Dicembre'
 ];
 
-const categories = [
+const categorie = [
   'Ortofrutta',
   'Carne Gelo',
   'Secco'
 ]
 
-const options = [
+const opzioniRistorazione = [
   'Piatto',
   'Ingrediente'
 ]
@@ -145,16 +145,27 @@ const um = [
   'etti'
 ]
 
+const anni = (() => {
+  const allYears = [];
+
+  for (let i = 2010; i <= 2100; i++) {
+      allYears.push(i)
+  }
+
+  return allYears;
+})();
+
 export {
   elementiRistorazione,
   costoPastoHeaderLabels,
   magazzinoHeaderLabels,
   magazzinoRows,
-  months,
-  categories,
-  options,
-  attendance,
+  mesi,
+  categorie,
+  opzioniRistorazione,
+  presenze,
   courses,
-  meals,
-  um
+  pasti,
+  um,
+  anni
 };
