@@ -1,6 +1,6 @@
 {
-  "name": "gestionale-mensa",
-  "homepage": "http://tvasari.github.io/gestionale_mensa",
+  "name": "italiana_mense_gestionale",
+  "homepage": "http://tvasari.github.io/italiana_mense_gestionale",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
