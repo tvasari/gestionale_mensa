@@ -1,12 +1,14 @@
 import React, { Fragment } from 'react';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import Chart from 'pages/Statistiche/Chart';
-import { SelectorCategoria, SelectorAnno, SelectorMese} from 'components/Selectors/';
+import { SelectorCategoria, SelectorAnno, SelectorMese, SelectorPastiPrincipali } from 'components/Selectors/';
+import RadioSelector from 'pages/Statistiche/RadioSelector';
 
 const headers = [
-  <SelectorMese/>,
+  <RadioSelector />,
+  <SelectorMese disabled={true}/>,
   <SelectorAnno/>,
-  <SelectorCategoria/>,
+  <SelectorPastiPrincipali/>,
 ]
 
 const Statistiche = () => {

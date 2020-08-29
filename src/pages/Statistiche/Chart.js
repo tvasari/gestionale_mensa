@@ -5,25 +5,40 @@ import {
 
 const data = [
   {
-    name: 'Page A', uv: 4000, pv: 2400, amt: 2400,
+    name: 'Gennaio', cena: 4000, pranzo: 2400, get totale() { return this.pranzo + this.cena }
   },
   {
-    name: 'Page B', uv: 3000, pv: 1398, amt: 2210,
+    name: 'Febbraio', cena: 3000, pranzo: 1398, get totale() { return this.pranzo + this.cena },
   },
   {
-    name: 'Page C', uv: 2000, pv: 9800, amt: 2290,
+    name: 'Marzo', cena: 2000, pranzo: 9800, get totale() { return this.pranzo + this.cena },
   },
   {
-    name: 'Page D', uv: 2780, pv: 3908, amt: 2000,
+    name: 'Aprile', cena: 2780, pranzo: 3908, get totale() { return this.pranzo + this.cena },
   },
   {
-    name: 'Page E', uv: 1890, pv: 4800, amt: 2181,
+    name: 'Maggio', cena: 1890, pranzo: 4800, get totale() { return this.pranzo + this.cena },
   },
   {
-    name: 'Page F', uv: 2390, pv: 3800, amt: 2500,
+    name: 'Giugno', cena: 2390, pranzo: 3800, get totale() { return this.pranzo + this.cena },
   },
   {
-    name: 'Page G', uv: 3490, pv: 4300, amt: 2100,
+    name: 'Luglio', cena: 3490, pranzo: 4300, get totale() { return this.pranzo + this.cena },
+  },
+  {
+    name: 'Agosto', cena: 4000, pranzo: 2400, get totale() { return this.pranzo + this.cena },
+  },
+  {
+    name: 'Settembre', cena: 3000, pranzo: 1398, get totale() { return this.pranzo + this.cena },
+  },
+  {
+    name: 'Ottobre', cena: 2000, pranzo: 9800, get totale() { return this.pranzo + this.cena },
+  },
+  {
+    name: 'Novembre', cena: 2780, pranzo: 3908, get totale() { return this.pranzo + this.cena },
+  },
+  {
+    name: 'Dicembre', cena: 1890, pranzo: 4800, get totale() { return this.pranzo + this.cena },
   },
 ];
 
@@ -33,8 +48,8 @@ class Chart extends PureComponent {
   render() {
     return (
       <BarChart
-        width={500}
-        height={300}
+        width={1050}
+        height={450}
         data={data}
         margin={{
           top: 5, right: 30, left: 20, bottom: 5,
@@ -42,11 +57,12 @@ class Chart extends PureComponent {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
-        <YAxis />
+        <YAxis label={{ value: 'costo in €', angle: -90, position: 'left' }}/>
         <Tooltip />
         <Legend />
-        <Bar dataKey="pv" fill="#8884d8" />
-        <Bar dataKey="uv" fill="#82ca9d" />
+        <Bar dataKey="pranzo" fill="#8884d8" />
+        <Bar dataKey="cena" fill="#82ca9d" />
+        <Bar dataKey="totale" fill="#23b5d3" />
       </BarChart>
     );
   }

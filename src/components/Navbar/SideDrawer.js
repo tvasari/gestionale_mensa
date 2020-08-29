@@ -61,33 +61,33 @@ const displaySubList = (page) => {
 const SideDrawer = () => {
     const classes = useStyles();
 
-    return(
-        <Drawer
-            className={classes.drawer}
-            variant="permanent"
-            classes={{paper: classes.drawerPaper}}
-        >
-            <Toolbar />
-            <div className={classes.drawerContainer}>
-                <List>
-                    {
-                        mainPages.map((page, index) => (
-                            <div key={page + 'view'} className="view">
-                                <ListItem key={page}>
-                                    <LinkToPage page={page} key={page}/>
-                                    <IconButton edge="end">
-                                        <KeyboardArrowDown />
-                                    </IconButton>
-                                </ListItem>
-                                <Divider key={page + 'divider'}/>
-                                { displaySubList(page) }
-                            </div>
-                        ))
-                    }
-                </List>
-            </div>
-        </Drawer>
-    );
+  return(
+    <Drawer
+      className={classes.drawer}
+      variant="permanent"
+      classes={{paper: classes.drawerPaper}}
+    >
+      <Toolbar />
+      <div className={classes.drawerContainer}>
+        <List>
+          {
+            mainPages.map((page, index) => (
+              <div key={page + 'view'} className="view">
+                <ListItem key={page}>
+                  <LinkToPage page={page} key={page}/>
+                  <IconButton edge="end">
+                    <KeyboardArrowDown />
+                  </IconButton>
+                </ListItem>
+                <Divider key={page + 'divider'}/>
+                { displaySubList(page) }
+              </div>
+            ))
+          }
+        </List>
+      </div>
+    </Drawer>
+  );
 }
 
 export default SideDrawer;

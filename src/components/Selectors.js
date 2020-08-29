@@ -1,10 +1,10 @@
 import React from 'react';
 import { FormControl, InputLabel, Select } from '@material-ui/core';
-import { presenze, opzioniRistorazione, categorie, mesi, anni, pasti, um } from 'utils/fakeData';
+import { presenze, opzioniRistorazione, categorie, mesi, anni, pasti, pastiPrincipali, um } from 'utils/fakeData';
 
-const Selector = ({ label, options }) => {
+const Selector = ({ label, options, disabled=false }) => {
   return(
-    <FormControl fullWidth>
+    <FormControl fullWidth disabled={disabled}>
       <InputLabel>{ label }</InputLabel>
       <Select label={`${label}`} onChange={e => console.log(e.target.value)} native>
         {
@@ -29,8 +29,8 @@ const SelectorCategoria = () => {
   return <Selector label="Categoria" options={categorie} />
 }
 
-const SelectorMese = () => {
-  return <Selector label="Mese" options={mesi} />
+const SelectorMese = ({ disabled=false }) => {
+  return <Selector label="Mese" options={mesi} disabled={disabled}/>
 }
 
 const SelectorAnno = () => {
@@ -45,6 +45,10 @@ const SelectorUM = () => {
   return <Selector label="UM" options={um} />
 }
 
+const SelectorPastiPrincipali = () => {
+  return <Selector label="Pranzo/Cena" options={pastiPrincipali} />
+}
+
 export {
   SelectorPresenze,
   SelectorRistorazione,
@@ -52,5 +56,6 @@ export {
   SelectorMese,
   SelectorAnno,
   SelectorPasti,
-  SelectorUM
+  SelectorUM,
+  SelectorPastiPrincipali
 };

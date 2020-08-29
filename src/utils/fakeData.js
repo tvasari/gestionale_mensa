@@ -101,6 +101,11 @@ const pasti = [
   "Spuntini"
 ];
 
+const pastiPrincipali = [
+  "Pranzo",
+  "Cena"
+]
+
 const courses = [
   'Primo Piatto',
   'Secondo Piatto',
@@ -166,6 +171,7 @@ export {
   presenze,
   courses,
   pasti,
+  pastiPrincipali,
   um,
   anni
 };
