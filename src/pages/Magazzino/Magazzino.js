@@ -10,9 +10,13 @@ import { magazzinoHeaderLabels, magazzinoRows } from 'utils/fakeData';
 const oggi = format(new Date(), "d MMM yyyy", { locale: it });
 
 const headers = [
-  <Typography id="nomeMagazzino" color="primary" variant="body1"><b>Nome_Magazzino</b></Typography>,
-  <Typography id="dataDiOggi" color="primary" variant="body1"><b>{ oggi }</b></Typography>,
-  <SelectorCategoria/>
+  <Typography id="magazzinoNomeMagazzino" color="primary" variant="body1">
+    <b>Nome_Magazzino</b>
+  </Typography>,
+  <Typography id="magazzinoDataDiOggi" color="primary" variant="body1">
+    <b>{ oggi }</b>
+  </Typography>,
+  <SelectorCategoria id="magazzinoCategoria"/>
 ];
 
 const headerLabels = magazzinoHeaderLabels.map((headerLabel, i) => {

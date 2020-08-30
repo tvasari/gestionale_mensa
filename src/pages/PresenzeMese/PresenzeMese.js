@@ -7,21 +7,23 @@ import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import { SelectorPresenze, SelectorMese, SelectorAnno, SelectorPasti } from 'components/Selectors';
 
 const headers = [
-  <IconButton id="edit">
+  <IconButton id="pMeseEdit">
       <EditIcon/>
   </IconButton>,
-  <SelectorMese/>,
-  <SelectorAnno/>,
-  <SelectorPasti/>,
-  <SelectorPresenze/>,
-]
+  <SelectorMese id="pMeseMese"/>,
+  <SelectorAnno id="pMeseAnno"/>,
+  <SelectorPasti id="pMesePasti"/>,
+  <SelectorPresenze id="pMesePresenze"/>,
+] 
 
 
 const weekDays = [
-  <TableCell></TableCell>, 
-  ...getMonthDays(2020, 8).map(day => {
+  <TableCell key="empty"></TableCell>, 
+  ...getMonthDays(2020, 8).map((day, i) => {
     return(
-        <TableCell align="right" style={{padding: '4px 16px'}}><b>{day}</b></TableCell>
+        <TableCell key={day} align="right" style={{padding: '4px 16px'}}>
+          <b>{ day }</b>
+        </TableCell>
       );
     })
 ];

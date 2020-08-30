@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
 import { 
@@ -19,10 +19,6 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
   form: {
     width: '100%',
     marginTop: theme.spacing(3),
@@ -34,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Registrati = () => {
   const classes = useStyles();
+  const [nome, setNome] = useState('');
+  const [cognome, setCognome] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <Container component="main" maxWidth="xs" className={classes.container}>
@@ -54,6 +54,7 @@ const Registrati = () => {
                 id="firstName"
                 label="Nome"
                 autoFocus
+                onChange={(e) => setNome(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -65,6 +66,7 @@ const Registrati = () => {
                 label="Cognome"
                 name="lastName"
                 autoComplete="lname"
+                onChange={(e) => setCognome(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -76,6 +78,7 @@ const Registrati = () => {
                 label="Indirizzo Email"
                 name="email"
                 autoComplete="email"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -88,6 +91,7 @@ const Registrati = () => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </Grid>
           </Grid>
@@ -97,6 +101,7 @@ const Registrati = () => {
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={(e) => console.log(nome, cognome, email, password)}
             >
               Registrati
             </Button>

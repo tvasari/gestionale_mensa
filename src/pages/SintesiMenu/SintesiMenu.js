@@ -19,9 +19,9 @@ const primiPiatti = getMonthDays(2020, 8).map(day => <TableCell>Pasta aglio olio
 const weekDays = (style) => getMonthDays(2020, 8).map(day => <TableCell className={style}><b>{day}</b></TableCell>)
 
 const headers = [
-  <BackArrowButton path="menù" />,
-  <SelectorMese/>,
-  <SelectorAnno/>
+  <BackArrowButton id="sMenuBackArrow" path="menù" />,
+  <SelectorMese id="sMenuMese"/>,
+  <SelectorAnno id="sMenuAnno"/>
 ]
 
 const SintesiMese = () => {

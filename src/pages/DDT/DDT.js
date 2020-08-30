@@ -38,12 +38,12 @@ const rows = {
 }
 
 const headers = [
-  <BackArrowButton id="arquata1" path="arquata_1" />,
-  <SelectorMese/>,
-  <SelectorAnno/>,
-  <SelectorCategoria/>,
+  <BackArrowButton id="ddtBackArrow" path="arquata_1" />,
+  <SelectorMese id="ddtMese"/>,
+  <SelectorAnno id="ddtAnno"/>,
+  <SelectorCategoria id="ddtCategoria"/>,
   <AddFormDialog 
-    id="addFormDialog" 
+    id="ddtAddFormDialog" 
     trigger={<AddIcon color="primary"/>} 
     title="DDT"
     textFieldPlaceholder="Fornitore"

@@ -5,10 +5,10 @@ import { SelectorAnno, SelectorMese, SelectorPastiPrincipali } from 'components/
 import RadioSelector from 'pages/Statistiche/RadioSelector';
 
 const headers = [
-  <RadioSelector />,
-  <SelectorMese disabled={true}/>,
-  <SelectorAnno/>,
-  <SelectorPastiPrincipali/>,
+  <RadioSelector id="statRadio"/>,
+  <SelectorMese id="statMese" disabled={true}/>,
+  <SelectorAnno id="statAnno"/>,
+  <SelectorPastiPrincipali id="statPasti"/>,
 ]
 
 const Statistiche = () => {

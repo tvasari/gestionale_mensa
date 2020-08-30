@@ -29,10 +29,10 @@ const rows = {
 }
 
 const headers = [
-  <BackArrowButton id="arquata_1" path="arquata_1" />,
-  <SelectorMese/>,
-  <SelectorAnno/>,
-  <SelectorCategoria/>
+  <BackArrowButton id="storicoBackArrow" path="arquata_1" />,
+  <SelectorMese id="storicoMese"/>,
+  <SelectorAnno id="storicoAnno"/>,
+  <SelectorCategoria id="storicoCategoria"/>
 ]
 
 
