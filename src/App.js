@@ -38,7 +38,7 @@ class App extends Component {
             <Switch>
               <Route path="/registrati" component={Registrati} />
               <Route path="/accedi" component={Accedi} />
-              <FramedRoute path="/gestionale_mensa" component={<PresenzeMese />} />
+              <FramedRoute path="/italiana_mense_gestionale" component={<PresenzeMese />} />
               <FramedRoute path="/mese" component={<PresenzeMese />} />
               <FramedRoute path="/menù" component={<Menu />} />
               <FramedRoute path="/costo_pasto" component={<CostoPasto />} />

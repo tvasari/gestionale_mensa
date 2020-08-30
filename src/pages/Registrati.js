@@ -91,7 +91,7 @@ const Registrati = () => {
               />
             </Grid>
           </Grid>
-          <NavLink to="/gestionale_mensa" style={{textDecoration: 'none'}}>
+          <NavLink to="/italiana_mense_gestionale" style={{textDecoration: 'none'}}>
             <Button
               fullWidth
               variant="contained"

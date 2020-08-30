@@ -35,7 +35,7 @@ const TopBar = () => {
         <AppBar position="relative" className={classes.appBar}>
             <Toolbar className={classes.toolBar}>
                 <div className={classes.toolBar}>
-                    <NavLink className={classes.navLink} to="/gestionale_mensa">
+                    <NavLink className={classes.navLink} to="/italiana_mense_gestionale">
                         <img src={logo} alt="Italiana Mense" className={classes.logo}/>
                     </NavLink>
                     <Box m={1}>
