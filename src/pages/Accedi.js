@@ -1,22 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
 import { 
-  Avatar, Button, CssBaseline, TextField, FormControlLabel, 
-  Checkbox, Link, Grid, Typography, Container
+  Button, CssBaseline, TextField, Link, Grid, Typography, Container
 } from '@material-ui/core/';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(15),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
   },
   form: {
     width: '100%',
@@ -29,14 +23,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Accedi = () => {
   const classes = useStyles();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
         <Typography component="h1" variant="h5">
           Accedi
         </Typography>
@@ -51,6 +44,7 @@ const Accedi = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -62,10 +56,7 @@ const Accedi = () => {
             type="password"
             id="password"
             autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Ricordami"
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Button
             type="submit"
@@ -73,6 +64,7 @@ const Accedi = () => {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={() => console.log(email, password)}
           >
             Accedi
           </Button>

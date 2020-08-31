@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { styled } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import DDTDisplayDialog from 'pages/DDT/DDTDisplayDialog';
+import StyledTableRow from 'components/StyledTableRow';
 
 const CompressedCell = styled(TableCell)(() => ({
     padding: '2px 16px'
@@ -13,12 +14,12 @@ const separateKeysFromValues = (rows) => {
   return [allItems, allValues];
 }
 
-const isNumber = value => typeof value === 'number';
+const isValidNumber = value => typeof value === 'number' && !isNaN(value);
 
 const createAlignedCells = (cellValues) => {
-  cellValues.map(value => {
+  return cellValues.map((value, valueIndex) => {
     return(
-      <CompressedCell align={isNumber(value) ? "right" : "inherit"} key={value}>
+      <CompressedCell align={isValidNumber(value) ? "right" : "inherit"} key={valueIndex}>
         { value }
       </CompressedCell>
     )
@@ -29,36 +30,31 @@ function createRows(rows) {
   const [allItems, allValues] = separateKeysFromValues(rows);
 
   return(
-    <Fragment>
-      {
-        allItems.map((item, itemIndex) => {
-          return (
-            isNumber(parseInt(item)) && !isNaN(parseInt(item)) 
-            ? (
-              <Fragment key={'a'}>
-                <CompressedCell>
-                  <DDTDisplayDialog 
-                    trigger={item}
-                    title="Magazzino"
-                    textFieldPlaceholder="Magazzino"
-                  />
-                </CompressedCell>
-                { createAlignedCells(allValues[itemIndex]) }
-              </Fragment>
-            ) : (
-              <Fragment key={item}>
-                <CompressedCell>
-                  {item}
-                </CompressedCell>
-                { createAlignedCells(allValues[itemIndex]) }
-              </Fragment>
-            )
-          );
-        })
-      }
-    </Fragment>
+    allItems.map((item, itemIndex) => {
+      return (
+        isValidNumber(parseInt(item))
+        ? (
+          <StyledTableRow key={item}>
+            <CompressedCell>
+              <DDTDisplayDialog 
+                trigger={item}
+                title="Magazzino"
+                textFieldPlaceholder="Magazzino"
+              />
+            </CompressedCell>
+            { createAlignedCells(allValues[itemIndex]) }
+          </StyledTableRow>
+        ) : (
+          <StyledTableRow key={item}>
+            <CompressedCell>
+              {item}
+            </CompressedCell>
+            { createAlignedCells(allValues[itemIndex]) }
+          </StyledTableRow>
+        )
+      );
+    })
   );
-  
 
 }
 

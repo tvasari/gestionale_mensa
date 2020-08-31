@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { 
   Button, CssBaseline, TextField, Grid, Typography, Container 
 } from '@material-ui/core/';
@@ -34,6 +34,25 @@ const Registrati = () => {
   const [cognome, setCognome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [allDataWasProvided, setAllDataWasProvided] = useState(false);
+
+  const submitUserDetails = (nome, cognome, email, password) => {
+    fetch('http://localhost:3001/registrati', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nome: nome,
+        cognome: cognome,
+        email: email,
+        password: password
+      })
+    })
+    .then(response => response.json())
+    .then(id_utente => {
+      id_utente ? console.log(id_utente) : console.log('id utente non presente')
+    })
+    .catch(err => setAllDataWasProvided(false))
+  }
 
   return (
     <Container component="main" maxWidth="xs" className={classes.container}>
@@ -95,17 +114,15 @@ const Registrati = () => {
               />
             </Grid>
           </Grid>
-          <NavLink to="/italiana_mense_gestionale" style={{textDecoration: 'none'}}>
-            <Button
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={(e) => console.log(nome, cognome, email, password)}
-            >
-              Registrati
-            </Button>
-          </NavLink>
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={() => submitUserDetails(nome, cognome, email, password)}
+          >
+            Registrati
+          </Button>
           <Grid container justify="flex-end">
             <Grid item>
               <NavLink to="/accedi" style={{textDecoration: 'none'}}>

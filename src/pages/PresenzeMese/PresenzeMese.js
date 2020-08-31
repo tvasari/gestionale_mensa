@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { IconButton, TableCell } from '@material-ui/core/';
 import EditIcon from '@material-ui/icons/Edit';
 import getMonthDays from 'utils/getMonthDays';
@@ -19,7 +19,7 @@ const headers = [
 
 const weekDays = [
   <TableCell key="empty"></TableCell>, 
-  ...getMonthDays(2020, 8).map((day, i) => {
+  ...getMonthDays(2020, 8).map(day => {
     return(
         <TableCell key={day} align="right" style={{padding: '4px 16px'}}>
           <b>{ day }</b>
@@ -32,19 +32,20 @@ const numeri = weekDays.map(day => parseInt((Math.random() * 101).toFixed(0)))
 
 numeri.pop()
 
-const rows = {
-  "Cociv Badge": [...numeri],
-  "Cociv Firme": [...numeri],
-  "Tot. Cociv": [...numeri],
-  "Tot.": [...numeri]
-}
-
 const PresenzeMese = () => {
+  const [azienda, setAzienda] = useState('Cociv')
+  const [rows, setRows] = useState({
+    "Cociv Badge": [...numeri],
+    "Cociv Firme": [...numeri],
+    "Tot. Cociv": [...numeri],
+    "Tot.": [...numeri]
+  });
+
   return (
     <Fragment>
       <WorkBenchTopBar headers={headers}/>
       <SortingTable 
-        rows={rows} 
+        rows={rows}
         columns={weekDays}
       />
     </Fragment>
