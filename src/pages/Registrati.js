@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { 
   Button, CssBaseline, TextField, Grid, Typography, Container 
 } from '@material-ui/core/';
@@ -34,7 +34,7 @@ const Registrati = () => {
   const [cognome, setCognome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [allDataWasProvided, setAllDataWasProvided] = useState(false);
+  const [message, setMessage] = useState({});
 
   const submitUserDetails = (nome, cognome, email, password) => {
     fetch('http://localhost:3001/registrati', {
@@ -47,11 +47,12 @@ const Registrati = () => {
         password: password
       })
     })
-    .then(response => response.json())
-    .then(id_utente => {
-      id_utente ? console.log(id_utente) : console.log('id utente non presente')
-    })
-    .catch(err => setAllDataWasProvided(false))
+      .then(response => response.json())
+      .then(responseMessage => {
+        console.log(responseMessage)
+        setMessage(responseMessage);
+      })
+      .catch(err => console.log("errore durante la registrazione", err))
   }
 
   return (
@@ -60,6 +61,9 @@ const Registrati = () => {
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
           Registrati
+        </Typography>
+        <Typography component='p' variant="body1" color={message.color}>
+          { message.message }
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>

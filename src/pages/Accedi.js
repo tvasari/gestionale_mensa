@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory, useLocation, Redirect } from 'react-router-dom';
 import { 
   Button, CssBaseline, TextField, Link, Grid, Typography, Container
 } from '@material-ui/core/';
+import authentication from 'utils/authentication';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,6 +26,27 @@ const Accedi = () => {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const history = useHistory();
+  const location = useLocation();
+  
+  let accedi = () => {
+    authentication.authenticate();
+    history.push('/italiana_mense_gestionale');
+  }
+
+  const submitLoginDetails = (email, password) => {
+    fetch('http://localhost:3001/accedi', {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    })
+      .then(response => response.json())
+      .then(responseMessage => console.log(responseMessage)) 
+      .catch(err => console.log("errore durante l'accesso", err))
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -59,12 +81,11 @@ const Accedi = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={() => console.log(email, password)}
+            onClick={() => submitLoginDetails(email, password)}
           >
             Accedi
           </Button>

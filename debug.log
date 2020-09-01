@@ -1,0 +1,3 @@
+[0831/235209.840:ERROR:process_reader_win.cc(123)] NtOpenThread: {Accesso negato} Un processo ha richiesto di accedere ad un oggetto ma non ha ottenuto i diritti di accesso. (0xc0000022)
+[0831/235209.867:ERROR:exception_snapshot_win.cc(98)] thread ID 15200 not found in process
+[0831/235209.867:ERROR:scoped_process_suspend.cc(40)] NtResumeProcess: Tentativo di accesso a un processo in fase di chiusura. (0xc000010a)

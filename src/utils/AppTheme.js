@@ -32,6 +32,11 @@ const theme = createMuiTheme({
         },
         color: '#455a64',
       }
+    },
+    MuiTypography: {
+      colorTextPrimary: {
+        color: '#4caf50'
+      }
     }
   },
   props: {

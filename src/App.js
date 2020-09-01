@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import 'App.css';
 
 import Navbar from 'components/Navbar/Navbar';
@@ -18,13 +18,31 @@ import DDT from 'pages/DDT/DDT';
 import Rimanenze from 'pages/Rimanenze/Rimanenze';
 import DisplayRimanenza from 'pages/Rimanenze/DisplayRimanenza';
 import Statistiche from 'pages/Statistiche/Statistiche';
+import authentication from 'utils/authentication';
 
-const FramedRoute = ({ path, component }) => {
+const PrivateRoute = ({ component, ...rest }) => {
   return(
-    <Route path={path}>
-      <Navbar />
-      { component }
-    </Route>
+    <Route 
+      {...rest} 
+      render={
+        ({location}) => {
+          return authentication.isAuthenticated
+          ? ( 
+            <Fragment>
+              <Navbar />
+              { component }
+            </Fragment> 
+          ) : ( 
+            <Redirect 
+              to={{
+                pathname: "/accedi",
+                state: { from: location } 
+              }} 
+            />
+          );
+        }
+      }
+    />
   );
 }
 
@@ -38,19 +56,19 @@ class App extends Component {
             <Switch>
               <Route path="/registrati" component={Registrati} />
               <Route path="/accedi" component={Accedi} />
-              <FramedRoute path="/italiana_mense_gestionale" component={<PresenzeMese />} />
-              <FramedRoute path="/mese" component={<PresenzeMese />} />
-              <FramedRoute path="/menù" component={<Menu />} />
-              <FramedRoute path="/costo_pasto" component={<CostoPasto />} />
-              <FramedRoute path="/sintesi_del_mese" component={<SintesiMenu />} />
-              <FramedRoute path="/ristorazione" component={<Ristorazione />} />
-              <FramedRoute path="/magazzino" component={<TuttiMagazzini />} />
-              <FramedRoute path="/arquata_1" component={<Magazzino />} />
-              <FramedRoute path="/storico" component={<Storico />} />
-              <FramedRoute path="/ddt" component={<DDT />} />
-              <FramedRoute path="/rimanenze" component={<Rimanenze />} />
-              <FramedRoute path="/display_rimanenza" component={<DisplayRimanenza />} />
-              <FramedRoute path="/statistiche" component={<Statistiche />} />
+              <PrivateRoute path="/italiana_mense_gestionale" component={<PresenzeMese />} />
+              <PrivateRoute path="/mese" component={<PresenzeMese />} />
+              <PrivateRoute path="/menù" component={<Menu />} />
+              <PrivateRoute path="/costo_pasto" component={<CostoPasto />} />
+              <PrivateRoute path="/sintesi_del_mese" component={<SintesiMenu />} />
+              <PrivateRoute path="/ristorazione" component={<Ristorazione />} />
+              <PrivateRoute path="/magazzino" component={<TuttiMagazzini />} />
+              <PrivateRoute path="/arquata_1" component={<Magazzino />} />
+              <PrivateRoute path="/storico" component={<Storico />} />
+              <PrivateRoute path="/ddt" component={<DDT />} />
+              <PrivateRoute path="/rimanenze" component={<Rimanenze />} />
+              <PrivateRoute path="/display_rimanenza" component={<DisplayRimanenza />} />
+              <PrivateRoute path="/statistiche" component={<Statistiche />} />
             </Switch>
           </Router>
         </AppTheme>
