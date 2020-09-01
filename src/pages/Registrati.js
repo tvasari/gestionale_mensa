@@ -49,7 +49,6 @@ const Registrati = () => {
     })
       .then(response => response.json())
       .then(responseMessage => {
-        console.log(responseMessage)
         setMessage(responseMessage);
       })
       .catch(err => console.log("errore durante la registrazione", err))

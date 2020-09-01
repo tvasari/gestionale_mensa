@@ -26,6 +26,7 @@ const Accedi = () => {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [message, setMessage] = useState({});
   const history = useHistory();
   const location = useLocation();
   
@@ -44,7 +45,11 @@ const Accedi = () => {
       })
     })
       .then(response => response.json())
-      .then(responseMessage => console.log(responseMessage)) 
+      .then(responseMessage => {
+        responseMessage.color !== 'error' 
+        ? accedi() 
+        : setMessage(responseMessage)
+      }) 
       .catch(err => console.log("errore durante l'accesso", err))
   }
 
@@ -54,6 +59,9 @@ const Accedi = () => {
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
           Accedi
+        </Typography>
+        <Typography component='p' variant="body1" color={message.color}>
+          { message.message }
         </Typography>
         <form className={classes.form} noValidate>
           <TextField
