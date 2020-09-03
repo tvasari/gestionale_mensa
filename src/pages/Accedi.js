@@ -28,8 +28,7 @@ const Accedi = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState({});
   const history = useHistory();
-  const location = useLocation();
-  
+
   let accedi = () => {
     authentication.authenticate();
     history.push('/italiana_mense_gestionale');
@@ -100,7 +99,7 @@ const Accedi = () => {
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                Dimenticato la password?
+                Hai dimenticato la password?
               </Link>
             </Grid>
             <Grid item>

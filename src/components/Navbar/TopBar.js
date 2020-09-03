@@ -43,7 +43,7 @@ const TopBar = () => {
           </Box>
           <Typography>{`${db.utente.id1.nome} ${db.utente.id1.cognome}`}</Typography>
         </div>
-        <NavLink className={classes.navLink} to="/registrati">
+        <NavLink className={classes.navLink} to="/accedi">
           <Typography variant="button" color="secondary">Esci</Typography>
         </NavLink>
       </Toolbar>
