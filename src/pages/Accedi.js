@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { NavLink, useHistory, useLocation, Redirect } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { 
   Button, CssBaseline, TextField, Link, Grid, Typography, Container
 } from '@material-ui/core/';
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Accedi = () => {
+const Accedi = ({ setName }) => {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -45,9 +45,12 @@ const Accedi = () => {
     })
       .then(response => response.json())
       .then(responseMessage => {
-        responseMessage.color !== 'error' 
-        ? accedi() 
-        : setMessage(responseMessage)
+        if (responseMessage.color !== "error") {
+          setName(responseMessage.message);
+          accedi()
+        } else {
+          setMessage(responseMessage)
+        }
       }) 
       .catch(err => console.log("errore durante l'accesso", err))
   }

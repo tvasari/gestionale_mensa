@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import 'App.css';
 
-import Navbar from 'components/Navbar/Navbar';
 import PresenzeMese from 'pages/PresenzeMese/PresenzeMese';
 import Menu from 'pages/Menu/Menu';
 import CostoPasto from 'pages/CostoPasto/CostoPasto';
@@ -18,44 +17,37 @@ import DDT from 'pages/DDT/DDT';
 import Rimanenze from 'pages/Rimanenze/Rimanenze';
 import DisplayRimanenza from 'pages/Rimanenze/DisplayRimanenza';
 import Statistiche from 'pages/Statistiche/Statistiche';
-import authentication from 'utils/authentication';
-
-const PrivateRoute = ({ component, ...rest }) => {
-  return(
-    <Route 
-      {...rest} 
-      render={
-        ({location}) => {
-          return authentication.isAuthenticated
-          ? ( 
-            <Fragment>
-              <Navbar />
-              { component }
-            </Fragment> 
-          ) : ( 
-            <Redirect 
-              to={{
-                pathname: "/accedi",
-                state: { from: location } 
-              }} 
-            />
-          );
-        }
-      }
-    />
-  );
-}
+import PrivateRoute from 'components/PrivateRoute';
 
 class App extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      loadedUser: {
+        name: ''
+      }
+    };
+    this.setName = this.setName.bind(this);
+  }
+
+  setName = (nome) => {
+    this.setState({
+      loadedUser: {name: nome}
+    })
+  }
+
   render() {
+    console.log(this.state.loadedUser)
     return (
       <div className="App">
         <AppTheme>
           <Router>
             <Switch>
               <Route path="/registrati" component={Registrati} />
-              <Route path="/accedi" component={Accedi} />
+              <Route path="/accedi">
+                <Accedi setName={this.setName} />
+              </Route>
               <PrivateRoute path="/italiana_mense_gestionale" component={<PresenzeMese />} />
               <PrivateRoute path="/mese" component={<PresenzeMese />} />
               <PrivateRoute path="/menù" component={<Menu />} />

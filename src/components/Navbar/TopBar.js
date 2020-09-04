@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from 'img/logo.png';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar, Toolbar, Box, Avatar, Typography } from '@material-ui/core/';
+import { AppBar, Toolbar, Box, Avatar, Typography, Button } from '@material-ui/core/';
 import db from 'dummyDB.json';
 
 const useStyles = makeStyles((theme) => ({
@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const logoutRequest = () => {
+  fetch('http://localhost:3001/esci')
+}
+
 const TopBar = () => {
   const classes = useStyles();
 
@@ -43,8 +47,10 @@ const TopBar = () => {
           </Box>
           <Typography>{`${db.utente.id1.nome} ${db.utente.id1.cognome}`}</Typography>
         </div>
-        <NavLink className={classes.navLink} to="/accedi">
-          <Typography variant="button" color="secondary">Esci</Typography>
+        <NavLink to="/accedi">
+          <Button variant="text" color="secondary" onClick={() => logoutRequest()}>
+            Esci
+          </Button>
         </NavLink>
       </Toolbar>
     </AppBar>
