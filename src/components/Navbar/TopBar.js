@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from 'img/logo.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Box, Avatar, Typography, Button } from '@material-ui/core/';
-import db from 'dummyDB.json';
+import { LoadedUserContext } from 'utils/LoadedUser'; 
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -34,6 +34,7 @@ const logoutRequest = () => {
 
 const TopBar = () => {
   const classes = useStyles();
+  const loadedUserFullName = useContext(LoadedUserContext);
 
   return(
     <AppBar position="relative" className={classes.appBar}>
@@ -45,7 +46,7 @@ const TopBar = () => {
           <Box m={1}>
             <Avatar src="/broken-image.jpg"/>
           </Box>
-          <Typography>{`${db.utente.id1.nome} ${db.utente.id1.cognome}`}</Typography>
+          <Typography>{ loadedUserFullName }</Typography>
         </div>
         <NavLink to="/accedi">
           <Button variant="text" color="secondary" onClick={() => logoutRequest()}>

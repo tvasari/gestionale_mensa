@@ -2,12 +2,15 @@ import React, { createContext } from 'react';
 
 const LoadedUserContext = createContext();
 
-const LoadedUser = ({ children, utente }) => {
+const LoadedUserProvider = ({ children, user }) => {
   return(
-    <LoadedUserContext value={utente}>
+    <LoadedUserContext.Provider value={user}>
       { children }
-    </LoadedUserContext>
+    </LoadedUserContext.Provider>
   );
 }
 
-export default LoadedUser;
+export {
+  LoadedUserContext,
+  LoadedUserProvider
+};
