@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Accedi = ({ setFullName }) => {
+const Accedi = ({ setLoadedUser }) => {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,7 +46,7 @@ const Accedi = ({ setFullName }) => {
       .then(response => response.json())
       .then(responseMessage => {
         if (responseMessage.color !== "error") {
-          setFullName(responseMessage.message);
+          setLoadedUser({fullName: responseMessage.message});
           accedi()
         } else {
           setMessage(responseMessage)

@@ -2,6 +2,7 @@ import React from 'react';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
+
   palette: {
     primary: {
       main: '#455a64',
@@ -11,6 +12,7 @@ const theme = createMuiTheme({
       main: '#fff'
     }
   },
+  
   container: {
     maxHeight: '90vh',
     overflow: 'auto'
@@ -19,6 +21,7 @@ const theme = createMuiTheme({
     width: '80%',
     float: 'right'
   },
+
   overrides: {
     MuiInputBase: {
       root: {
@@ -39,11 +42,13 @@ const theme = createMuiTheme({
       }
     }
   },
+
   props: {
     MuiInput: {
       disableUnderline: true
     }
   }
+
 })
 
 const AppTheme = ({ children }) => {
