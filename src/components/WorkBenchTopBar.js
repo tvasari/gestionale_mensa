@@ -13,21 +13,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const WorkBenchTopBar = ({ headers }) => {
+const WorkBenchTopBar = ({ children }) => {
   const classes = useStyles();
 
   return (
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
-        {
-          headers.map((header, i) => {
-            return (
-              <div key={header.props.id} className={classes.header}>
-                { header }
-              </div>
-            );
-          })
-        }
+        { children }
       </Toolbar>
     </AppBar>
   );

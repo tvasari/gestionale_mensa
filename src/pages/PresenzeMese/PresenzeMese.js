@@ -6,46 +6,39 @@ import SortingTable from 'components/SortingTable/SortingTable';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import { SelectorPresenze, SelectorMese, SelectorAnno, SelectorPasti } from 'components/Selectors';
 
-const headers = [
-  <IconButton id="pMeseEdit">
-      <EditIcon/>
-  </IconButton>,
-  <SelectorMese id="pMeseMese"/>,
-  <SelectorAnno id="pMeseAnno"/>,
-  <SelectorPasti id="pMesePasti"/>,
-  <SelectorPresenze id="pMesePresenze"/>,
-] 
-
-
-const weekDays = [
-  <TableCell key="empty"></TableCell>, 
-  ...getMonthDays(2020, 8).map(day => {
-    return(
-        <TableCell key={day} align="right" style={{padding: '4px 16px'}}>
-          <b>{ day }</b>
-        </TableCell>
-      );
-    })
-];
-
-const numeri = weekDays.map(day => parseInt((Math.random() * 101).toFixed(0)))
-
-numeri.pop()
-
 const PresenzeMese = () => {
-  const [azienda, setAzienda] = useState('Cociv')
-  const [rows, setRows] = useState({
-    "Cociv Badge": [...numeri],
-    "Cociv Firme": [...numeri],
-    "Tot. Cociv": [...numeri],
-    "Tot.": [...numeri]
-  });
+  const [azienda, setAzienda] = useState('Cociv');
+  const [mese, setMese] = useState('Gennaio');
+  const [anno, setAnno] = useState('2020');
+  const [pasto, setPasto] = useState('Colazione');
+
+  const weekDays = [
+    <TableCell key="empty"></TableCell>, 
+    ...getMonthDays(parseInt(anno), 8).map(day => {
+      return(
+          <TableCell key={day} align="right" style={{padding: '4px 16px'}}>
+            <b>{ day }</b>
+          </TableCell>
+        );
+      })
+  ];
+
+  const createData = () => {
+    
+  }
 
   return (
     <Fragment>
-      <WorkBenchTopBar headers={headers}/>
+      <WorkBenchTopBar>
+        <IconButton>
+            <EditIcon/>
+        </IconButton>
+        <SelectorMese setMese={setMese} mese={mese}/>
+        <SelectorAnno setAnno={setAnno} anno={anno}/>
+        <SelectorPasti setPasto={setPasto} pasto={pasto}/>
+        <SelectorPresenze setAzienda={setAzienda} azienda={azienda}/>
+      </WorkBenchTopBar>
       <SortingTable 
-        rows={rows}
         columns={weekDays}
       />
     </Fragment>
