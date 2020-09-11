@@ -19,7 +19,7 @@ const ListaMagazzini = () => {
     <List className={classes.workBench}>
       <ListItem>
         <StyledButton>
-            <LinkToPage page="Arquata_1" />
+            <LinkToPage page="Arquata-1" />
         </StyledButton>
         <ListItemSecondaryAction>
           <IconButton edge="end">
@@ -33,7 +33,7 @@ const ListaMagazzini = () => {
       <Divider />
       <ListItem>
         <StyledButton>
-            <LinkToPage page="Arquata_2" />
+            <LinkToPage page="Arquata-2" />
         </StyledButton>
         <ListItemSecondaryAction>
           <IconButton edge="end">

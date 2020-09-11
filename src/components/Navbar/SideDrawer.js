@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const mainPages = ['Mese', 'Menù', 'Ristorazione', 'Magazzino', 'Statistiche', 'Account'];
+const mainPages = ['Presenze Mese', 'Menù', 'Ristorazione', 'Magazzino', 'Statistiche', 'Account'];
 
 const menuSubList = [
   <WeekPicker id="weekPicker"/>, 

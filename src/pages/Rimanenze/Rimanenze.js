@@ -18,7 +18,7 @@ const Rimanenze = () => {
       <ListItem>
         <ListItemText primary="Rimanenze al 31/08/21"/>
         <ListItemSecondaryAction>
-          <NavLink style={{textDecoration: 'none'}} to="/display_rimanenza">
+          <NavLink style={{textDecoration: 'none'}} to="/display-rimanenza">
             <IconButton>
               <Visibility/>
             </IconButton>
@@ -32,7 +32,7 @@ const Rimanenze = () => {
       <ListItem>
         <ListItemText primary="Rimanenze al 30/09/21"/>
         <ListItemSecondaryAction>
-          <NavLink style={{textDecoration: 'none'}} to="/display_rimanenza">
+          <NavLink style={{textDecoration: 'none'}} to="/display-rimanenza">
             <IconButton>
               <Visibility/>
             </IconButton>

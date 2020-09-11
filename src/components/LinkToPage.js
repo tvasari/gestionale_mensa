@@ -17,7 +17,7 @@ const LinkToPage = ({ page, elemToAdd }) => {
 
     return(
         <NavLink 
-            to={`/${page.toLowerCase().replace(/\s/g, '_')}`} 
+            to={`/${page.toLowerCase().replace(/\s/g, '-')}`} 
             activeStyle={{color: '#d50000'}} 
             className={classes.link}
         >

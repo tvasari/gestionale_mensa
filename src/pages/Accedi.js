@@ -31,7 +31,7 @@ const Accedi = ({ setLoadedUser }) => {
 
   let accedi = () => {
     authentication.authenticate();
-    history.push('/italiana_mense_gestionale');
+    history.push('/italiana-mense-gestionale');
   }
 
   const submitLoginDetails = (email, password) => {

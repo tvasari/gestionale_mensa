@@ -9,7 +9,7 @@ const Selector = ({ label, options, disabled=false, setInputValue, inputValue })
       <Select
         value={inputValue}
         label={`${label}`} 
-        onChange={e => console.log(e.target.value)} 
+        onChange={e => setInputValue(e.target.value)} 
         native
       >
         {

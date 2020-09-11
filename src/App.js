@@ -35,18 +35,18 @@ const App = () => {
               <Accedi setLoadedUser={setLoadedUser} />
             </Route>
             <LoadedUserProvider user={loadedUser.fullName}>
-              <PrivateRoute path="/italiana_mense_gestionale" component={<PresenzeMese />} />
-              <PrivateRoute path="/mese" component={<PresenzeMese />} />
+              <PrivateRoute path="/italiana-mense-gestionale" component={<PresenzeMese />} />
+              <PrivateRoute path="/presenze-mese" component={<PresenzeMese />} />
               <PrivateRoute path="/menù" component={<Menu />} />
-              <PrivateRoute path="/costo_pasto" component={<CostoPasto />} />
-              <PrivateRoute path="/sintesi_del_mese" component={<SintesiMenu />} />
+              <PrivateRoute path="/costo-pasto" component={<CostoPasto />} />
+              <PrivateRoute path="/sintesi-del-mese" component={<SintesiMenu />} />
               <PrivateRoute path="/ristorazione" component={<Ristorazione />} />
               <PrivateRoute path="/magazzino" component={<TuttiMagazzini />} />
-              <PrivateRoute path="/arquata_1" component={<Magazzino />} />
+              <PrivateRoute path="/arquata-1" component={<Magazzino />} />
               <PrivateRoute path="/storico" component={<Storico />} />
               <PrivateRoute path="/ddt" component={<DDT />} />
               <PrivateRoute path="/rimanenze" component={<Rimanenze />} />
-              <PrivateRoute path="/display_rimanenza" component={<DisplayRimanenza />} />
+              <PrivateRoute path="/display-rimanenza" component={<DisplayRimanenza />} />
               <PrivateRoute path="/statistiche" component={<Statistiche />} />
             </LoadedUserProvider>
           </Switch>

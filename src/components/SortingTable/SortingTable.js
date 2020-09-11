@@ -20,7 +20,7 @@ const SortingTable = ({ rows, columns, dialog=false }) => {
     <TableContainer component={Paper} className={dialog ? classes.dialog : classes.container}>
       <Table>
         <SortingTableHeader columns={columns}/>
-        <SortingTableBody rows={rows} columns={columns}/>
+        <SortingTableBody rows={rows}/>
       </Table>
     </TableContainer>
   );

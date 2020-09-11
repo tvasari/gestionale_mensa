@@ -1,4 +1,3 @@
-
 const authentication = {
   isAuthenticated: false,
   authenticate() {
