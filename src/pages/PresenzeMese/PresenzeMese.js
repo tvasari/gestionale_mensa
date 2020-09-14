@@ -21,6 +21,7 @@ const PresenzeMese = () => {
   const [mese, setMese] = useState('Gennaio');
   const [anno, setAnno] = useState('2020');
   const [pasto, setPasto] = useState('Colazione');
+  const [presenzeArray, setPresenzeArray] = useState();
 
   const rowNames = [
     `${azienda} Badge`,
@@ -29,23 +30,23 @@ const PresenzeMese = () => {
     "TOT"
   ]
 
-  async function getPresenze(url) {
-    const response = await fetch(url);
-    return response.json()
-  }
+  useEffect(() => {
 
-  async function getFilteredPresenze() {
-    const data = await getPresenze('http://localhost:3001/presenze');
+    async function getPresenze() {
+      await fetch('http://localhost:3001/presenze')
+        .then(response => response.json())
+        .then(presenze => presenze.filter(objPresenza => {
+          return objPresenza.nome_azienda === azienda 
+          && objPresenza.nome_pasto === pasto 
+          && new Date(objPresenza.data).getMonth() === Calendar.monthStringToNumber(mese)
+          && new Date(objPresenza.data).getFullYear() === parseInt(anno)
+        }))
+        .then(filteredPresenze => setPresenzeArray(filteredPresenze))
+    }
 
-    const presenze = await data.filter(objPresenza => {
-      return objPresenza.nome_azienda === azienda 
-      && objPresenza.nome_pasto === pasto 
-      && new Date(objPresenza.data).getMonth() === Calendar.monthStringToNumber(mese)
-      && new Date(objPresenza.data).getFullYear() === parseInt(anno)
-    })
+    getPresenze();
 
-    return presenze
-  }
+  }, [azienda, pasto, mese, anno])
 
   const createWeekDaysCells = () => {
     return Calendar.getAllMonthDays(parseInt(anno), Calendar.monthStringToNumber(mese)).map((day, i) => {
@@ -69,7 +70,15 @@ const PresenzeMese = () => {
           <CompressedTableCell>{ row }</CompressedTableCell>
           {
             createWeekDaysCells().map(weekDay => {
-              return <CompressedTableCell key={weekDay.key}>{weekDay.props.monthdaynumber}</CompressedTableCell>
+              return presenzeArray !== undefined 
+              && new Date(presenzeArray[0].data).getDate() === weekDay.props.monthdaynumber
+              ? (
+                <CompressedTableCell key={weekDay.key}>
+                  { presenzeArray[0].numero_presenze }
+                </CompressedTableCell>
+              ) : (
+                <CompressedTableCell key={weekDay.key}></CompressedTableCell>
+              )
             })
           }
         </StyledTableRow>
