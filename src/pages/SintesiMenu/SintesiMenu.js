@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
   TableContainer, Table, TableBody, TableRow, TableCell, Paper 
 } from '@material-ui/core/';
-import getMonthDays from 'utils/getMonthDays';
 import BackArrowButton from 'components/BackArrowButton';
 import { SelectorAnno, SelectorMese } from 'components/Selectors';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
+import Calendar from 'utils/Calendar';
 
 const useStyles = makeStyles(theme => ({
   container: {...theme.workBench, overflow: 'auto', maxHeight: '80vh'},
@@ -15,8 +15,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const primiPiatti = getMonthDays(2020, 8).map(day => <TableCell>Pasta aglio olio e peperoncino</TableCell>)
-const weekDays = (style) => getMonthDays(2020, 8).map(day => <TableCell className={style}><b>{day}</b></TableCell>)
+const primiPiatti = Calendar.getAllMonthDays(2020, 8).map(day => <TableCell>Pasta aglio olio e peperoncino</TableCell>)
+const weekDays = (style) => Calendar.getAllMonthDays(2020, 8).map(day => <TableCell className={style}><b>{day}</b></TableCell>)
 
 const headers = [
   <BackArrowButton id="sMenuBackArrow" path="menù" />,

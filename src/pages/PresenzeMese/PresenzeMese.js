@@ -2,11 +2,10 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { IconButton, TableCell, TableHead, TableBody, TableContainer, Table, TableRow } from '@material-ui/core/';
 import EditIcon from '@material-ui/icons/Edit';
 import { makeStyles, styled } from '@material-ui/core';
-import getMonthDays from 'utils/getMonthDays';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import { SelectorPresenze, SelectorMese, SelectorAnno, SelectorPasti } from 'components/Selectors';
 import StyledTableRow from 'components/StyledTableRow';
-import monthToNumber from 'utils/monthToNumber';
+import Calendar from 'utils/Calendar';
 
 const useStyles = makeStyles(theme => ({
   container: {...theme.workBench, ...theme.container},
@@ -23,23 +22,6 @@ const PresenzeMese = () => {
   const [anno, setAnno] = useState('2020');
   const [pasto, setPasto] = useState('Colazione');
 
-  useEffect(() => {
-    fetch('http://localhost:3001/presenze')
-    .then(result => result.json())
-    .then(data => console.log(data))
-  });
-
-  const weekDays = [
-    <TableCell key="empty"></TableCell>, 
-    ...getMonthDays(parseInt(anno), monthToNumber(mese)).map(day => {
-      return(
-          <CompressedTableCell key={day} align="right">
-            <b>{ day }</b>
-          </CompressedTableCell>
-        );
-      })
-  ];
-
   const rowNames = [
     `${azienda} Badge`,
     `${azienda} Firme`,
@@ -47,16 +29,52 @@ const PresenzeMese = () => {
     "TOT"
   ]
 
+  async function getPresenze(url) {
+    const response = await fetch(url);
+    return response.json()
+  }
+
+  async function getFilteredPresenze() {
+    const data = await getPresenze('http://localhost:3001/presenze');
+
+    const presenze = await data.filter(objPresenza => {
+      return objPresenza.nome_azienda === azienda 
+      && objPresenza.nome_pasto === pasto 
+      && new Date(objPresenza.data).getMonth() === Calendar.monthStringToNumber(mese)
+      && new Date(objPresenza.data).getFullYear() === parseInt(anno)
+    })
+
+    return presenze
+  }
+
+  const createWeekDaysCells = () => {
+    return Calendar.getAllMonthDays(parseInt(anno), Calendar.monthStringToNumber(mese)).map((day, i) => {
+      return(
+        <CompressedTableCell key={day} monthdaynumber={i + 1} align="right">
+          <b>{ day }</b>
+        </CompressedTableCell>
+      );
+    })
+  }
+
+  const weekDays = [
+    <TableCell key="empty"></TableCell>,
+    ...createWeekDaysCells()
+  ];
+
   const createData = (columns, rows) => {
     return rows.map(row => {
       return (
         <StyledTableRow key={row}>
           <CompressedTableCell>{ row }</CompressedTableCell>
-
+          {
+            createWeekDaysCells().map(weekDay => {
+              return <CompressedTableCell key={weekDay.key}>{weekDay.props.monthdaynumber}</CompressedTableCell>
+            })
+          }
         </StyledTableRow>
       );
     })
-
   }
 
   return (

@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import TableCell from '@material-ui/core/TableCell';
-import getMonthDays from 'utils/getMonthDays';
 import BackArrowButton from 'components/BackArrowButton';
 import SortingTable from 'components/SortingTable/SortingTable';
 import { SelectorCategoria, SelectorAnno, SelectorMese } from 'components/Selectors';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
+import Calendar from 'utils/Calendar';
 
 const weekDays = [
   <TableCell></TableCell>, 
-  ...getMonthDays(2020, 8).map(day => {
+  ...Calendar.getAllMonthDays(2020, 8).map(day => {
     return(
       <TableCell align="right" style={{padding: '4px 16px'}}>
         <b>{ day }</b>
