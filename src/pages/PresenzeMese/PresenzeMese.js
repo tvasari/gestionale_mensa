@@ -70,15 +70,18 @@ const PresenzeMese = () => {
           <CompressedTableCell>{ row }</CompressedTableCell>
           {
             createWeekDaysCells().map(weekDay => {
-              return presenzeArray !== undefined 
-              && new Date(presenzeArray[0].data).getDate() === weekDay.props.monthdaynumber
-              ? (
-                <CompressedTableCell key={weekDay.key}>
-                  { presenzeArray[0].numero_presenze }
-                </CompressedTableCell>
-              ) : (
-                <CompressedTableCell key={weekDay.key}></CompressedTableCell>
-              )
+              if (presenzeArray !== undefined && presenzeArray.length > 0) { 
+                return new Date(presenzeArray[0].data).getDate() === weekDay.props.monthdaynumber
+                ? (
+                  <CompressedTableCell key={weekDay.key}>
+                    { presenzeArray[0].numero_presenze }
+                  </CompressedTableCell>
+                ) : (
+                  <CompressedTableCell key={weekDay.key}></CompressedTableCell>
+                )
+              } else {
+                return <CompressedTableCell key={weekDay.key}></CompressedTableCell>
+              }
             })
           }
         </StyledTableRow>
