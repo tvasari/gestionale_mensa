@@ -1,7 +1,15 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { IconButton, TableCell, TableHead, TableBody, TableContainer, Table, TableRow } from '@material-ui/core/';
-import EditIcon from '@material-ui/icons/Edit';
 import { makeStyles, styled } from '@material-ui/core';
+import { 
+  IconButton, 
+  TableCell, 
+  TableHead, 
+  TableBody, 
+  TableContainer, 
+  Table, 
+  TableRow 
+} from '@material-ui/core/';
+import EditIcon from '@material-ui/icons/Edit';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import { SelectorPresenze, SelectorMese, SelectorAnno, SelectorPasti } from 'components/Selectors';
 import StyledTableRow from 'components/StyledTableRow';
@@ -48,8 +56,17 @@ const PresenzeMese = () => {
 
   }, [azienda, pasto, mese, anno])
 
+  const getAllMonthDays = (anno, mese) => {
+    const { getAllMonthDays, monthStringToNumber } = Calendar;
+
+    return getAllMonthDays(
+      parseInt(anno),
+      monthStringToNumber(mese)
+    )
+  }
+
   const createWeekDaysCells = () => {
-    return Calendar.getAllMonthDays(parseInt(anno), Calendar.monthStringToNumber(mese)).map((day, i) => {
+    return getAllMonthDays(anno, mese).map((day, i) => {
       return(
         <CompressedTableCell key={day} monthdaynumber={i + 1} align="right">
           <b>{ day }</b>
@@ -58,30 +75,34 @@ const PresenzeMese = () => {
     })
   }
 
-  const weekDays = [
+  const weekDaysRow = [
     <TableCell key="empty"></TableCell>,
     ...createWeekDaysCells()
   ];
 
-  const createData = (columns, rows) => {
+  const isPresenzeArrayValid = (presenzeArray) => {
+    return presenzeArray !== undefined && presenzeArray.length > 0 ? true : false;
+  }
+
+  const isSameMonthDay = (presenzaDate, monthDayNumber) => {
+    return new Date(presenzaDate).getDate() === monthDayNumber ? true : false;
+  }
+
+  const createData = (rows) => {
     return rows.map(row => {
       return (
         <StyledTableRow key={row}>
           <CompressedTableCell>{ row }</CompressedTableCell>
           {
             createWeekDaysCells().map(weekDay => {
-              if (presenzeArray !== undefined && presenzeArray.length > 0) { 
-                return new Date(presenzeArray[0].data).getDate() === weekDay.props.monthdaynumber
+              return isPresenzeArrayValid(presenzeArray) ? 
+                isSameMonthDay(presenzeArray[0].data, weekDay.props.monthdaynumber)
                 ? (
                   <CompressedTableCell key={weekDay.key}>
                     { presenzeArray[0].numero_presenze }
                   </CompressedTableCell>
-                ) : (
-                  <CompressedTableCell key={weekDay.key}></CompressedTableCell>
-                )
-              } else {
-                return <CompressedTableCell key={weekDay.key}></CompressedTableCell>
-              }
+                ) : <CompressedTableCell key={weekDay.key}></CompressedTableCell>
+              : <CompressedTableCell key={weekDay.key}></CompressedTableCell>
             })
           }
         </StyledTableRow>
@@ -104,11 +125,11 @@ const PresenzeMese = () => {
         <Table>
           <TableHead>
             <TableRow>
-              { weekDays }
+              { weekDaysRow }
             </TableRow>
           </TableHead>
           <TableBody>
-            { createData(weekDays, rowNames) }
+            { createData(weekDaysRow, rowNames) }
           </TableBody>
         </Table>
       </TableContainer>
