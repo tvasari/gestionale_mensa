@@ -43,11 +43,11 @@ const PresenzeMese = () => {
     async function getPresenze() {
       await fetch('http://localhost:3001/presenze')
         .then(response => response.json())
-        .then(presenze => presenze.filter(objPresenza => {
-          return objPresenza.nome_azienda === azienda 
-          && objPresenza.nome_pasto === pasto 
-          && new Date(objPresenza.data).getMonth() === Calendar.monthStringToNumber(mese)
-          && new Date(objPresenza.data).getFullYear() === parseInt(anno)
+        .then(presenze => presenze.filter(presenza => {
+          return presenza.nome_azienda === azienda 
+          && presenza.nome_pasto === pasto 
+          && new Date(presenza.data).getMonth() === Calendar.monthStringToNumber(mese)
+          && new Date(presenza.data).getFullYear() === parseInt(anno)
         }))
         .then(filteredPresenze => setPresenzeArray(filteredPresenze))
     }
@@ -129,7 +129,7 @@ const PresenzeMese = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            { createData(weekDaysRow, rowNames) }
+            { createData(rowNames) }
           </TableBody>
         </Table>
       </TableContainer>

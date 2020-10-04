@@ -88,7 +88,7 @@ const SelectorPasti = ({ setPasto, pasto}) => {
       setInputValue={setPasto} 
       inputValue={pasto} 
       label="Filtra" 
-      options={["Colazione", "Pranzo", "Cena", "Spuntini"]} 
+      options={["Colazione", "Pranzo", "Cena", "Spuntino"]} 
     />
   );
 }
