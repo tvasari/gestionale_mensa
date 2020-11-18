@@ -17,13 +17,9 @@ const CollapsableList = ({ elemsToDispaly }) => {
     <Collapse in={true} timeout="auto" unmountOnExit>
       <List component="div" disablePadding>
         {
-          elemsToDispaly.map((elem, i) => {
+          elemsToDispaly.map(elem => {
             return(
-              <ListItem
-                button
-                key={elem.props.id ? elem.props.id : elem.key} 
-                className={classes.nested}
-              >
+              <ListItem button key={elem.props.id ? elem.props.id : elem.key} className={classes.nested}>
                 { elem }
               </ListItem>
             );

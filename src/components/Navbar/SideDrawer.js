@@ -9,6 +9,7 @@ import { AddBox, Edit, DateRange, KeyboardArrowDown, KeyboardArrowUp } from '@ma
 import WeekPicker from 'components/Navbar/WeekPicker';
 import CollapsableList from 'components/Navbar/CollapsableList';
 import LinkToPage from 'components/LinkToPage';
+import staticText from 'staticText.json';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -24,33 +25,36 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const mainPages = ['Presenze Mese', 'Menù', 'Ristorazione', 'Magazzino', 'Statistiche', 'Account'];
+const { pages, subList } = staticText[0].SideDrawer;
+const { presenzeMese, menu, ristorazione, magazzino, statistiche, account } = pages;
+
+const mainPages = [presenzeMese, menu, ristorazione, magazzino, statistiche, account];
 
 const menuSubList = [
   <WeekPicker id="weekPicker"/>, 
   <Fragment key="nuovoMenù">
-    <ListItemText primary="Nuovo Menù" />
+    <ListItemText primary={subList.nuovoMenu}/>
     <AddBox id="addBoxIcon" color="action"/>
   </Fragment>,  
   <Fragment key="modificaMenù">
-    <ListItemText primary="Modifica Menù" /> 
+    <ListItemText primary={subList.modificaMenu} /> 
     <Edit id="editIcon" color="action"/>
   </Fragment>,
-  <LinkToPage id="sintesiDelMese" page="Sintesi del Mese" elemToAdd={ <DateRange color="action"/> } />
+  <LinkToPage id="sintesiDelMese" page={subList.sintesiMese} elemToAdd={ <DateRange color="action"/> }/>
 ]
 
 const magazzinoSubList = [
-  <LinkToPage id="storico" page="Storico"/>,
-  <LinkToPage id="ddt" page="DDT"/>,
-  <LinkToPage id="rimanenze" page="Rimanenze"/>
+  <LinkToPage id="storico" page={subList.storico}/>,
+  <LinkToPage id="ddt" page={subList.ddt}/>,
+  <LinkToPage id="rimanenze" page={subList.rimanenze}/>
 ]
 
-const displaySubList = (page) => {
+const displaySubList = page => {
   switch(page) {
     case "Menù":
-      return <CollapsableList elemsToDispaly={menuSubList} />;
+      return <CollapsableList elemsToDispaly={menuSubList}/>;
     case "Magazzino":
-      return <CollapsableList elemsToDispaly={magazzinoSubList} />;
+      return <CollapsableList elemsToDispaly={magazzinoSubList}/>;
     default:
       return null;
   }
@@ -60,16 +64,12 @@ const SideDrawer = () => {
   const classes = useStyles();
 
   return(
-    <Drawer
-      className={classes.drawer}
-      variant="permanent"
-      classes={{paper: classes.drawerPaper}}
-    >
+    <Drawer className={classes.drawer} variant="permanent" classes={{paper: classes.drawerPaper}}>
       <Toolbar />
       <div className={classes.drawerContainer}>
         <List>
           {
-            mainPages.map((page, index) => (
+            mainPages.map(page => (
               <div key={page + 'view'} className="view">
                 <ListItem key={page}>
                   <LinkToPage page={page} key={page}/>

@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import logo from 'img/logo.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, Toolbar, Box, Avatar, Typography, Button } from '@material-ui/core/';
-import { LoadedUserContext } from 'utils/LoadedUser'; 
+import { LoadedUserContext } from 'utils/LoadedUser';
+import staticText from "staticText.json";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -28,9 +29,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const logoutRequest = () => {
-  fetch('http://localhost:3001/esci')
-}
+const logoutRequest = () => fetch('http://localhost:3001/esci');
 
 const TopBar = () => {
   const classes = useStyles();
@@ -48,9 +47,9 @@ const TopBar = () => {
           </Box>
           <Typography>{ loadedUserFullName }</Typography>
         </div>
-        <NavLink to="/accedi">
+        <NavLink className={classes.navLink} to="/accedi">
           <Button variant="text" color="secondary" onClick={() => logoutRequest()}>
-            Esci
+            { staticText[0].TopBar.esci }
           </Button>
         </NavLink>
       </Toolbar>

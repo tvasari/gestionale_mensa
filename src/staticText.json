@@ -16,7 +16,7 @@
       "isRegistered": "Hai già un account? Accedi"
     },
     "SideDrawer": {
-      "mainPages": {
+      "pages": {
         "presenzeMese": "Presenze Mese",
         "menu": "Menù",
         "ristorazione": "Ristorazione",
@@ -24,8 +24,21 @@
         "statistiche": "Statistiche",
         "account": "Account"
       },
-      "menuSubList": {},
-      "magazzinoSubList": {}
+      "subList": {
+        "nuovoMenu": "Nuovo Menù",
+        "modificaMenu": "Modifica Menù",
+        "sintesiMese": "Sintesi del Mese",
+        "storico": "Storico",
+        "ddt": "DDT",
+        "rimanenze": "Rimanenze",
+        "settimana": "Settimana",
+        "settimanaDel": "Settimana del",
+        "oggi": "Oggi",
+        "annulla": "Annulla"
+      }
+    },
+    "TopBar": {
+      "esci": "Esci"
     }
   }
 ]
