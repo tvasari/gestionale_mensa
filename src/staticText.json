@@ -1,0 +1,31 @@
+[
+  {
+    "Accedi": {
+      "login": "Accedi",
+      "forgot": "Hai dimenticato la password?",
+      "notRegistered": "Non hai un account? Registrati",
+      "email": "Indirizzo Email",
+      "password": "Password"
+    },
+    "Registrati": {
+      "register": "Registrati",
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "Indirizzo Email",
+      "password": "Password",
+      "isRegistered": "Hai già un account? Accedi"
+    },
+    "SideDrawer": {
+      "mainPages": {
+        "presenzeMese": "Presenze Mese",
+        "menu": "Menù",
+        "ristorazione": "Ristorazione",
+        "magazzino": "Magazzino",
+        "statistiche": "Statistiche",
+        "account": "Account"
+      },
+      "menuSubList": {},
+      "magazzinoSubList": {}
+    }
+  }
+]

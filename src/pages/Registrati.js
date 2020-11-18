@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
-import { 
-  Button, CssBaseline, TextField, Grid, Typography, Container 
-} from '@material-ui/core/';
+import { makeStyles } from '@material-ui/core/styles';
+import { Button, CssBaseline, TextField, Grid, Typography, Container } from '@material-ui/core/';
+import staticText from 'staticText.json';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -28,8 +27,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 const Registrati = () => {
   const classes = useStyles();
+  const { Registrati } = staticText[0];
   const [nome, setNome] = useState('');
   const [cognome, setCognome] = useState('');
   const [email, setEmail] = useState('');
@@ -58,9 +59,7 @@ const Registrati = () => {
     <Container component="main" maxWidth="xs" className={classes.container}>
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Registrati
-        </Typography>
+        <Typography component="h1" variant="h5"> {Registrati.register} </Typography>
         <Typography component='p' variant="body1" color={message.color}>
           { message.message }
         </Typography>
@@ -74,7 +73,7 @@ const Registrati = () => {
                 required
                 fullWidth
                 id="firstName"
-                label="Nome"
+                label={Registrati.firstName}
                 autoFocus
                 onChange={(e) => setNome(e.target.value)}
               />
@@ -85,7 +84,7 @@ const Registrati = () => {
                 required
                 fullWidth
                 id="lastName"
-                label="Cognome"
+                label={Registrati.lastName}
                 name="lastName"
                 autoComplete="lname"
                 onChange={(e) => setCognome(e.target.value)}
@@ -97,7 +96,7 @@ const Registrati = () => {
                 required
                 fullWidth
                 id="email"
-                label="Indirizzo Email"
+                label={Registrati.email}
                 name="email"
                 autoComplete="email"
                 onChange={(e) => setEmail(e.target.value)}
@@ -109,7 +108,7 @@ const Registrati = () => {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label={Registrati.password}
                 type="password"
                 id="password"
                 autoComplete="current-password"
@@ -124,12 +123,12 @@ const Registrati = () => {
             className={classes.submit}
             onClick={() => submitUserDetails(nome, cognome, email, password)}
           >
-            Registrati
+            {Registrati.register}
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
               <NavLink to="/accedi" style={{textDecoration: 'none'}}>
-                Hai già un account? Accedi
+                {Registrati.isRegistered}
               </NavLink>
             </Grid>
           </Grid>

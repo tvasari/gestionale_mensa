@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { NavLink, useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
 import { 
   Button, CssBaseline, TextField, Link, Grid, Typography, Container
 } from '@material-ui/core/';
 import authentication from 'utils/authentication';
+import staticText from 'staticText.json';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -22,8 +23,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 const Accedi = ({ setLoadedUser }) => {
   const classes = useStyles();
+  const { Accedi } = staticText[0];
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState({});
@@ -59,9 +62,7 @@ const Accedi = ({ setLoadedUser }) => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Accedi
-        </Typography>
+        <Typography component="h1" variant="h5"> {Accedi.login} </Typography>
         <Typography component='p' variant="body1" color={message.color}>
           { message.message }
         </Typography>
@@ -72,7 +73,7 @@ const Accedi = ({ setLoadedUser }) => {
             required
             fullWidth
             id="email"
-            label="Indirizzo Email"
+            label={Accedi.email}
             name="email"
             autoComplete="email"
             autoFocus
@@ -84,7 +85,7 @@ const Accedi = ({ setLoadedUser }) => {
             required
             fullWidth
             name="password"
-            label="Password"
+            label={Accedi.password}
             type="password"
             id="password"
             autoComplete="current-password"
@@ -95,19 +96,19 @@ const Accedi = ({ setLoadedUser }) => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={() => submitLoginDetails(email, password)}
+            onClick={() => accedi()} // To allow login without backend // submitLoginDetails(email, password)}
           >
-            Accedi
+            {Accedi.login}
           </Button>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                Hai dimenticato la password?
+                {Accedi.forgot}
               </Link>
             </Grid>
             <Grid item>
             <NavLink to="/registrati" style={{textDecoration: 'none'}}>
-                Non hai un account? Registrati
+              {Accedi.notRegistered}
             </NavLink>
             </Grid>
           </Grid>

@@ -5,9 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { List, ListItem, ListItemText } from '@material-ui/core/';
 import IconButton from '@material-ui/core/IconButton';
 import Divider from '@material-ui/core/Divider';
-import { 
-  AddBox, Edit, DateRange, KeyboardArrowDown, KeyboardArrowUp
-} from '@material-ui/icons/';
+import { AddBox, Edit, DateRange, KeyboardArrowDown, KeyboardArrowUp } from '@material-ui/icons/';
 import WeekPicker from 'components/Navbar/WeekPicker';
 import CollapsableList from 'components/Navbar/CollapsableList';
 import LinkToPage from 'components/LinkToPage';
@@ -38,7 +36,7 @@ const menuSubList = [
     <ListItemText primary="Modifica Menù" /> 
     <Edit id="editIcon" color="action"/>
   </Fragment>,
-  <LinkToPage id="sintesiDelMese" page="Sintesi del Mese" elemToAdd={<DateRange color="action"/>} />
+  <LinkToPage id="sintesiDelMese" page="Sintesi del Mese" elemToAdd={ <DateRange color="action"/> } />
 ]
 
 const magazzinoSubList = [
