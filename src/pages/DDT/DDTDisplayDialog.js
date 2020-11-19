@@ -27,17 +27,13 @@ const headerLabels = magazzinoHeaderLabels.map((headerLabel, i) => {
   );
 });
 
+
 const DDTDisplayDialog = ({ trigger }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClickOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return(
     <Fragment>
@@ -47,11 +43,7 @@ const DDTDisplayDialog = ({ trigger }) => {
         <DialogContent className={classes.container}>
           <Typography gutterBottom color="primary" variant="body1">25 Agosto 2020</Typography>
           <Typography gutterBottom color="primary" variant="body1">Fornitore: AIA</Typography>
-          <SortingTable 
-            rows={magazzinoRows} 
-            columns={headerLabels}
-            dialog={true}
-          />
+          <SortingTable rows={magazzinoRows} columns={headerLabels} dialog={true}/>
         </DialogContent>
         <DialogActions>
         </DialogActions>

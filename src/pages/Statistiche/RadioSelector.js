@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
+import staticText from "staticText.json";
 
 const useStyles = makeStyles(theme => ({
   ul: {
@@ -18,8 +19,14 @@ const RadioSelector = () => {
 
   return(
     <ul className={classes.ul}>
-      <li className={classes.li}><input type="radio" value="Anno" name="periodo"/>Anno</li>
-      <li className={classes.li}><input type="radio" value="Mese" name="periodo"/>Mese</li>
+      <li className={classes.li}>
+        <input type="radio" value="Anno" name="periodo"/>
+        { staticText.Selectors.anno }
+      </li>
+      <li className={classes.li}>
+        <input type="radio" value="Mese" name="periodo"/>
+        { staticText.Selectors.mese }
+      </li>
     </ul>
   );
 }

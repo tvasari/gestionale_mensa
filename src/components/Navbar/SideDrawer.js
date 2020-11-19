@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const { pages, subList } = staticText[0].SideDrawer;
+const { pages, subList } = staticText.SideDrawer;
 const { presenzeMese, menu, ristorazione, magazzino, statistiche, account } = pages;
 
 const mainPages = [presenzeMese, menu, ristorazione, magazzino, statistiche, account];

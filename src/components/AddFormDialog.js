@@ -9,6 +9,7 @@ import { it } from 'date-fns/locale'
 import format from "date-fns/format";
 import StockItemList from 'components/StockItemList';
 import { SelectorCategoria } from 'components/Selectors';
+import staticText from "staticText.json";
 
 class LocalizedUtils extends DateFnsUtils {
   getDatePickerHeaderText(date) {
@@ -28,6 +29,7 @@ const useStyles = makeStyles({
 const AddFormDialog = ({ trigger, title, textFieldPlaceholder }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [categoria, setCategoria] = useState("Ortofrutta");
   const [selectedDate, handleDateChange] = useState(new Date());
 
   const handleClickOpen = () => {
@@ -42,7 +44,7 @@ const AddFormDialog = ({ trigger, title, textFieldPlaceholder }) => {
     <Fragment>
       <Button onClick={handleClickOpen} variant="text"><b>{ trigger }</b></Button>
       <Dialog fullWidth open={open} onClose={handleClose}>
-        <DialogTitle>Aggiungi { title }</DialogTitle>
+        <DialogTitle>{ `${staticText.AddItemDialog.aggiungi} ${title}` }</DialogTitle>
         <DialogContent className={classes.container}>
           <MuiPickersUtilsProvider utils={LocalizedUtils} locale={it}>
             <DatePicker
@@ -63,13 +65,13 @@ const AddFormDialog = ({ trigger, title, textFieldPlaceholder }) => {
             placeholder={`Nome ${textFieldPlaceholder}`}
             className={classes.elemMargin} 
           />
-          <SelectorCategoria/>
+          <SelectorCategoria categoria={categoria} setCategoria={setCategoria}/>
           <StockItemList />
-          <Button color="primary"><b>Aggiungi Categoria</b></Button>
+          <Button color="primary"><b>{staticText.AddFormDialog.categoria}</b></Button>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Conferma
+            { staticText.AddFormDialog.conferma }
           </Button>
         </DialogActions>
       </Dialog>

@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Registrati = () => {
   const classes = useStyles();
-  const { Registrati } = staticText[0];
+  const { Registrati } = staticText;
   const [nome, setNome] = useState('');
   const [cognome, setCognome] = useState('');
   const [email, setEmail] = useState('');

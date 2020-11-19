@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import BackArrowButton from 'components/BackArrowButton';
 import SortingTable from 'components/SortingTable/SortingTable';
@@ -10,14 +10,12 @@ const weekDays = [
   <TableCell></TableCell>, 
   ...Calendar.getAllMonthDays(2020, 8).map(day => {
     return(
-      <TableCell align="right" style={{padding: '4px 16px'}}>
-        <b>{ day }</b>
-      </TableCell>
+      <TableCell align="right" style={{padding: '4px 16px'}}><b>{ day }</b></TableCell>
     );
   })
 ];
 
-const numeri = weekDays.map(day => parseInt((Math.random() * 101).toFixed(0)))
+const numeri = weekDays.map(() => parseInt((Math.random() * 101).toFixed(0)))
 
 numeri.pop()
 
@@ -28,22 +26,21 @@ const rows = {
   Zucchero: [...numeri]
 }
 
-const headers = [
-  <BackArrowButton id="storicoBackArrow" path="arquata_1" />,
-  <SelectorMese id="storicoMese"/>,
-  <SelectorAnno id="storicoAnno"/>,
-  <SelectorCategoria id="storicoCategoria"/>
-]
-
 
 const Storico = () => {
+  const [categoria, setCategoria] = useState("Ortofrutta");
+  const [mese, setMese] = useState('Gennaio');
+  const [anno, setAnno] = useState('2020');
+
   return (
     <Fragment>
-      <WorkBenchTopBar headers={headers}/>
-      <SortingTable 
-        rows={rows} 
-        columns={weekDays} 
-      />
+      <WorkBenchTopBar>
+        <BackArrowButton id="storicoBackArrow" path="arquata-1" />
+        <SelectorMese id="storicoMese" setMese={setMese} mese={mese}/>
+        <SelectorAnno id="storicoAnno" setAnno={setAnno} anno={anno}/>
+        <SelectorCategoria id="storicoCategoria" categoria={categoria} setCategoria={setCategoria}/>
+      </WorkBenchTopBar>
+      <SortingTable rows={rows} columns={weekDays}/>
     </Fragment>
   );
 }

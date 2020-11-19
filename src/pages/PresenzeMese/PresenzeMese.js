@@ -28,7 +28,7 @@ const PresenzeMese = () => {
     `${azienda} Firme`,
     `TOT ${azienda}`,
     "TOT"
-  ]
+  ];
 
   useEffect(() => {
 
@@ -46,7 +46,7 @@ const PresenzeMese = () => {
 
     getPresenze();
 
-  }, [azienda, pasto, mese, anno])
+  }, [azienda, pasto, mese, anno]);
 
   const getAllMonthDays = (anno, mese) => {
     const { getAllMonthDays, monthStringToNumber } = Calendar;
@@ -67,7 +67,7 @@ const PresenzeMese = () => {
     })
   }
 
-  const weekDaysRow = [ <TableCell key="empty"></TableCell>, ...createWeekDaysCells() ];
+  const weekDaysRow = [<TableCell key="empty"></TableCell>, ...createWeekDaysCells()];
 
   const isPresenzeArrayValid = presenzeArray => {
     return presenzeArray !== undefined && presenzeArray.length > 0 ? true : false;
@@ -101,9 +101,7 @@ const PresenzeMese = () => {
   return (
     <Fragment>
       <WorkBenchTopBar>
-        <IconButton>
-            <EditIcon/>
-        </IconButton>
+        <IconButton><EditIcon/></IconButton>
         <SelectorMese setMese={setMese} mese={mese}/>
         <SelectorAnno setAnno={setAnno} anno={anno}/>
         <SelectorPasti setPasto={setPasto} pasto={pasto}/>
@@ -112,9 +110,7 @@ const PresenzeMese = () => {
       <TableContainer className={classes.container}>
         <Table>
           <TableHead>
-            <TableRow>
-              { weekDaysRow }
-            </TableRow>
+            <TableRow>{ weekDaysRow }</TableRow>
           </TableHead>
           <TableBody>
             { createData(rowNames) }

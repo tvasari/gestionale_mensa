@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { InputBase, Paper, IconButton } from '@material-ui/core/';
 import SearchIcon from '@material-ui/icons/Search';
+import staticText from "staticText.json";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,7 +27,7 @@ const SearchBar = () => {
     <Paper component="form" className={classes.root}>
       <InputBase
         className={classes.input}
-        placeholder="Cerca"
+        placeholder={staticText.SearchBar.cerca}
         inputProps={{ 'aria-label': 'search google maps' }}
       />
       <IconButton type="submit" className={classes.iconButton}>

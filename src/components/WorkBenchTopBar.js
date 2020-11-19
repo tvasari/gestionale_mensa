@@ -18,9 +18,7 @@ const WorkBenchTopBar = ({ children }) => {
 
   return (
     <AppBar position="static" className={classes.appBar}>
-      <Toolbar>
-        { children }
-      </Toolbar>
+      <Toolbar>{ children }</Toolbar>
     </AppBar>
   );
 };

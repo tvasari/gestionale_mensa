@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { TableCell, Typography } from '@material-ui/core/';
 import SortingTable from 'components/SortingTable/SortingTable';
 import { SelectorCategoria } from 'components/Selectors';
@@ -8,16 +8,6 @@ import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import { magazzinoHeaderLabels, magazzinoRows } from 'utils/fakeData';
 
 const oggi = format(new Date(), "d MMM yyyy", { locale: it });
-
-const headers = [
-  <Typography id="magazzinoNomeMagazzino" color="primary" variant="body1">
-    <b>Nome_Magazzino</b>
-  </Typography>,
-  <Typography id="magazzinoDataDiOggi" color="primary" variant="body1">
-    <b>{ oggi }</b>
-  </Typography>,
-  <SelectorCategoria id="magazzinoCategoria"/>
-];
 
 const headerLabels = magazzinoHeaderLabels.map((headerLabel, i) => {
   return(
@@ -31,14 +21,22 @@ const headerLabels = magazzinoHeaderLabels.map((headerLabel, i) => {
   );
 });
 
+
 const Magazzino = () => {
+  const [categoria, setCategoria] = useState("Ortofrutta");
+
   return (
     <Fragment>
-      <WorkBenchTopBar headers={headers}/>
-      <SortingTable 
-        rows={magazzinoRows} 
-        columns={headerLabels}
-      />
+      <WorkBenchTopBar>
+        <Typography id="magazzinoNomeMagazzino" color="primary" variant="body1">
+          <b>Nome_Magazzino</b>
+        </Typography>
+        <Typography id="magazzinoDataDiOggi" color="primary" variant="body1">
+          <b>{ oggi }</b>
+        </Typography>
+        <SelectorCategoria id="magazzinoCategoria" categoria={categoria} setCategoria={setCategoria}/>
+      </WorkBenchTopBar>
+      <SortingTable rows={magazzinoRows} columns={headerLabels}/>
     </Fragment>
   );
 }

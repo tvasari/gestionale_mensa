@@ -1,44 +1,88 @@
-[
-  {
-    "Accedi": {
-      "login": "Accedi",
-      "forgot": "Hai dimenticato la password?",
-      "notRegistered": "Non hai un account? Registrati",
-      "email": "Indirizzo Email",
-      "password": "Password"
+{
+  "Accedi": {
+    "login": "Accedi",
+    "forgot": "Hai dimenticato la password?",
+    "notRegistered": "Non hai un account? Registrati",
+    "email": "Indirizzo Email",
+    "password": "Password"
+  },
+  "Registrati": {
+    "register": "Registrati",
+    "firstName": "Nome",
+    "lastName": "Cognome",
+    "email": "Indirizzo Email",
+    "password": "Password",
+    "isRegistered": "Hai già un account? Accedi"
+  },
+  "SideDrawer": {
+    "pages": {
+      "presenzeMese": "Presenze Mese",
+      "menu": "Menù",
+      "ristorazione": "Ristorazione",
+      "magazzino": "Magazzino",
+      "statistiche": "Statistiche",
+      "account": "Account"
     },
-    "Registrati": {
-      "register": "Registrati",
-      "firstName": "Nome",
-      "lastName": "Cognome",
-      "email": "Indirizzo Email",
-      "password": "Password",
-      "isRegistered": "Hai già un account? Accedi"
-    },
-    "SideDrawer": {
-      "pages": {
-        "presenzeMese": "Presenze Mese",
-        "menu": "Menù",
-        "ristorazione": "Ristorazione",
-        "magazzino": "Magazzino",
-        "statistiche": "Statistiche",
-        "account": "Account"
-      },
-      "subList": {
-        "nuovoMenu": "Nuovo Menù",
-        "modificaMenu": "Modifica Menù",
-        "sintesiMese": "Sintesi del Mese",
-        "storico": "Storico",
-        "ddt": "DDT",
-        "rimanenze": "Rimanenze",
-        "settimana": "Settimana",
-        "settimanaDel": "Settimana del",
-        "oggi": "Oggi",
-        "annulla": "Annulla"
-      }
-    },
-    "TopBar": {
-      "esci": "Esci"
+    "subList": {
+      "nuovoMenu": "Nuovo Menù",
+      "modificaMenu": "Modifica Menù",
+      "sintesiMese": "Sintesi del Mese",
+      "storico": "Storico",
+      "ddt": "DDT",
+      "rimanenze": "Rimanenze",
+      "settimana": "Settimana",
+      "oggi": "Oggi",
+      "annulla": "Annulla"
     }
+  },
+  "TopBar": {
+    "esci": "Esci"
+  },
+  "Piatto": {
+    "somma": "Somma"
+  },
+  "Totali": {
+    "pasti": "Numero Pasti",
+    "costo": "Costo Totale",
+    "costoPerPasto": "Costo per Pasto",
+    "totale": "Totale"
+  },
+  "ListaMagazzini": {
+    "aggiungi": "Aggiungi Nuovo"
+  },
+  "AddItemDialog": {
+    "aggiungiOggetto": "Aggiungi Oggetto",
+    "euro": "€",
+    "aggiungi": "Aggiungi",
+    "costoUm": "Costo/UM",
+    "ingredienti": "Ingredienti"
+  },
+  "Selectors": {
+    "presenze": "Presenze",
+    "aggiungi": "Aggiungi",
+    "categoria": "Categoria",
+    "mese": "Mese",
+    "anno": "Anno",
+    "filtra": "Filtra",
+    "um": "UM"
+  },
+  "ItemList": {
+    "piatti": "Piatti",
+    "ingredienti": "Ingredienti",
+    "primary": "Nome del piatto o ingrediente",
+    "secondary": "ingredienti del piatto o um e costo/um dell'ingrediente"
+  },
+  "SearchBar": {
+    "cerca": "Cerca"
+  },
+  "SintesiMenu": {
+    "pranzo": "Pranzo",
+    "cena": "Cena",
+    "primi": "Primi",
+    "secondi": "Secondi"
+  },
+  "AddFormDialog": {
+    "categoria": "Aggiungi Categoria",
+    "conferma": "Conferma"
   }
-]
+}

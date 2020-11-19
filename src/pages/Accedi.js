@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Accedi = ({ setLoadedUser }) => {
   const classes = useStyles();
-  const { Accedi } = staticText[0];
+  const { Accedi } = staticText;
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState({});

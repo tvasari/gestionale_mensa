@@ -1,20 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import Chart from 'pages/Statistiche/Chart';
 import { SelectorAnno, SelectorMese, SelectorPastiPrincipali } from 'components/Selectors/';
 import RadioSelector from 'pages/Statistiche/RadioSelector';
 
-const headers = [
-  <RadioSelector id="statRadio"/>,
-  <SelectorMese id="statMese" disabled={true}/>,
-  <SelectorAnno id="statAnno"/>,
-  <SelectorPastiPrincipali id="statPasti"/>,
-]
 
 const Statistiche = () => {
+  const [pastoPrincipale, setPastoPrincipale] = useState("");
+  const [mese, setMese] = useState('Gennaio');
+  const [anno, setAnno] = useState('2020');
+
   return (
     <Fragment>
-      <WorkBenchTopBar headers={headers}/>
+      <WorkBenchTopBar>
+        <RadioSelector id="statRadio"/>,
+        <SelectorMese id="statMese" disabled={true} setMese={setMese} mese={mese}/>,
+        <SelectorAnno id="statAnno" setAnno={setAnno} anno={anno}/>,
+        <SelectorPastiPrincipali 
+          id="statPasti" 
+          setPastoPrincipale={setPastoPrincipale} 
+          pastoPrincipale={pastoPrincipale}
+        />
+      </WorkBenchTopBar>
       <div style={{width: '80%', float: 'right', marginTop: '50px'}}>
         <Chart />
       </div>

@@ -4,6 +4,7 @@ import {
   List, ListItem, ListSubheader, ListItemText, ListItemSecondaryAction, IconButton 
 } from '@material-ui/core/';
 import { Edit, Delete } from '@material-ui/icons';
+import staticText from "staticText.json";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,19 +23,20 @@ const useStyles = makeStyles((theme) => ({
 
 const ItemList = () => {
   const classes = useStyles();
+  const { ItemList } = staticText;
 
   return(
     <List className={classes.root} subheader={<li />}>
-      <ListSubheader className={classes.subHeader}>{`Piatti`}</ListSubheader>
+      <ListSubheader className={classes.subHeader}>{ ItemList.piatti }</ListSubheader>
       {
         [0, 1, 2, 3].map((sectionId) => (
           <li key={`section-${sectionId}`} className={classes.listSection}>
             <ul className={classes.ul}>
-              {[0, 1, 2].map((item) => (
+              {[0, 1, 2].map(() => (
                 <ListItem>
                   <ListItemText
-                    primary="Nome del piatto o ingrediente"
-                    secondary="ingredienti del piatto o um e costo/um dell'ingrediente"
+                    primary={ItemList.primary}
+                    secondary={ItemList.secondary}
                   />
                   <ListItemSecondaryAction>
                     <IconButton edge="end">
@@ -50,16 +52,16 @@ const ItemList = () => {
           </li>
         ))
       }
-      <ListSubheader className={classes.subHeader}>{`Ingredienti`}</ListSubheader>
+      <ListSubheader className={classes.subHeader}>{ ItemList.ingredienti }</ListSubheader>
       {
-        [0, 1, 2, 3].map((sectionId) => (
+        [0, 1, 2, 3].map(sectionId => (
           <li key={`section-${sectionId}`}>
             <ul className={classes.ul}>
-              {[0, 1, 2].map((item) => (
+              {[0, 1, 2].map(() => (
                 <ListItem>
                   <ListItemText
-                    primary="Nome del piatto o ingrediente"
-                    secondary="ingredienti del piatto o um e costo/um dell'ingrediente"
+                    primary={ItemList.primary}
+                    secondary={ItemList.secondary}
                   />
                   <ListItemSecondaryAction>
                     <IconButton edge="end">

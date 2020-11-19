@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormControl, InputLabel, Select } from '@material-ui/core';
+import staticText from "staticText.json";
+
+const { Selectors } = staticText;
 
 const Selector = ({ label, options, disabled=false, setInputValue, inputValue }) => {
 
@@ -27,45 +30,38 @@ const SelectorPresenze = ({ setAzienda, azienda }) => {
     <Selector
       inputValue={azienda}
       setInputValue={setAzienda} 
-      label="Presenze" 
+      label={Selectors.presenze}
       options={['Cociv', 'Radimero', 'Altri']} 
     />
   );
 }
 
-const SelectorRistorazione = () => {
-  return <Selector label="Aggiungi" options={['Piatto', 'Ingrediente']} />
-}
-
-const SelectorCategoria = () => {
-  return <Selector label="Categoria" options={["Ortofrutta", "Carne Gelo", "Secco"]} />
-}
-
-const SelectorMese = ({ disabled=false, setMese, mese }) => {
-  const mesi = [
-    'Gennaio', 
-    'Febbraio', 
-    'Marzo', 
-    'Aprile', 
-    'Maggio', 
-    'Giugno', 
-    'Luglio', 
-    'Agosto', 
-    'Settembre', 
-    'Ottobre', 
-    'Novembre', 
-    'Dicembre'
-  ];
-
-  return(
+const SelectorRistorazione = ({ setTypeToAdd, typeToAdd }) => {
+  return (
     <Selector 
-      setInputValue={setMese} 
-      inputValue={mese} 
-      label="Mese" 
-      options={mesi} 
-      disabled={disabled}
+      label={Selectors.aggiungi} 
+      options={['Piatto', 'Ingrediente']} 
+      setInputValue={setTypeToAdd} 
+      inputValue={typeToAdd}
     />
   );
+}
+
+const SelectorCategoria = ({ setCategoria, categoria }) => {
+  return(
+    <Selector 
+      label={Selectors.categoria} 
+      options={["Ortofrutta", "Carne Gelo", "Secco"]}
+      setInputValue={setCategoria}
+      inputValue={categoria}
+    />
+  );
+}
+
+const SelectorMese = ({ setMese, mese }) => {
+  const mesi = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+
+  return <Selector setInputValue={setMese} inputValue={mese} label={Selectors.mese} options={mesi}/>;
 }
 
 const SelectorAnno = ({ setAnno, anno }) => {
@@ -73,13 +69,13 @@ const SelectorAnno = ({ setAnno, anno }) => {
     const allYears = [];
 
     for (let i = 2010; i <= 2100; i++) {
-        allYears.push(i.toString())
+      allYears.push(i.toString())
     }
 
     return allYears;
   })();
 
-  return <Selector setInputValue={setAnno} inputValue={anno} label="Anno" options={anni} />
+  return <Selector setInputValue={setAnno} inputValue={anno} label={Selectors.anno} options={anni}/>
 }
 
 const SelectorPasti = ({ setPasto, pasto}) => {
@@ -87,18 +83,25 @@ const SelectorPasti = ({ setPasto, pasto}) => {
     <Selector 
       setInputValue={setPasto} 
       inputValue={pasto} 
-      label="Filtra" 
+      label={Selectors.filtra} 
       options={["Colazione", "Pranzo", "Cena", "Spuntino"]} 
     />
   );
 }
 
-const SelectorUM = () => {
-  return <Selector label="UM" options={["Kg"]} />
+const SelectorUM = ({ setUm, um }) => {
+  return <Selector label={Selectors.um} options={["Kg"]} setInputValue={setUm} inputValue={um}/>
 }
 
-const SelectorPastiPrincipali = () => {
-  return <Selector label="Pranzo/Cena" options={["Pranzo", "Cena"]} />
+const SelectorPastiPrincipali = ({ setPastoPrincipale, pastoPrincipale }) => {
+  return(
+    <Selector 
+      label="Pranzo/Cena" 
+      options={["Pranzo", "Cena"]} 
+      setInputValue={setPastoPrincipale}
+      inputValue={pastoPrincipale}
+    />
+  );
 }
 
 export {

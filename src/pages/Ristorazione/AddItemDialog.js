@@ -7,6 +7,7 @@ import {
 } from '@material-ui/core/';
 import { SelectorRistorazione, SelectorUM } from 'components/Selectors';
 import { magazzinoRows } from 'utils/fakeData';
+import staticText from "staticText.json";
 
 const useStyles = makeStyles({
   margin: {
@@ -16,23 +17,22 @@ const useStyles = makeStyles({
 
 const ingredienti = Object.keys(magazzinoRows)
 
-const ingredientOptions = ingredienti.map((ingrediente) => (
-  <MenuItem key={ingrediente} value={ingrediente}>
-    {ingrediente}
-  </MenuItem>
+const ingredientOptions = ingredienti.map(ingrediente => (
+  <MenuItem key={ingrediente} value={ingrediente}>{ ingrediente }</MenuItem>
 ))
 
-const renderValueHandler = (selectedItem) => {
+const renderValueHandler = selectedItem => {
   return(
-    <Fragment>
-      {selectedItem.map(item => <Chip key={item} label={item}/>)}
-    </Fragment>
+    <Fragment>{ selectedItem.map(item => <Chip key={item} label={item}/>) }</Fragment>
   );
 }
 
+
 const AddItemDialog = ({ trigger }) => {
   const classes = useStyles();
+  const { AddItemDialog } = staticText;
   const [open, setOpen] = useState(false);
+  const [typeToAdd, setTypeToAdd] = useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -46,12 +46,16 @@ const AddItemDialog = ({ trigger }) => {
     <Fragment>
       <Button onClick={handleClickOpen} variant="text"><b>{ trigger }</b></Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Aggiungi Oggetto</DialogTitle>
+        <DialogTitle>{ AddItemDialog.aggiungiOggetto }</DialogTitle>
         <DialogContent>
-          <SelectorRistorazione className={classes.margin}/>
+          <SelectorRistorazione 
+            setTypeToAdd={setTypeToAdd} 
+            typeToAdd={typeToAdd} 
+            className={classes.margin}
+          />
           <TextField className={classes.margin} fullWidth label="Nome"/>
           <FormControl className={classes.margin} fullWidth>
-            <InputLabel>Ingredienti</InputLabel>
+            <InputLabel>{ AddItemDialog.ingredienti }</InputLabel>
             <Select
               multiple
               value={ingredienti}
@@ -64,16 +68,16 @@ const AddItemDialog = ({ trigger }) => {
           </FormControl>
           <SelectorUM />
           <FormControl fullWidth className={classes.margin}>
-            <InputLabel htmlFor="standard-adornment-amount">Costo/UM</InputLabel>
+            <InputLabel htmlFor="standard-adornment-amount">{ AddItemDialog.costoUm }</InputLabel>
             <Input
               id="standard-adornment-amount"
-              startAdornment={<InputAdornment position="start">€</InputAdornment>}
+              startAdornment={<InputAdornment position="start">{ AddItemDialog.euro }</InputAdornment>}
             />
           </FormControl>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Aggiungi
+            { AddItemDialog.aggiungi }
           </Button>
         </DialogActions>
       </Dialog>

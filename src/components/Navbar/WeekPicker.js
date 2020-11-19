@@ -16,7 +16,7 @@ class LocalizedUtils extends DateFnsUtils {
 
 const WeekPicker = () => {
   const [selectedDate, handleDateChange] = useState(new Date());
-  const { subList } = staticText[0].SideDrawer;
+  const { subList } = staticText.SideDrawer;
 
   const formatWeekSelectLabel = () => {
     const selectedDateClone = new Date(selectedDate.getTime());
@@ -28,7 +28,7 @@ const WeekPicker = () => {
     )
 
     const week = `${format(weeklyMonday, "d MMM Y", {locale: it})}`;
-    return `${subList.settimanaDel} ${week}`
+    return `${subList.settimana} del ${week}`
   };
 
   return (

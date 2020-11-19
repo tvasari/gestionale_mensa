@@ -1,19 +1,9 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import { TableCell, Typography } from '@material-ui/core/';
 import SortingTable from 'components/SortingTable/SortingTable';
 import { SelectorCategoria } from 'components/Selectors';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import { magazzinoHeaderLabels, magazzinoRows } from 'utils/fakeData';
-
-const headers = [
-  <Typography id="dRimanenzaNomeMagazzino" color="primary" variant="body1">
-    <b>Nome_Magazzino</b>
-  </Typography>,
-  <Typography id="dRimanenzaDataRimanenza" color="primary" variant="body1">
-    <b>31 agosto 2021</b>
-  </Typography>,
-  <SelectorCategoria id="dRimanenzaCategoria"/>
-];
 
 const headerLabels = magazzinoHeaderLabels.map((headerLabel, i) => {
   return(
@@ -27,14 +17,22 @@ const headerLabels = magazzinoHeaderLabels.map((headerLabel, i) => {
   );
 });
 
+
 const DisplayRimanenza = () => {
+  const [categoria, setCategoria] = useState("Ortofrutta");
+
   return (
     <Fragment>
-      <WorkBenchTopBar headers={headers}/>
-      <SortingTable 
-        rows={magazzinoRows} 
-        columns={headerLabels}
-      />
+      <WorkBenchTopBar>
+        <Typography id="dRimanenzaNomeMagazzino" color="primary" variant="body1">
+          <b>Nome_Magazzino</b>
+        </Typography>
+        <Typography id="dRimanenzaDataRimanenza" color="primary" variant="body1">
+          <b>31 agosto 2021</b>
+        </Typography>
+        <SelectorCategoria id="dRimanenzaCategoria" categoria={categoria} setCategoria={setCategoria}/>
+      </WorkBenchTopBar>
+      <SortingTable rows={magazzinoRows} columns={headerLabels}/>
     </Fragment>
   );
 }

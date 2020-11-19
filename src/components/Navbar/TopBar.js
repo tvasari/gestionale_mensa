@@ -49,7 +49,7 @@ const TopBar = () => {
         </div>
         <NavLink className={classes.navLink} to="/accedi">
           <Button variant="text" color="secondary" onClick={() => logoutRequest()}>
-            { staticText[0].TopBar.esci }
+            { staticText.TopBar.esci }
           </Button>
         </NavLink>
       </Toolbar>

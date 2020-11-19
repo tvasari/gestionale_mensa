@@ -7,10 +7,12 @@ import AddFormDialog from 'components/AddFormDialog';
 import LinkToPage from 'components/LinkToPage';
 import StyledButton from 'components/StyledButton';
 import { Edit, Delete } from '@material-ui/icons';
+import staticText from "staticText.json";
 
 const useStyles = makeStyles((theme) => ({
   workBench: theme.workBench
 }));
+
 
 const ListaMagazzini = () => {
   const classes = useStyles();
@@ -46,7 +48,7 @@ const ListaMagazzini = () => {
       </ListItem>
       <Divider />
       <ListItem>
-        <Typography color="primary">Aggiungi nuovo</Typography>
+        <Typography color="primary">{ staticText.ListaMagazzini.aggiungi }</Typography>
         <AddFormDialog 
           trigger={<AddIcon color="primary"/>}
           title="Magazzino"

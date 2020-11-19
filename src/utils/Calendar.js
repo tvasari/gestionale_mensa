@@ -1,8 +1,5 @@
 class Calendar {
 
-  constructor() {
-  }
-
   static monthStringToNumber = (monthString) => {
     const months = [
       "Gennaio", "Febbraio", "Marzo", "Aprile", 

@@ -25,7 +25,7 @@ function createData(name, Lunedì, Martedì, Mercoledì, Giovedì, Venerdì, Sab
 let daysArray = Object.keys(createData())
 daysArray.shift()
 
-const primiPiatti = daysArray.map(day => ["Pasta", "Minestra"])
+const primiPiatti = daysArray.map(() => ["Pasta", "Minestra"])
 
 const rows = [
   createData('Primi Piatti', ...primiPiatti),
@@ -60,9 +60,9 @@ const MenuTable = () => {
                     {
                       row.name === 'Primi Piatti' || row.name === 'Secondi Piatti'
                       ? (
-                          <IconButton size="small" onClick={() => handleCollapse()}>
-                              {true ? <KeyboardArrowUp/> : <KeyboardArrowDown/>}
-                          </IconButton> 
+                        <IconButton size="small" onClick={() => handleCollapse()}>
+                          { true ? <KeyboardArrowUp/> : <KeyboardArrowDown/> }
+                        </IconButton> 
                       )
                       : null
                     }
@@ -77,7 +77,7 @@ const MenuTable = () => {
                               row.Lunedì.map(each => {
                                 return (
                                   <TableRow>
-                                      <TableCell className={classes.meal}>{each}</TableCell>
+                                    <TableCell className={classes.meal}>{each}</TableCell>
                                   </TableRow>
                                 );
                               })
@@ -105,12 +105,10 @@ const MenuTable = () => {
                     : null
                   }
                 </Fragment>
-              </Fragment>
-                
+              </Fragment> 
             ))
           }
         </TableBody>
-
       </Table>
     </TableContainer>
   );
