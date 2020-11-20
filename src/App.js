@@ -21,9 +21,7 @@ import PrivateRoute from 'components/PrivateRoute';
 import { LoadedUserProvider } from './utils/LoadedUser';
 
 const App = () => {
-  const [loadedUser, setLoadedUser] = useState({
-    fullName: ""
-  });
+  const [loadedUser, setLoadedUser] = useState("");
 
   return (
     <div className="App">
@@ -34,7 +32,7 @@ const App = () => {
             <Route path="/accedi">
               <Accedi setLoadedUser={setLoadedUser} />
             </Route>
-            <LoadedUserProvider user={loadedUser.fullName}>
+            <LoadedUserProvider user={loadedUser}>
               <PrivateRoute path="/italiana-mense-gestionale" component={<PresenzeMese />} />
               <PrivateRoute path="/presenze-mese" component={<PresenzeMese />} />
               <PrivateRoute path="/menù" component={<Menu />} />

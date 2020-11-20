@@ -38,22 +38,14 @@ const Accedi = ({ setLoadedUser }) => {
   }
 
   const submitLoginDetails = (email, password) => {
-    fetch('http://localhost:3001/accedi', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: email,
-        password: password
-      })
+    fetch(`http://localhost:3000/utenti?email=${email}&password=${password}`, {
+      method: 'get',
+      headers: {'Content-Type': 'application/json'}
     })
       .then(response => response.json())
-      .then(responseMessage => {
-        if (responseMessage.color !== "error") {
-          setLoadedUser({fullName: responseMessage.message});
-          accedi()
-        } else {
-          setMessage(responseMessage)
-        }
+      .then(user => {
+        setLoadedUser(`${user[0].nome} ${user[0].cognome}`);
+        accedi()
       }) 
       .catch(err => console.log("errore durante l'accesso", err))
   }
@@ -96,7 +88,7 @@ const Accedi = ({ setLoadedUser }) => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={() => accedi()} // To allow login without backend // submitLoginDetails(email, password)}
+            onClick={() => submitLoginDetails(email, password)}
           >
             {Accedi.login}
           </Button>

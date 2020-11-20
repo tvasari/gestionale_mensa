@@ -15,6 +15,7 @@ const CompressedTableCell = styled(TableCell)(() => ({
     padding: '2px 16px'
 }));
 
+
 const PresenzeMese = () => {
   const classes = useStyles();
   const [azienda, setAzienda] = useState('Cociv');
@@ -23,17 +24,17 @@ const PresenzeMese = () => {
   const [pasto, setPasto] = useState('Colazione');
   const [presenzeArray, setPresenzeArray] = useState();
 
-  const rowNames = [
-    `${azienda} Badge`,
-    `${azienda} Firme`,
-    `TOT ${azienda}`,
-    "TOT"
-  ];
+  const rows = {
+    badge: `${azienda} Badge`,
+    firma: `${azienda} Firme`,
+    totaleAzienda: `TOT ${azienda}`,
+    totaleComplessivo: "TOT"
+  }
 
   useEffect(() => {
 
     async function getPresenze() {
-      await fetch('http://localhost:3001/presenze')
+      await fetch('http://localhost:3000/presenze')
         .then(response => response.json())
         .then(presenze => presenze.filter(presenza => {
           return presenza.nome_azienda === azienda 
@@ -42,6 +43,7 @@ const PresenzeMese = () => {
           && new Date(presenza.data).getFullYear() === parseInt(anno)
         }))
         .then(filteredPresenze => setPresenzeArray(filteredPresenze))
+        .catch(e => `Unable to retrive data ${e}` )
     }
 
     getPresenze();
@@ -69,28 +71,33 @@ const PresenzeMese = () => {
 
   const weekDaysRow = [<TableCell key="empty"></TableCell>, ...createWeekDaysCells()];
 
-  const isPresenzeArrayValid = presenzeArray => {
-    return presenzeArray !== undefined && presenzeArray.length > 0 ? true : false;
+  const isSameDay = (presenzaDate, monthdaynumber) => {
+    return new Date(presenzaDate).getDate() === monthdaynumber ? true : false;
   }
 
-  const isSameMonthDay = (presenzaDate, monthDayNumber) => {
-    return new Date(presenzaDate).getDate() === monthDayNumber ? true : false;
+  const isSameType = (presenzaType, presenzaRow) => {
+    return presenzaType === presenzaRow ? true : false;
   }
 
   const createData = rows => {
-    return rows.map(row => {
+    return Object.entries(rows).map(row => {
       return (
-        <StyledTableRow key={row}>
-          <CompressedTableCell>{ row }</CompressedTableCell>
+        <StyledTableRow key={row[1]}>
+          <CompressedTableCell>{ row[1] }</CompressedTableCell>
           {
             createWeekDaysCells().map(weekDay => {
-              return isPresenzeArrayValid(presenzeArray) ? 
-                isSameMonthDay(presenzeArray[0].data, weekDay.props.monthdaynumber)
-                ? (<CompressedTableCell key={weekDay.key}>
-                    { presenzeArray[0].numero_presenze }
-                  </CompressedTableCell>)
-                : <CompressedTableCell key={weekDay.key}></CompressedTableCell>
-              : <CompressedTableCell key={weekDay.key}></CompressedTableCell>
+              const matchedPresenza = presenzeArray?.filter(presenza => {
+                return (
+                  isSameDay(presenza.data, weekDay.props.monthdaynumber) 
+                  && isSameType(presenza.type, row[0])
+                );
+              });
+
+              return (
+                <CompressedTableCell key={weekDay.key}>
+                  { matchedPresenza && matchedPresenza[0]?.numero_presenze }
+                </CompressedTableCell>
+              );
             })
           }
         </StyledTableRow>
@@ -113,7 +120,7 @@ const PresenzeMese = () => {
             <TableRow>{ weekDaysRow }</TableRow>
           </TableHead>
           <TableBody>
-            { createData(rowNames) }
+            { createData(rows) }
           </TableBody>
         </Table>
       </TableContainer>

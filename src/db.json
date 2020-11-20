@@ -1,0 +1,76 @@
+{
+  "utenti": [
+    {
+      "nome": "Tommaso",
+      "cognome": "Vasari",
+      "email": "tommaso.vsr@gmail.com",
+      "password": "asas",
+      "id": 1
+    },
+    {
+      "nome": "Tommaso",
+      "cognome": "Vasari",
+      "email": "tommadso.vsr@gmail.com",
+      "password": "asas",
+      "id": 1
+    }
+  ],
+  "presenze": [
+    {
+      "nome_azienda": "Cociv",
+      "nome_pasto": "Pranzo",
+      "data": "2020-12-17",
+      "type": "firma",
+      "numero_presenze": 28
+    },
+    {
+      "nome_azienda": "Cociv",
+      "nome_pasto": "Pranzo",
+      "data": "2020-12-17",
+      "type": "badge",
+      "numero_presenze": 12
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Cena",
+      "data": "2020-01-02",
+      "type": "firma",
+      "numero_presenze": 33
+    },
+    {
+      "nome_azienda": "Cociv",
+      "nome_pasto": "Cena",
+      "data": "2020-12-12",
+      "type": "firma",
+      "numero_presenze": 4
+    },
+    {
+      "nome_azienda": "Altri",
+      "nome_pasto": "Pranzo",
+      "data": "2020-12-17",
+      "type": "firma",
+      "numero_presenze": 42
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Colazione",
+      "data": "2020-01-15",
+      "type": "firma",
+      "numero_presenze": 13
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Colazione",
+      "data": "2020-01-15",
+      "type": "badge",
+      "numero_presenze": 28
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Cena",
+      "data": "2020-01-15",
+      "type": "firma",
+      "numero_presenze": 66
+    }
+  ]
+}

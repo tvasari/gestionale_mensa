@@ -35,10 +35,10 @@ const Registrati = () => {
   const [cognome, setCognome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState({});
+  const [message, setMessage] = useState('');
 
   const submitUserDetails = (nome, cognome, email, password) => {
-    fetch('http://localhost:3001/registrati', {
+    fetch('http://localhost:3000/utenti', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -49,8 +49,8 @@ const Registrati = () => {
       })
     })
       .then(response => response.json())
-      .then(responseMessage => {
-        setMessage(responseMessage);
+      .then(registeredUser => {
+        setMessage(`Benvenuto ${registeredUser.nome} ${registeredUser.cognome}`);
       })
       .catch(err => console.log("errore durante la registrazione", err))
   }
@@ -60,8 +60,8 @@ const Registrati = () => {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5"> {Registrati.register} </Typography>
-        <Typography component='p' variant="body1" color={message.color}>
-          { message.message }
+        <Typography component='p' variant="body1">
+          { message }
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
