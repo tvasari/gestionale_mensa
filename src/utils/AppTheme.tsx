@@ -51,7 +51,7 @@ const theme = createMuiTheme({
 
 })
 
-const AppTheme = ({ children }) => {
+const AppTheme = ({ children }: any) => {
   return(
     <ThemeProvider theme={theme}>
       {children}
