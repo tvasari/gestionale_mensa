@@ -37,7 +37,7 @@ const Registrati = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  const submitUserDetails = (nome, cognome, email, password) => {
+  const submitUserDetails = (nome: string, cognome: string, email: string, password: string) => {
     fetch('http://localhost:3000/utenti', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },

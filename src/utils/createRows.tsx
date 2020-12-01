@@ -8,15 +8,15 @@ const CompressedCell = styled(TableCell)(() => ({
     padding: '2px 16px'
 }));
 
-const separateKeysFromValues = (rows) => {
+const separateKeysFromValues = (rows: any) => {
   const allItems = Object.keys(rows);
   const allValues = Object.values(rows);
   return [allItems, allValues];
 }
 
-const isValidNumber = value => typeof value === 'number' && !isNaN(value);
+const isValidNumber = (value: number) => typeof value === 'number' && !isNaN(value);
 
-const createAlignedCells = (cellValues) => {
+const createAlignedCells = (cellValues: any[]) => {
   return cellValues.map((value, valueIndex) => {
     return(
       <CompressedCell align={isValidNumber(value) ? "right" : "inherit"} key={valueIndex}>
@@ -26,11 +26,11 @@ const createAlignedCells = (cellValues) => {
   })
 }
 
-function createRows(rows) {
-  const [allItems, allValues] = separateKeysFromValues(rows);
+function createRows(rows: any) {
+  const [allItems, allValues]: any[] = separateKeysFromValues(rows);
 
   return(
-    allItems.map((item, itemIndex) => {
+    allItems.map((item: string, itemIndex: number) => {
       return (
         isValidNumber(parseInt(item))
         ? (

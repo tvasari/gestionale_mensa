@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Accedi = ({ setLoadedUser }) => {
+const Accedi = ({ setLoadedUser }: any) => {
   const classes = useStyles();
   const { Accedi } = staticText;
   const [email, setEmail] = useState('');
@@ -37,7 +37,7 @@ const Accedi = ({ setLoadedUser }) => {
     history.push('/italiana-mense-gestionale');
   }
 
-  const submitLoginDetails = (email, password) => {
+  const submitLoginDetails = (email: string, password: string) => {
     fetch(`http://localhost:3000/utenti?email=${email}&password=${password}`, {
       method: 'get',
       headers: {'Content-Type': 'application/json'}
@@ -55,9 +55,12 @@ const Accedi = ({ setLoadedUser }) => {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5"> {Accedi.login} </Typography>
-        <Typography component='p' variant="body1" color={message.color}>
-          { message.message }
-        </Typography>
+        {/* Messaggio di risposta alle varie casistiche di accesso (colorato verde/rosso)
+            DA RE IMPLEMENTARE 
+          <Typography component='p' variant="body1" color={message.color}>
+            { message.message }
+          </Typography> 
+        */}
         <form className={classes.form} noValidate>
           <TextField
             variant="outlined"

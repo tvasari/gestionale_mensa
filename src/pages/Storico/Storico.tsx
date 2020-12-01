@@ -35,10 +35,10 @@ const Storico = () => {
   return (
     <Fragment>
       <WorkBenchTopBar>
-        <BackArrowButton id="storicoBackArrow" path="arquata-1" />
-        <SelectorMese id="storicoMese" setMese={setMese} mese={mese}/>
-        <SelectorAnno id="storicoAnno" setAnno={setAnno} anno={anno}/>
-        <SelectorCategoria id="storicoCategoria" categoria={categoria} setCategoria={setCategoria}/>
+        <BackArrowButton path="arquata-1" />
+        <SelectorMese setMese={setMese} mese={mese}/>
+        <SelectorAnno setAnno={setAnno} anno={anno}/>
+        <SelectorCategoria categoria={categoria} setCategoria={setCategoria}/>
       </WorkBenchTopBar>
       <SortingTable rows={rows} columns={weekDays}/>
     </Fragment>

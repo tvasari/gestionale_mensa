@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import Chart from 'pages/Statistiche/Chart';
-import { SelectorAnno, SelectorMese, SelectorPastiPrincipali } from 'components/Selectors/';
+import { SelectorAnno, SelectorMese, SelectorPastiPrincipali } from 'components/Selectors';
 import RadioSelector from 'pages/Statistiche/RadioSelector';
 
 
@@ -13,7 +13,7 @@ const Statistiche = () => {
   return (
     <Fragment>
       <WorkBenchTopBar>
-        <RadioSelector id="statRadio"/>,
+        <RadioSelector/>,
         <SelectorMese id="statMese" disabled={true} setMese={setMese} mese={mese}/>,
         <SelectorAnno id="statAnno" setAnno={setAnno} anno={anno}/>,
         <SelectorPastiPrincipali 
