@@ -21,14 +21,16 @@ const ingredientOptions = ingredienti.map(ingrediente => (
   <MenuItem key={ingrediente} value={ingrediente}>{ ingrediente }</MenuItem>
 ))
 
-const renderValueHandler = selectedItem => {
+const renderValueHandler = (selectedItems: string[]) => {
   return(
-    <Fragment>{ selectedItem.map(item => <Chip key={item} label={item}/>) }</Fragment>
+    <Fragment>{ 
+      selectedItems.map((item: string) => <Chip key={item} label={item}/>)
+    }</Fragment>
   );
 }
 
 
-const AddItemDialog = ({ trigger }) => {
+const AddItemDialog = ({ trigger }: any) => {
   const classes = useStyles();
   const { AddItemDialog } = staticText;
   const [open, setOpen] = useState(false);
@@ -61,7 +63,7 @@ const AddItemDialog = ({ trigger }) => {
               value={ingredienti}
               onChange={() => console.log('worked!')}
               input={<Input />}
-              renderValue={selectedItem => renderValueHandler(selectedItem)}
+              renderValue={(selectedItems: string[]) => renderValueHandler(selectedItems)}
             >
               { ingredientOptions }
             </Select>

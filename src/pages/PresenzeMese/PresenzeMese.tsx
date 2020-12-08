@@ -6,6 +6,7 @@ import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import { SelectorPresenze, SelectorMese, SelectorAnno, SelectorPasti } from 'components/Selectors';
 import StyledTableRow from 'components/StyledTableRow';
 import Calendar from 'utils/Calendar';
+import { Presenza } from 'model/data.model';
 
 const useStyles = makeStyles(theme => ({
   container: {...theme.workBench, ...theme.container},
@@ -22,7 +23,7 @@ const PresenzeMese = () => {
   const [mese, setMese] = useState('Gennaio');
   const [anno, setAnno] = useState('2020');
   const [pasto, setPasto] = useState('Colazione');
-  const [presenzeArray, setPresenzeArray] = useState();
+  const [presenzeArray, setPresenzeArray] = useState<Presenza[]>([]);
 
   const rows = {
     badge: `${azienda} Badge`,
@@ -36,13 +37,13 @@ const PresenzeMese = () => {
     async function getPresenze() {
       await fetch('http://localhost:3000/presenze')
         .then(response => response.json())
-        .then(presenze => presenze.filter(presenza => {
+        .then((presenze: Presenza[]) => presenze.filter((presenza: Presenza) => {
           return presenza.nome_azienda === azienda 
           && presenza.nome_pasto === pasto 
           && new Date(presenza.data).getMonth() === Calendar.monthStringToNumber(mese)
           && new Date(presenza.data).getFullYear() === parseInt(anno)
         }))
-        .then(filteredPresenze => setPresenzeArray(filteredPresenze))
+        .then((filteredPresenze: Presenza[]) => setPresenzeArray(filteredPresenze))
         .catch(e => `Unable to retrive data ${e}` )
     }
 
@@ -50,7 +51,7 @@ const PresenzeMese = () => {
 
   }, [azienda, pasto, mese, anno]);
 
-  const getAllMonthDays = (anno, mese) => {
+  const getAllMonthDays = (anno: string, mese: string) => {
     const { getAllMonthDays, monthStringToNumber } = Calendar;
 
     return getAllMonthDays(
@@ -59,7 +60,7 @@ const PresenzeMese = () => {
     )
   }
 
-  const createWeekDaysCells = () => {
+  const createWeekDaysCells = (anno: string, mese: string) => {
     return getAllMonthDays(anno, mese).map((day, i) => {
       return(
         <CompressedTableCell key={day} monthdaynumber={i + 1} align="right">
@@ -69,7 +70,7 @@ const PresenzeMese = () => {
     })
   }
 
-  const weekDaysRow = [<TableCell key="empty"></TableCell>, ...createWeekDaysCells()];
+  const weekDaysRow = [<TableCell key="empty"></TableCell>, ...createWeekDaysCells(anno, mese)];
 
   const isSameDay = (presenzaDate, monthdaynumber) => {
     return new Date(presenzaDate).getDate() === monthdaynumber ? true : false;

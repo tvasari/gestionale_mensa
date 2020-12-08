@@ -21,7 +21,7 @@ const HeaderRistorazione = () => {
                 <SearchBar />
             </StyledTableCell>
             <StyledTableCell>
-                <AddItemDialog trigger={<AddIcon color="primary"/>} />
+                <AddItemDialog trigger={<AddIcon color="primary"/>}/>
             </StyledTableCell>
         </TableRow>
     );

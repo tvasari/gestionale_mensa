@@ -12,15 +12,6 @@ const theme = createMuiTheme({
       main: '#fff'
     }
   },
-  
-  container: {
-    maxHeight: '90vh',
-    overflow: 'auto'
-  },
-  workBench: {
-    width: '80%',
-    float: 'right'
-  },
 
   overrides: {
     MuiInputBase: {
@@ -49,7 +40,7 @@ const theme = createMuiTheme({
     }
   }
 
-})
+});
 
 const AppTheme = ({ children }: any) => {
   return(
