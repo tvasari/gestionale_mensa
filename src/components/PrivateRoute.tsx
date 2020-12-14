@@ -3,7 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import authentication from 'utils/authentication';
 import Navbar from 'components/Navbar/Navbar';
 
-const PrivateRoute = ({ component, ...rest }) => {
+const PrivateRoute = ({ component, ...rest }: any) => {
   return(
     <Route 
       {...rest} 

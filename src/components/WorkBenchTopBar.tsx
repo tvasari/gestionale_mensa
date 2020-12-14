@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const WorkBenchTopBar = ({ children }) => {
+const WorkBenchTopBar = ({ children }: any) => {
   const classes = useStyles();
 
   return (

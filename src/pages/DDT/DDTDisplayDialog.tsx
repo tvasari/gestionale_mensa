@@ -28,7 +28,7 @@ const headerLabels = magazzinoHeaderLabels.map((headerLabel, i) => {
 });
 
 
-const DDTDisplayDialog = ({ trigger }) => {
+const DDTDisplayDialog = ({ trigger }: any) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 

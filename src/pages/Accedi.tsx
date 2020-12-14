@@ -38,7 +38,7 @@ const Accedi = ({ setLoadedUser }: any) => {
   }
 
   const submitLoginDetails = (email: string, password: string) => {
-    fetch(`http://localhost:3000/utenti?email=${email}&password=${password}`, {
+    fetch(`http://localhost:3001/utenti?email=${email}&password=${password}`, {
       method: 'get',
       headers: {'Content-Type': 'application/json'}
     })

@@ -12,7 +12,7 @@ import { SelectorCategoria } from 'components/Selectors';
 import staticText from "staticText.json";
 
 class LocalizedUtils extends DateFnsUtils {
-  getDatePickerHeaderText(date) {
+  getDatePickerHeaderText(date: Date) {
     return format(date, "DDD MMM yyyy", { locale: this.locale });
   }
 }
@@ -26,11 +26,11 @@ const useStyles = makeStyles({
   }
 });
 
-const AddFormDialog = ({ trigger, title, textFieldPlaceholder }) => {
+const AddFormDialog = ({ trigger, title, textFieldPlaceholder }: any) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [categoria, setCategoria] = useState("Ortofrutta");
-  const [selectedDate, handleDateChange] = useState(new Date());
+  const [selectedDate, handleDateChange] = useState<Date | null>(new Date());
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -60,7 +60,7 @@ const AddFormDialog = ({ trigger, title, textFieldPlaceholder }) => {
           </MuiPickersUtilsProvider>
           <TextField
             color="primary"
-            autoComplete 
+            autoComplete="on"
             required 
             placeholder={`Nome ${textFieldPlaceholder}`}
             className={classes.elemMargin} 

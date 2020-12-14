@@ -3,7 +3,7 @@ const authentication = {
   authenticate() {
     authentication.isAuthenticated = true;
   },
-  signout(redirectToAccedi) {
+  signout(redirectToAccedi: any) {
     authentication.isAuthenticated = false;
     redirectToAccedi();
   }

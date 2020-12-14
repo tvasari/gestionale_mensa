@@ -7,16 +7,16 @@ import { SelectorPastiPrincipali } from 'components/Selectors';
 
 const StyledHeader = styled(Typography)(({theme}) => ({
   color: theme.palette.primary.main, 
-  fontWeight: '700',
+  fontWeight: 700,
   fontSize: '1.1em'
 }))
 
-const HeaderMenu = ({ daysArray }) => {
+const HeaderMenu = ({ columns }: any) => {
   const [pastoPrincipale, setPastoPrincipale] = useState("");
 
   const days = [
     <SelectorPastiPrincipali setPastoPrincipale={setPastoPrincipale} pastoPrincipale={pastoPrincipale}/>,
-    ...daysArray.map(day => {
+    ...columns.map((day: any) => {
       return( 
         <NavLink style={{textDecoration: 'none'}} to="/costo-pasto">
           <StyledHeader>{ day }</StyledHeader>

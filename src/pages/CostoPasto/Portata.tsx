@@ -13,44 +13,46 @@ const useStyles = makeStyles({
   }
 });
 
-const Portata = ({ elementiRistorazione }) => {
+const Portata = ({ elementiRistorazione }: any) => {
   const classes = useStyles();
-  
-    return(
-        Object.keys(elementiRistorazione).map(portata => {
-            return (
+
+  return(
+    <Fragment>{
+      Object.keys(elementiRistorazione).map(portata => {
+          return (
+            <Fragment>
+              <TableRow >
+                <StyledTableCell className={classes.stickyCell}>
+                  <b>{portata.toUpperCase()}</b>
+                  <IconButton>
+                    <NoteAddIcon />
+                  </IconButton>
+                  <TextField
+                    id="outlined-multiline-static"
+                    label="Note"
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                  />
+                </StyledTableCell>
+                {
+                  costoPastoHeaderLabels.map(headerLabel => {
+                    return(
+                      <StyledTableCell className={classes.stickyCell}>
+                        <b>{ headerLabel }</b>
+                      </StyledTableCell>
+                    );
+                  })
+                }
+              </TableRow>
               <Fragment>
-                <TableRow >
-                  <StyledTableCell className={classes.stickyCell}>
-                    <b>{portata.toUpperCase()}</b>
-                    <IconButton>
-                      <NoteAddIcon />
-                    </IconButton>
-                    <TextField
-                      id="outlined-multiline-static"
-                      label="Note"
-                      multiline
-                      rows={4}
-                      variant="outlined"
-                    />
-                  </StyledTableCell>
-                  {
-                    costoPastoHeaderLabels.map(headerLabel => {
-                      return(
-                        <StyledTableCell className={classes.stickyCell}>
-                          <b>{ headerLabel }</b>
-                        </StyledTableCell>
-                      );
-                    })
-                  }
-                </TableRow>
-                <Fragment>
-                  <Piatto elementiRistorazione={elementiRistorazione} portata={portata}/>
-                </Fragment>
+                <Piatto elementiRistorazione={elementiRistorazione} portata={portata}/>
               </Fragment>
-            );
-        })
-    );
+            </Fragment>
+          );
+      })
+    }</Fragment>
+  );
 }
 
 export default Portata;

@@ -19,20 +19,17 @@ const WeekPicker = () => {
   const [selectedDate, handleDateChange] = useState<Date | null>(new Date());
   const { subList } = staticText.SideDrawer;
 
-  const formatWeekSelectLabel = () => {
-    if (selectedDate) {
-      const selectedDateClone = new Date(selectedDate.getTime());
+  const formatWeekSelectLabel = (selectedDate: Date | null) => {
+    const selectedDateClone: Date = selectedDate ? new Date(selectedDate.getTime()) : new Date();
 
-      const weeklyMonday = startOfWeek(selectedDateClone).setDate(
-        selectedDateClone.getDay() !== 0
-        ? startOfWeek(selectedDateClone).getDate() + 1
-        : startOfWeek(selectedDateClone.setDate(selectedDateClone.getDate() - 1)).getDate() + 1
-      )
+    const weeklyMonday = startOfWeek(selectedDateClone).setDate(
+      selectedDateClone.getDay() !== 0
+      ? startOfWeek(selectedDateClone).getDate() + 1
+      : startOfWeek(selectedDateClone.setDate(selectedDateClone.getDate() - 1)).getDate() + 1
+    )
 
-      const week = `${format(weeklyMonday, "d MMM Y", {locale: it})}`;
-
-      return `${subList.settimana} del ${week}`
-    }
+    const week = `${format(weeklyMonday, "d MMM Y", {locale: it})}`;
+    return `${subList.settimana} del ${week}`
   };
 
   return (

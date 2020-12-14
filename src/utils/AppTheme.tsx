@@ -38,6 +38,15 @@ const theme = createMuiTheme({
     MuiInput: {
       disableUnderline: true
     }
+  },
+
+  container: {
+    maxHeight: '90vh',
+    overflow: 'auto'
+  },
+  workBench: {
+    width: '80%',
+    float: 'right'
   }
 
 });

@@ -1,6 +1,6 @@
 class Calendar {
 
-  static monthStringToNumber = (monthString) => {
+  static monthStringToNumber = (monthString: string) => {
     const months = [
       "Gennaio", "Febbraio", "Marzo", "Aprile", 
       "Maggio", "Giugno", "Luglio", "Agosto", 
@@ -9,7 +9,7 @@ class Calendar {
     return months.indexOf(monthString);
   }
 
-  static weekDayNumberToString = (dayInt) => {
+  static weekDayNumberToString = (dayInt: number) => {
     const shortWeekDaysNames = [
       "Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"
     ]
@@ -18,20 +18,20 @@ class Calendar {
     })
   }
 
-  static generateFullWeekDayName = (year, month, monthDay) => {
+  static generateFullWeekDayName = (year: any, month: any, monthDay: any) => {
     let weekDayNumber = new Date(year, month, monthDay).getDay();
-    let fullWeekDayName = this.weekDayNumberToString(weekDayNumber) + ' ' + (monthDay);
+    let fullWeekDayName = Calendar.weekDayNumberToString(weekDayNumber) + ' ' + (monthDay);
     return fullWeekDayName;
   }
 
-  static calculateTotalMonthDays = (year, month) => new Date(year, month + 1, 0).getDate();
+  static calculateTotalMonthDays = (year: any, month: any) => new Date(year, month + 1, 0).getDate();
 
-  static getAllMonthDays = (year, month) => {
-    let totalMonthDays = this.calculateTotalMonthDays(year, month);
+  static getAllMonthDays = (year: any, month: any) => {
+    let totalMonthDays = Calendar.calculateTotalMonthDays(year, month);
     let allMonthDays = [];
   
     for (let monthDay=1; monthDay <= totalMonthDays; monthDay++) {
-      let weekDay = this.generateFullWeekDayName(year, month, monthDay);
+      let weekDay = Calendar.generateFullWeekDayName(year, month, monthDay);
       allMonthDays.push(weekDay);
     }
     

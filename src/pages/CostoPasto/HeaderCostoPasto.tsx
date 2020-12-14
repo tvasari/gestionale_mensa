@@ -9,7 +9,7 @@ import BackArrowButton from 'components/BackArrowButton';
 const useStyles = makeStyles(theme => ({
   header: {
     color: theme.palette.primary.main, 
-    fontWeight: '700',
+    fontWeight: 700,
     paddingLeft: theme.spacing(4),
     paddingRight: theme.spacing(4)
   },

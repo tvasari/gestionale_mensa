@@ -63,7 +63,7 @@ const AddItemDialog = ({ trigger }: any) => {
               value={ingredienti}
               onChange={() => console.log('worked!')}
               input={<Input />}
-              renderValue={(selectedItems: string[]) => renderValueHandler(selectedItems)}
+              renderValue={(selectedItems: any) => renderValueHandler(selectedItems)}
             >
               { ingredientOptions }
             </Select>

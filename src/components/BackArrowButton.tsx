@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const BackArrowButton = ({ path }) => {
+const BackArrowButton = ({ path }: any) => {
     const classes = useStyles();
 
     return(

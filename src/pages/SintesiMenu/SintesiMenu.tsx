@@ -20,7 +20,7 @@ const primiPiatti = Calendar.getAllMonthDays(2020, 8).map(() => {
   return <TableCell>Pasta aglio olio e peperoncino</TableCell>
 });
 
-const weekDays = style => {
+const weekDays = (style: any) => {
   Calendar.getAllMonthDays(2020, 8).map(day => {
     return <TableCell className={style}><b>{ day }</b></TableCell>
   });

@@ -41,7 +41,7 @@ const StockItemList = () => {
   
   const [oggetto, nuovoOggetto] = useState('Uova');
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     nuovoOggetto(event.target.value);
   };
 

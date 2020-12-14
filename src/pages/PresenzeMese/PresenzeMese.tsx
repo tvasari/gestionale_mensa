@@ -25,17 +25,84 @@ const PresenzeMese = () => {
   const [pasto, setPasto] = useState('Colazione');
   const [presenzeArray, setPresenzeArray] = useState<Presenza[]>([]);
 
-  const rows = {
+  const rows: any = {
     badge: `${azienda} Badge`,
     firma: `${azienda} Firme`,
     totaleAzienda: `TOT ${azienda}`,
     totaleComplessivo: "TOT"
   }
 
+  const getAllMonthDays = (anno: string, mese: string) => {
+    const { getAllMonthDays, monthStringToNumber } = Calendar;
+
+    return getAllMonthDays(
+      parseInt(anno),
+      monthStringToNumber(mese)
+    )
+  }
+
+  const createWeekDaysCells = (anno: string, mese: string) => {
+    return getAllMonthDays(anno, mese).map((day, i) => {
+      return(
+        <CompressedTableCell key={day} align="right">
+          <b>{ day }</b>
+        </CompressedTableCell>
+      );
+    })
+  }
+
+  const isSameDay = (presenzaDate: any, monthdaynumber: any) => {
+    return new Date(presenzaDate).getDate() === monthdaynumber ? true : false;
+  }
+
+  const isSameType = (presenzaType: any, presenzaRow: any) => {
+    return presenzaType === presenzaRow ? true : false;
+  }
+
+  const constructTableData  = (allDays: any, allPresenze: any) => {
+
+    return Object.keys(rows).map((rowType: any) => {
+      const columns: any = [];
+
+      for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
+        if (allPresenze.length) {
+          for (let i=0; i < allPresenze.length; i++) {
+            if (isSameDay(allPresenze[i].data, dayNumber) && isSameType(allPresenze[i].type, rowType)) {
+              columns.push(
+                <CompressedTableCell key={allPresenze[i].type + dayNumber}>
+                  { allPresenze[i].numero_presenze }
+                </CompressedTableCell>
+              );
+              break;
+            }
+            columns.push(
+              <CompressedTableCell key={allPresenze[i].type + dayNumber}>
+              </CompressedTableCell>
+            )
+          }
+        } else {
+          columns.push(
+            <CompressedTableCell key={rowType + dayNumber}>
+            </CompressedTableCell>
+          )
+        }
+
+      }
+
+      return(
+        <StyledTableRow key={rows[rowType]}>
+          <CompressedTableCell>{ rows[rowType] }</CompressedTableCell>
+          { columns }
+        </StyledTableRow>
+      );
+    })
+
+  }
+
   useEffect(() => {
 
     async function getPresenze() {
-      await fetch('http://localhost:3000/presenze')
+      await fetch('http://localhost:3001/presenze')
         .then(response => response.json())
         .then((presenze: Presenza[]) => presenze.filter((presenza: Presenza) => {
           return presenza.nome_azienda === azienda 
@@ -51,60 +118,7 @@ const PresenzeMese = () => {
 
   }, [azienda, pasto, mese, anno]);
 
-  const getAllMonthDays = (anno: string, mese: string) => {
-    const { getAllMonthDays, monthStringToNumber } = Calendar;
-
-    return getAllMonthDays(
-      parseInt(anno),
-      monthStringToNumber(mese)
-    )
-  }
-
-  const createWeekDaysCells = (anno: string, mese: string) => {
-    return getAllMonthDays(anno, mese).map((day, i) => {
-      return(
-        <CompressedTableCell key={day} monthdaynumber={i + 1} align="right">
-          <b>{ day }</b>
-        </CompressedTableCell>
-      );
-    })
-  }
-
   const weekDaysRow = [<TableCell key="empty"></TableCell>, ...createWeekDaysCells(anno, mese)];
-
-  const isSameDay = (presenzaDate, monthdaynumber) => {
-    return new Date(presenzaDate).getDate() === monthdaynumber ? true : false;
-  }
-
-  const isSameType = (presenzaType, presenzaRow) => {
-    return presenzaType === presenzaRow ? true : false;
-  }
-
-  const createData = rows => {
-    return Object.entries(rows).map(row => {
-      return (
-        <StyledTableRow key={row[1]}>
-          <CompressedTableCell>{ row[1] }</CompressedTableCell>
-          {
-            createWeekDaysCells().map(weekDay => {
-              const matchedPresenza = presenzeArray?.filter(presenza => {
-                return (
-                  isSameDay(presenza.data, weekDay.props.monthdaynumber) 
-                  && isSameType(presenza.type, row[0])
-                );
-              });
-
-              return (
-                <CompressedTableCell key={weekDay.key}>
-                  { matchedPresenza && matchedPresenza[0]?.numero_presenze }
-                </CompressedTableCell>
-              );
-            })
-          }
-        </StyledTableRow>
-      );
-    })
-  }
 
   return (
     <Fragment>
@@ -121,7 +135,7 @@ const PresenzeMese = () => {
             <TableRow>{ weekDaysRow }</TableRow>
           </TableHead>
           <TableBody>
-            { createData(rows) }
+            { constructTableData(getAllMonthDays(anno, mese), presenzeArray) }
           </TableBody>
         </Table>
       </TableContainer>

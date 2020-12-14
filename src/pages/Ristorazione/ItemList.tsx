@@ -30,7 +30,7 @@ const ItemList = () => {
       <ListSubheader className={classes.subHeader}>{ ItemList.piatti }</ListSubheader>
       {
         [0, 1, 2, 3].map((sectionId) => (
-          <li key={`section-${sectionId}`} className={classes.listSection}>
+          <li key={`section-${sectionId}`}>
             <ul className={classes.ul}>
               {[0, 1, 2].map(() => (
                 <ListItem>

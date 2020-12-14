@@ -1,7 +1,7 @@
 import React from 'react';
 import { TableHead, TableRow } from '@material-ui/core/';
 
-const SortingTableHeader = ({ columns }) => {
+const SortingTableHeader = ({ columns }: any) => {
   return(
     <TableHead>
       <TableRow>
