@@ -10,14 +10,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const CollapsableList = ({ elemsToDispaly }) => {
+const CollapsableList = ({ elemsToDispaly }: any) => {
   const classes = useStyles();
 
   return(
     <Collapse in={true} timeout="auto" unmountOnExit>
       <List component="div" disablePadding>
         {
-          elemsToDispaly.map(elem => {
+          elemsToDispaly.map((elem: any) => {
             return(
               <ListItem button key={elem.props.id ? elem.props.id : elem.key} className={classes.nested}>
                 { elem }

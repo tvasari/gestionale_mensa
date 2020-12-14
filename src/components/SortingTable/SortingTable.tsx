@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SortingTable = ({ rows, columns, dialog=false }) => {
+const SortingTable = ({ rows, columns, dialog=false }: any) => {
   const classes = useStyles();
 
   return (

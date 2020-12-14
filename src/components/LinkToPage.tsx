@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     }
 })
 
-const LinkToPage = ({ page, elemToAdd }) => {
+const LinkToPage = ({ page, elemToAdd }: any) => {
     const classes = useStyles();
 
     return(

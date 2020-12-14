@@ -31,16 +31,16 @@ const { presenzeMese, menu, ristorazione, magazzino, statistiche, account } = pa
 const mainPages = [presenzeMese, menu, ristorazione, magazzino, statistiche, account];
 
 const menuSubList = [
-  <WeekPicker id="weekPicker"/>, 
+  <WeekPicker />, 
   <Fragment key="nuovoMenù">
     <ListItemText primary={subList.nuovoMenu}/>
-    <AddBox id="addBoxIcon" color="action"/>
+    <AddBox color="action"/>
   </Fragment>,  
   <Fragment key="modificaMenù">
     <ListItemText primary={subList.modificaMenu} /> 
-    <Edit id="editIcon" color="action"/>
+    <Edit color="action"/>
   </Fragment>,
-  <LinkToPage id="sintesiDelMese" page={subList.sintesiMese} elemToAdd={ <DateRange color="action"/> }/>
+  <LinkToPage page={subList.sintesiMese} elemToAdd={ <DateRange color="action"/> }/>
 ]
 
 const magazzinoSubList = [
@@ -49,7 +49,7 @@ const magazzinoSubList = [
   <LinkToPage id="rimanenze" page={subList.rimanenze}/>
 ]
 
-const displaySubList = page => {
+const displaySubList = (page: string) => {
   switch(page) {
     case "Menù":
       return <CollapsableList elemsToDispaly={menuSubList}/>;
