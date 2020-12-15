@@ -71,6 +71,118 @@
       "data": "2020-01-15",
       "type": "firma",
       "numero_presenze": 66
+    },
+    {
+      "nome_azienda": "Cociv",
+      "nome_pasto": "Colazione",
+      "data": "2020-01-01",
+      "type": "firma",
+      "numero_presenze": 92
+    },
+    {
+      "nome_azienda": "Cociv",
+      "nome_pasto": "Colazione",
+      "data": "2020-01-01",
+      "type": "badge",
+      "numero_presenze": 94
+    },
+    {
+      "nome_azienda": "Cociv",
+      "nome_pasto": "Pranzo",
+      "data": "2020-01-01",
+      "type": "firma",
+      "numero_presenze": 23
+    },
+    {
+      "nome_azienda": "Cociv",
+      "nome_pasto": "Pranzo",
+      "data": "2020-01-01",
+      "type": "badge",
+      "numero_presenze": 11
+    },
+    {
+      "nome_azienda": "Cociv",
+      "nome_pasto": "Cena",
+      "data": "2020-01-01",
+      "type": "firma",
+      "numero_presenze": 52
+    },
+    {
+      "nome_azienda": "Cociv",
+      "nome_pasto": "Cena",
+      "data": "2020-01-01",
+      "type": "badge",
+      "numero_presenze": 7
+    },
+    {
+      "nome_azienda": "Cociv",
+      "nome_pasto": "Spuntino",
+      "data": "2020-01-01",
+      "type": "firma",
+      "numero_presenze": 92
+    },
+    {
+      "nome_azienda": "Cociv",
+      "nome_pasto": "Spuntino",
+      "data": "2020-01-01",
+      "type": "badge",
+      "numero_presenze": 12
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Colazione",
+      "data": "2020-01-01",
+      "type": "firma",
+      "numero_presenze": 92
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Colazione",
+      "data": "2020-01-01",
+      "type": "badge",
+      "numero_presenze": 45
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Pranzo",
+      "data": "2020-01-01",
+      "type": "firma",
+      "numero_presenze": 3
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Pranzo",
+      "data": "2020-01-01",
+      "type": "badge",
+      "numero_presenze": 123
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Cena",
+      "data": "2020-01-01",
+      "type": "firma",
+      "numero_presenze": 12
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Cena",
+      "data": "2020-01-01",
+      "type": "badge",
+      "numero_presenze": 78
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Spuntino",
+      "data": "2020-01-01",
+      "type": "firma",
+      "numero_presenze": 22
+    },
+    {
+      "nome_azienda": "Radimero",
+      "nome_pasto": "Spuntino",
+      "data": "2020-01-01",
+      "type": "badge",
+      "numero_presenze": 34
     }
   ]
 }

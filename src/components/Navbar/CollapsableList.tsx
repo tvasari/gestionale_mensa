@@ -19,7 +19,7 @@ const CollapsableList = ({ elemsToDispaly }: any) => {
         {
           elemsToDispaly.map((elem: any) => {
             return(
-              <ListItem button key={elem.props.id ? elem.props.id : elem.key} className={classes.nested}>
+              <ListItem button key={elem.key} className={classes.nested}>
                 { elem }
               </ListItem>
             );

@@ -8,5 +8,7 @@ Eccetto che nelle pagine di accesso e registrazione, è costantemente presente u
 •	Nelle statistiche ci si può informare degli andamenti dei costi divisi per pasto. Si potrà scegliere tra una visuale di tutto l’anno divisa per mesi o di un mese solo divisa per settimane.
 •	Per la registrazione è richiesta una conferma tramite email
 
+##########################################################################################################################
 
-@TODO Errore req.body.email undefined in knex query where - server.js. Prova a correggere trasferendo le info della sessione nell'handler di accedi
+Fake Server:
+json-server --watch db.json --port 3001

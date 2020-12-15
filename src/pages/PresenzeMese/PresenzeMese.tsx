@@ -27,7 +27,11 @@ const PresenzeMese = () => {
 
   const rows: any = {
     badge: `${azienda} Badge`,
-    firma: `${azienda} Firme`,
+    firma: `${azienda} Firme`
+
+  }
+
+  const totalsRows: any = {
     totaleAzienda: `TOT ${azienda}`,
     totaleComplessivo: "TOT"
   }
@@ -66,17 +70,18 @@ const PresenzeMese = () => {
 
       for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
         if (allPresenze.length) {
-          for (let i=0; i < allPresenze.length; i++) {
-            if (isSameDay(allPresenze[i].data, dayNumber) && isSameType(allPresenze[i].type, rowType)) {
-              columns.push(
-                <CompressedTableCell key={allPresenze[i].type + dayNumber}>
-                  { allPresenze[i].numero_presenze }
-                </CompressedTableCell>
-              );
-              break;
-            }
+          const matchedPresenza = allPresenze.filter((presenza: any) => {
+            return isSameDay(presenza.data, dayNumber) && isSameType(presenza.type, rowType);
+          });
+          if (matchedPresenza.length) {
             columns.push(
-              <CompressedTableCell key={allPresenze[i].type + dayNumber}>
+              <CompressedTableCell align="right" key={matchedPresenza[0].type + dayNumber}>
+                { matchedPresenza[0].numero_presenze }
+              </CompressedTableCell>
+            );
+          } else {
+            columns.push(
+              <CompressedTableCell key={rowType + dayNumber}>
               </CompressedTableCell>
             )
           }
@@ -99,9 +104,51 @@ const PresenzeMese = () => {
 
   }
 
+  const constructTotals = (allDays: any, allPresenze: any) => {
+    return Object.keys(totalsRows).map((rowType: any) => {
+      const columns: any = [];
+
+      for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
+        if (allPresenze.length) {
+          const matchedPresenze = allPresenze.filter((presenza: any) => {
+            return isSameDay(presenza.data, dayNumber);
+          });
+          if (matchedPresenze.length) {
+            const aziendaTotal = matchedPresenze.reduce((acc: number, presenza: any) => {
+              return presenza.numero_presenze + acc;
+            }, 0)
+
+            columns.push(
+              <CompressedTableCell align="right" key={rowType + dayNumber}>
+                { aziendaTotal }
+              </CompressedTableCell>
+            );
+          } else {
+            columns.push(
+              <CompressedTableCell key={rowType + dayNumber}>
+              </CompressedTableCell>
+            )
+          }
+        } else {
+          columns.push(
+            <CompressedTableCell key={rowType + dayNumber}>
+            </CompressedTableCell>
+          )
+        }
+      }
+      return(
+        <StyledTableRow key={totalsRows[rowType]}>
+          <CompressedTableCell>{ totalsRows[rowType] }</CompressedTableCell>
+          { columns }
+        </StyledTableRow>
+      );
+    })
+  }
+
   useEffect(() => {
 
     async function getPresenze() {
+
       await fetch('http://localhost:3001/presenze')
         .then(response => response.json())
         .then((presenze: Presenza[]) => presenze.filter((presenza: Presenza) => {
@@ -112,6 +159,7 @@ const PresenzeMese = () => {
         }))
         .then((filteredPresenze: Presenza[]) => setPresenzeArray(filteredPresenze))
         .catch(e => `Unable to retrive data ${e}` )
+        
     }
 
     getPresenze();
@@ -135,7 +183,8 @@ const PresenzeMese = () => {
             <TableRow>{ weekDaysRow }</TableRow>
           </TableHead>
           <TableBody>
-            { constructTableData(getAllMonthDays(anno, mese), presenzeArray) }
+            { [ constructTableData(getAllMonthDays(anno, mese), presenzeArray),
+            constructTotals(getAllMonthDays(anno, mese), presenzeArray) ] }
           </TableBody>
         </Table>
       </TableContainer>

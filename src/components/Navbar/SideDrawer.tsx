@@ -31,7 +31,7 @@ const { presenzeMese, menu, ristorazione, magazzino, statistiche, account } = pa
 const mainPages = [presenzeMese, menu, ristorazione, magazzino, statistiche, account];
 
 const menuSubList = [
-  <WeekPicker />, 
+  <WeekPicker key="weekPicker"/>, 
   <Fragment key="nuovoMenù">
     <ListItemText primary={subList.nuovoMenu}/>
     <AddBox color="action"/>
@@ -40,13 +40,13 @@ const menuSubList = [
     <ListItemText primary={subList.modificaMenu} /> 
     <Edit color="action"/>
   </Fragment>,
-  <LinkToPage page={subList.sintesiMese} elemToAdd={ <DateRange color="action"/> }/>
+  <LinkToPage key="sintesiMese" page={subList.sintesiMese} elemToAdd={ <DateRange color="action"/> }/>
 ]
 
 const magazzinoSubList = [
-  <LinkToPage id="storico" page={subList.storico}/>,
-  <LinkToPage id="ddt" page={subList.ddt}/>,
-  <LinkToPage id="rimanenze" page={subList.rimanenze}/>
+  <LinkToPage key="storico" page={subList.storico}/>,
+  <LinkToPage key="ddt" page={subList.ddt}/>,
+  <LinkToPage key="rimanenze" page={subList.rimanenze}/>
 ]
 
 const displaySubList = (page: string) => {

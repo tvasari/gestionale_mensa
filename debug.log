@@ -28,3 +28,7 @@
 [0904/230930.473:ERROR:exception_snapshot_win.cc(99)] thread ID 14656 not found in process
 [0904/230930.473:ERROR:exception_snapshot_win.cc(99)] thread ID 14320 not found in process
 [0904/230930.473:ERROR:exception_snapshot_win.cc(99)] thread ID 35548 not found in process
+[1214/092154.909:ERROR:directory_reader_win.cc(43)] FindFirstFile: Impossibile trovare il percorso specificato. (0x3)
+[1214/100421.821:ERROR:directory_reader_win.cc(43)] FindFirstFile: Impossibile trovare il percorso specificato. (0x3)
+[1214/163934.006:ERROR:directory_reader_win.cc(43)] FindFirstFile: Impossibile trovare il percorso specificato. (0x3)
+[1215/075440.155:ERROR:directory_reader_win.cc(43)] FindFirstFile: Impossibile trovare il percorso specificato. (0x3)
