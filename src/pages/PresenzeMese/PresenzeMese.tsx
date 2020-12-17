@@ -28,7 +28,6 @@ const PresenzeMese = () => {
   const rows: any = {
     badge: `${azienda} Badge`,
     firma: `${azienda} Firme`
-
   }
 
   const totalsRows: any = {
@@ -46,7 +45,7 @@ const PresenzeMese = () => {
   }
 
   const createWeekDaysCells = (anno: string, mese: string) => {
-    return getAllMonthDays(anno, mese).map((day, i) => {
+    return getAllMonthDays(anno, mese).map(day => {
       return(
         <CompressedTableCell key={day} align="right">
           <b>{ day }</b>
@@ -63,16 +62,36 @@ const PresenzeMese = () => {
     return presenzaType === presenzaRow ? true : false;
   }
 
-  const constructTableData  = (allDays: any, allPresenze: any) => {
+  const isSameAzienda = (presenzaAzienda: any, azienda: any) => {
+    return presenzaAzienda === azienda ? true : false;
+  }
 
+  const matchPresenze = (allPresenze: any, day: number, selectedAzienda: any, rowType: any) => {
+    return allPresenze.filter((presenza: any) => {
+      const { data, nome_azienda, type } = presenza;
+
+      switch(rowType) {
+        case "badge":
+        case "firma":
+          return isSameDay(data, day) && isSameAzienda(nome_azienda, selectedAzienda) && isSameType(type, rowType);
+        case "totaleAzienda":
+          return isSameDay(data, day) && isSameAzienda(nome_azienda, azienda);
+        case "totaleComplessivo":
+          return isSameDay(data, day);
+        default: 
+          return;
+      }
+
+    })
+  }
+
+  const constructTableData  = (allDays: any, allPresenze: any) => {
     return Object.keys(rows).map((rowType: any) => {
       const columns: any = [];
 
       for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
         if (allPresenze.length) {
-          const matchedPresenza = allPresenze.filter((presenza: any) => {
-            return isSameDay(presenza.data, dayNumber) && isSameType(presenza.type, rowType);
-          });
+          const matchedPresenza = matchPresenze(allPresenze, dayNumber, azienda, rowType);
           if (matchedPresenza.length) {
             columns.push(
               <CompressedTableCell align="right" key={matchedPresenza[0].type + dayNumber}>
@@ -104,23 +123,103 @@ const PresenzeMese = () => {
 
   }
 
-  const constructTotals = (allDays: any, allPresenze: any) => {
+  const constructAziendaTotal = (allDays: any, allPresenze: any) => {
     return Object.keys(totalsRows).map((rowType: any) => {
+      if(rowType === "totaleAzienda") {
+        const columns: any = [];
+
+        for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
+          if (allPresenze.length) {
+            const matchedPresenze = matchPresenze(allPresenze, dayNumber, azienda, rowType);
+            if (matchedPresenze.length) {
+              const aziendaTotal = matchedPresenze.reduce((acc: number, presenza: any) => {
+                return presenza.numero_presenze + acc;
+              }, 0)
+
+              columns.push(
+                <CompressedTableCell align="right" key={rowType + dayNumber}>
+                  { aziendaTotal }
+                </CompressedTableCell>
+              );
+            } else {
+              columns.push(
+                <CompressedTableCell key={rowType + dayNumber}>
+                </CompressedTableCell>
+              )
+            }
+          } else {
+            columns.push(
+              <CompressedTableCell key={rowType + dayNumber}>
+              </CompressedTableCell>
+            )
+          }
+        }
+        return(
+          <StyledTableRow key={totalsRows[rowType]}>
+            <CompressedTableCell>{ totalsRows[rowType] }</CompressedTableCell>
+            { columns }
+          </StyledTableRow>
+        );
+      } else {
+        return null;
+      }
+    })
+  }
+
+  const constructTotal = (allDays: any, allPresenze: any) => {
+    return Object.keys(totalsRows).map((rowType: any) => {
+      if (rowType === "totaleComplessivo") {
+        const columns: any = [];
+
+        for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
+          if (allPresenze.length) {
+            const matchedPresenze = matchPresenze(allPresenze, dayNumber, azienda, rowType);
+            if (matchedPresenze.length) {
+              const total = matchedPresenze.reduce((acc: number, presenza: any) => {
+                return presenza.numero_presenze + acc;
+              }, 0)
+
+              columns.push(
+                <CompressedTableCell align="right" key={rowType + dayNumber}>
+                  { total }
+                </CompressedTableCell>
+              );
+            } else {
+              columns.push(
+                <CompressedTableCell key={rowType + dayNumber}>
+                </CompressedTableCell>
+              )
+            }
+          } else {
+            columns.push(
+              <CompressedTableCell key={rowType + dayNumber}>
+              </CompressedTableCell>
+            )
+          }
+        }
+        return(
+          <StyledTableRow key={totalsRows[rowType]}>
+            <CompressedTableCell>{ totalsRows[rowType] }</CompressedTableCell>
+            { columns }
+          </StyledTableRow>
+        );
+      } else {
+        return null;
+      }
+    })
+  }
+
+  const dataConstructor = (allDays: any, allPresenze: any, allRows: any) => {
+    return Object.keys(allRows).map((rowType: any) => {
       const columns: any = [];
 
       for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
         if (allPresenze.length) {
-          const matchedPresenze = allPresenze.filter((presenza: any) => {
-            return isSameDay(presenza.data, dayNumber);
-          });
-          if (matchedPresenze.length) {
-            const aziendaTotal = matchedPresenze.reduce((acc: number, presenza: any) => {
-              return presenza.numero_presenze + acc;
-            }, 0)
-
+          const matchedPresenza = matchPresenze(allPresenze, dayNumber, azienda, rowType);
+          if (matchedPresenza.length) {
             columns.push(
-              <CompressedTableCell align="right" key={rowType + dayNumber}>
-                { aziendaTotal }
+              <CompressedTableCell align="right" key={matchedPresenza[0].type + dayNumber}>
+                { matchedPresenza[0].numero_presenze }
               </CompressedTableCell>
             );
           } else {
@@ -135,10 +234,12 @@ const PresenzeMese = () => {
             </CompressedTableCell>
           )
         }
+
       }
+
       return(
-        <StyledTableRow key={totalsRows[rowType]}>
-          <CompressedTableCell>{ totalsRows[rowType] }</CompressedTableCell>
+        <StyledTableRow key={rows[rowType]}>
+          <CompressedTableCell>{ rows[rowType] }</CompressedTableCell>
           { columns }
         </StyledTableRow>
       );
@@ -152,12 +253,13 @@ const PresenzeMese = () => {
       await fetch('http://localhost:3001/presenze')
         .then(response => response.json())
         .then((presenze: Presenza[]) => presenze.filter((presenza: Presenza) => {
-          return presenza.nome_azienda === azienda 
-          && presenza.nome_pasto === pasto 
+          return presenza.nome_pasto === pasto 
           && new Date(presenza.data).getMonth() === Calendar.monthStringToNumber(mese)
           && new Date(presenza.data).getFullYear() === parseInt(anno)
         }))
-        .then((filteredPresenze: Presenza[]) => setPresenzeArray(filteredPresenze))
+        .then((filteredPresenze: Presenza[]) => {
+          setPresenzeArray(filteredPresenze)
+        })
         .catch(e => `Unable to retrive data ${e}` )
         
     }
@@ -183,8 +285,11 @@ const PresenzeMese = () => {
             <TableRow>{ weekDaysRow }</TableRow>
           </TableHead>
           <TableBody>
-            { [ constructTableData(getAllMonthDays(anno, mese), presenzeArray),
-            constructTotals(getAllMonthDays(anno, mese), presenzeArray) ] }
+            {[ 
+              constructTableData(getAllMonthDays(anno, mese), presenzeArray),
+              constructAziendaTotal(getAllMonthDays(anno, mese), presenzeArray),
+              constructTotal(getAllMonthDays(anno, mese), presenzeArray) 
+            ]}
           </TableBody>
         </Table>
       </TableContainer>
