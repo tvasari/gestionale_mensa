@@ -27,10 +27,7 @@ const PresenzeMese = () => {
 
   const rows: any = {
     badge: `${azienda} Badge`,
-    firma: `${azienda} Firme`
-  }
-
-  const totalsRows: any = {
+    firma: `${azienda} Firme`,
     totaleAzienda: `TOT ${azienda}`,
     totaleComplessivo: "TOT"
   }
@@ -85,141 +82,22 @@ const PresenzeMese = () => {
     })
   }
 
-  const constructTableData  = (allDays: any, allPresenze: any) => {
-    return Object.keys(rows).map((rowType: any) => {
-      const columns: any = [];
-
-      for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
-        if (allPresenze.length) {
-          const matchedPresenza = matchPresenze(allPresenze, dayNumber, azienda, rowType);
-          if (matchedPresenza.length) {
-            columns.push(
-              <CompressedTableCell align="right" key={matchedPresenza[0].type + dayNumber}>
-                { matchedPresenza[0].numero_presenze }
-              </CompressedTableCell>
-            );
-          } else {
-            columns.push(
-              <CompressedTableCell key={rowType + dayNumber}>
-              </CompressedTableCell>
-            )
-          }
-        } else {
-          columns.push(
-            <CompressedTableCell key={rowType + dayNumber}>
-            </CompressedTableCell>
-          )
-        }
-
-      }
-
-      return(
-        <StyledTableRow key={rows[rowType]}>
-          <CompressedTableCell>{ rows[rowType] }</CompressedTableCell>
-          { columns }
-        </StyledTableRow>
-      );
-    })
-
-  }
-
-  const constructAziendaTotal = (allDays: any, allPresenze: any) => {
-    return Object.keys(totalsRows).map((rowType: any) => {
-      if(rowType === "totaleAzienda") {
-        const columns: any = [];
-
-        for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
-          if (allPresenze.length) {
-            const matchedPresenze = matchPresenze(allPresenze, dayNumber, azienda, rowType);
-            if (matchedPresenze.length) {
-              const aziendaTotal = matchedPresenze.reduce((acc: number, presenza: any) => {
-                return presenza.numero_presenze + acc;
-              }, 0)
-
-              columns.push(
-                <CompressedTableCell align="right" key={rowType + dayNumber}>
-                  { aziendaTotal }
-                </CompressedTableCell>
-              );
-            } else {
-              columns.push(
-                <CompressedTableCell key={rowType + dayNumber}>
-                </CompressedTableCell>
-              )
-            }
-          } else {
-            columns.push(
-              <CompressedTableCell key={rowType + dayNumber}>
-              </CompressedTableCell>
-            )
-          }
-        }
-        return(
-          <StyledTableRow key={totalsRows[rowType]}>
-            <CompressedTableCell>{ totalsRows[rowType] }</CompressedTableCell>
-            { columns }
-          </StyledTableRow>
-        );
-      } else {
-        return null;
-      }
-    })
-  }
-
-  const constructTotal = (allDays: any, allPresenze: any) => {
-    return Object.keys(totalsRows).map((rowType: any) => {
-      if (rowType === "totaleComplessivo") {
-        const columns: any = [];
-
-        for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
-          if (allPresenze.length) {
-            const matchedPresenze = matchPresenze(allPresenze, dayNumber, azienda, rowType);
-            if (matchedPresenze.length) {
-              const total = matchedPresenze.reduce((acc: number, presenza: any) => {
-                return presenza.numero_presenze + acc;
-              }, 0)
-
-              columns.push(
-                <CompressedTableCell align="right" key={rowType + dayNumber}>
-                  { total }
-                </CompressedTableCell>
-              );
-            } else {
-              columns.push(
-                <CompressedTableCell key={rowType + dayNumber}>
-                </CompressedTableCell>
-              )
-            }
-          } else {
-            columns.push(
-              <CompressedTableCell key={rowType + dayNumber}>
-              </CompressedTableCell>
-            )
-          }
-        }
-        return(
-          <StyledTableRow key={totalsRows[rowType]}>
-            <CompressedTableCell>{ totalsRows[rowType] }</CompressedTableCell>
-            { columns }
-          </StyledTableRow>
-        );
-      } else {
-        return null;
-      }
-    })
-  }
-
   const dataConstructor = (allDays: any, allPresenze: any, allRows: any) => {
     return Object.keys(allRows).map((rowType: any) => {
       const columns: any = [];
 
       for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
         if (allPresenze.length) {
-          const matchedPresenza = matchPresenze(allPresenze, dayNumber, azienda, rowType);
-          if (matchedPresenza.length) {
+          const matchedPresenze = matchPresenze(allPresenze, dayNumber, azienda, rowType);
+          if (matchedPresenze.length) {
+
+            const total = matchedPresenze.reduce((acc: number, presenza: any) => {
+              return presenza.numero_presenze + acc;
+            }, 0)
+
             columns.push(
-              <CompressedTableCell align="right" key={matchedPresenza[0].type + dayNumber}>
-                { matchedPresenza[0].numero_presenze }
+              <CompressedTableCell align="right" key={rowType + dayNumber}>
+                { rowType === "badge" || rowType === "firma" ? matchedPresenze[0].numero_presenze : total }
               </CompressedTableCell>
             );
           } else {
@@ -234,7 +112,6 @@ const PresenzeMese = () => {
             </CompressedTableCell>
           )
         }
-
       }
 
       return(
@@ -285,11 +162,7 @@ const PresenzeMese = () => {
             <TableRow>{ weekDaysRow }</TableRow>
           </TableHead>
           <TableBody>
-            {[ 
-              constructTableData(getAllMonthDays(anno, mese), presenzeArray),
-              constructAziendaTotal(getAllMonthDays(anno, mese), presenzeArray),
-              constructTotal(getAllMonthDays(anno, mese), presenzeArray) 
-            ]}
+            { dataConstructor(getAllMonthDays(anno, mese), presenzeArray, rows) }
           </TableBody>
         </Table>
       </TableContainer>
