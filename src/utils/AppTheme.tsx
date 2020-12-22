@@ -27,9 +27,16 @@ const theme = createMuiTheme({
         color: '#455a64',
       }
     },
-    MuiTypography: {
+    MuiTypography: { //SERVE???
       colorTextPrimary: {
         color: '#4caf50'
+      }
+    },
+    MuiButton: {
+      root: {
+        '&$disabled': {
+          color: 'black',
+        }
       }
     }
   },

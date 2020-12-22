@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { makeStyles, styled, IconButton } from '@material-ui/core';
+import { makeStyles, styled, IconButton, Button, Typography } from '@material-ui/core';
 import { TableCell, TableHead, TableBody, TableContainer, Table, TableRow } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
+import SaveIcon from '@material-ui/icons/Save';
 import WorkBenchTopBar from 'components/WorkBenchTopBar';
 import { SelectorPresenze, SelectorMese, SelectorAnno, SelectorPasti } from 'components/Selectors';
 import StyledTableRow from 'components/StyledTableRow';
@@ -10,6 +11,7 @@ import { Presenza } from 'model/data.model';
 
 const useStyles = makeStyles(theme => ({
   container: {...theme.workBench, ...theme.container},
+  dataButton: { textAlign: "right" }
 }));
 
 const CompressedTableCell = styled(TableCell)(() => ({
@@ -24,6 +26,7 @@ const PresenzeMese = () => {
   const [anno, setAnno] = useState('2020');
   const [pasto, setPasto] = useState('Colazione');
   const [presenzeArray, setPresenzeArray] = useState<Presenza[]>([]);
+  const [isEditing, setIsEditing] = useState(false);
 
   const rows: any = {
     badge: `${azienda} Badge`,
@@ -96,8 +99,12 @@ const PresenzeMese = () => {
             }, 0)
 
             columns.push(
-              <CompressedTableCell align="right" key={rowType + dayNumber}>
-                { rowType === "badge" || rowType === "firma" ? matchedPresenze[0].numero_presenze : total }
+              <CompressedTableCell key={rowType + dayNumber}>
+                <Button disabled={isEditing ? false : true }>
+                  <Typography>
+                    { rowType === "badge" || rowType === "firma" ? matchedPresenze[0].numero_presenze : total }
+                  </Typography>
+                </Button>
               </CompressedTableCell>
             );
           } else {
@@ -150,7 +157,9 @@ const PresenzeMese = () => {
   return (
     <Fragment>
       <WorkBenchTopBar>
-        <IconButton><EditIcon/></IconButton>
+        <IconButton onClick={() => setIsEditing(isEditing ? false : true)}>
+          { isEditing ? <SaveIcon/> : <EditIcon/> }
+        </IconButton>
         <SelectorMese setMese={setMese} mese={mese}/>
         <SelectorAnno setAnno={setAnno} anno={anno}/>
         <SelectorPasti setPasto={setPasto} pasto={pasto}/>
