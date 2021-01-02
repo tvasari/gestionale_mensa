@@ -110,12 +110,9 @@ const PresenzeMese = () => {
                       isTextInputActive 
                       ? <TextField
                           id="outlined-number"
-                          label="Number"
                           type="number"
-                          InputLabelProps={{
-                            shrink: true,
-                          }}
-                          variant="outlined"
+                          size="small"
+                          margin="none"
                         />
                       : rowType === "badge" || rowType === "firma" ? matchedPresenze[0].numero_presenze : total 
                     }
