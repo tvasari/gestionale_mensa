@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { makeStyles, styled, IconButton, Button, Typography } from '@material-ui/core';
+import { makeStyles, styled, IconButton, Button, Typography, TextField } from '@material-ui/core';
 import { TableCell, TableHead, TableBody, TableContainer, Table, TableRow } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import SaveIcon from '@material-ui/icons/Save';
@@ -27,6 +27,7 @@ const PresenzeMese = () => {
   const [pasto, setPasto] = useState('Colazione');
   const [presenzeArray, setPresenzeArray] = useState<Presenza[]>([]);
   const [isEditing, setIsEditing] = useState(false);
+  const [isTextInputActive, setIsTextInputActive] = useState(false);
 
   const rows: any = {
     badge: `${azienda} Badge`,
@@ -100,9 +101,24 @@ const PresenzeMese = () => {
 
             columns.push(
               <CompressedTableCell key={rowType + dayNumber}>
-                <Button disabled={isEditing ? false : true }>
+                <Button 
+                  onClick={() => setIsTextInputActive(isTextInputActive ? false : true)} 
+                  disabled={isEditing ? false : true }
+                >
                   <Typography>
-                    { rowType === "badge" || rowType === "firma" ? matchedPresenze[0].numero_presenze : total }
+                    {
+                      isTextInputActive 
+                      ? <TextField
+                          id="outlined-number"
+                          label="Number"
+                          type="number"
+                          InputLabelProps={{
+                            shrink: true,
+                          }}
+                          variant="outlined"
+                        />
+                      : rowType === "badge" || rowType === "firma" ? matchedPresenze[0].numero_presenze : total 
+                    }
                   </Typography>
                 </Button>
               </CompressedTableCell>
