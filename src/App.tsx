@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import 'App.css';
 
 import PresenzeMese from 'pages/PresenzeMese/PresenzeMese';
@@ -28,6 +28,7 @@ const App = () => {
       <AppTheme>
         <Router>
           <Switch>
+            <Redirect exact from="/" to="/accedi"/>
             <Route path="/registrati" component={Registrati} />
             <Route path="/accedi">
               <Accedi setLoadedUser={setLoadedUser} />

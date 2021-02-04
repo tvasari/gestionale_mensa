@@ -106,16 +106,14 @@ const PresenzeMese = () => {
                   disabled={isEditing ? false : true }
                 >
                   <Typography>
-                    {
-                      isTextInputActive 
-                      ? <TextField
-                          id="outlined-number"
-                          type="number"
-                          size="small"
-                          margin="none"
-                        />
-                      : rowType === "badge" || rowType === "firma" ? matchedPresenze[0].numero_presenze : total 
-                    }
+                    <TextField
+                      id="outlined-number"
+                      type="number"
+                      size="small"
+                      margin="none"
+                      defaultValue={rowType === "badge" || rowType === "firma" ? matchedPresenze[0].numero_presenze : total }
+                      disabled={!isTextInputActive}
+                    />
                   </Typography>
                 </Button>
               </CompressedTableCell>
