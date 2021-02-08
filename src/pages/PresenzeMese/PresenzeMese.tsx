@@ -121,6 +121,20 @@ const PresenzeMese = () => {
           } else {
             columns.push(
               <CompressedTableCell key={rowType + dayNumber}>
+                <Button 
+                  onClick={() => setIsTextInputActive(isTextInputActive ? false : true)} 
+                  disabled={isEditing ? false : true }
+                >
+                  <Typography>
+                    <TextField
+                      id="outlined-number"
+                      type="number"
+                      size="small"
+                      margin="none"
+                      disabled={!isTextInputActive}
+                    />
+                  </Typography>
+                </Button>
               </CompressedTableCell>
             )
           }
