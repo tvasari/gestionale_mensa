@@ -11,11 +11,9 @@ import { Presenza } from 'model/data.model';
 
 const useStyles = makeStyles(theme => ({
   container: {...theme.workBench, ...theme.container},
-  dataButton: { textAlign: "right" }
-}));
-
-const CompressedTableCell = styled(TableCell)(() => ({
-    padding: '2px 16px'
+  numericValue: { textAlign: "right" },
+  zeroPadding: { padding: 0 },
+  compressedCell: { padding: '2px 16px' }
 }));
 
 
@@ -27,7 +25,6 @@ const PresenzeMese = () => {
   const [pasto, setPasto] = useState('Colazione');
   const [presenzeArray, setPresenzeArray] = useState<Presenza[]>([]);
   const [isEditing, setIsEditing] = useState(false);
-  const [isTextInputActive, setIsTextInputActive] = useState(false);
 
   const rows: any = {
     badge: `${azienda} Badge`,
@@ -48,9 +45,9 @@ const PresenzeMese = () => {
   const createWeekDaysCells = (anno: string, mese: string) => {
     return getAllMonthDays(anno, mese).map(day => {
       return(
-        <CompressedTableCell key={day} align="right">
+        <TableCell className={classes.compressedCell} key={day} align="right">
           <b>{ day }</b>
-        </CompressedTableCell>
+        </TableCell>
       );
     })
   }
@@ -86,70 +83,59 @@ const PresenzeMese = () => {
     })
   }
 
-  const dataConstructor = (allDays: any, allPresenze: any, allRows: any) => {
+  const dataConstructor = (allDays: any, filteredPresenze: any, allRows: any) => {
     return Object.keys(allRows).map((rowType: any) => {
-      const columns: any = [];
+      const cells: any = [];
+      let isTotalRow = rowType === "totaleAzienda" || rowType === "totaleComplessivo";
 
       for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
-        if (allPresenze.length) {
-          const matchedPresenze = matchPresenze(allPresenze, dayNumber, azienda, rowType);
+        if (filteredPresenze.length) {
+          const matchedPresenze = matchPresenze(filteredPresenze, dayNumber, azienda, rowType);
           if (matchedPresenze.length) {
 
             const total = matchedPresenze.reduce((acc: number, presenza: any) => {
               return presenza.numero_presenze + acc;
             }, 0)
 
-            columns.push(
-              <CompressedTableCell key={rowType + dayNumber}>
-                <Button 
-                  onClick={() => setIsTextInputActive(isTextInputActive ? false : true)} 
-                  disabled={isEditing ? false : true }
-                >
-                  <Typography>
-                    <TextField
-                      id="outlined-number"
-                      type="number"
-                      size="small"
-                      margin="none"
-                      defaultValue={rowType === "badge" || rowType === "firma" ? matchedPresenze[0].numero_presenze : total }
-                      disabled={!isTextInputActive}
-                    />
-                  </Typography>
-                </Button>
-              </CompressedTableCell>
+            cells.push(
+              <TableCell className={classes.zeroPadding} key={rowType + dayNumber}>
+                <TextField
+                  InputProps={{ classes: { input: classes.numericValue }}}
+                  disabled={!isEditing || isTotalRow}
+                  id="outlined-number"
+                  type="number"
+                  size="small"
+                  margin="none"
+                  defaultValue={rowType === "badge" || rowType === "firma" ? matchedPresenze[0].numero_presenze : total }
+                />
+              </TableCell>
             );
           } else {
-            columns.push(
-              <CompressedTableCell key={rowType + dayNumber}>
-                <Button 
-                  onClick={() => setIsTextInputActive(isTextInputActive ? false : true)} 
+            cells.push(
+              <TableCell className={classes.zeroPadding} key={rowType + dayNumber}>
+                <TextField
+                  InputProps={{ classes: { input: classes.numericValue }}}
                   disabled={isEditing ? false : true }
-                >
-                  <Typography>
-                    <TextField
-                      id="outlined-number"
-                      type="number"
-                      size="small"
-                      margin="none"
-                      disabled={!isTextInputActive}
-                    />
-                  </Typography>
-                </Button>
-              </CompressedTableCell>
+                  id="outlined-number"
+                  type="number"
+                  size="small"
+                  margin="none"
+                />
+              </TableCell>
             )
           }
         } else {
-          columns.push(
-            <CompressedTableCell key={rowType + dayNumber}>
-            </CompressedTableCell>
+          cells.push(
+            <TableCell className={classes.zeroPadding} key={rowType + dayNumber}>
+            </TableCell>
           )
         }
       }
 
       return(
         <StyledTableRow key={rows[rowType]}>
-          <CompressedTableCell>{ rows[rowType] }</CompressedTableCell>
-          { columns }
+           <TableCell className={classes.compressedCell}>{ rows[rowType] }</TableCell>
+          { cells }
         </StyledTableRow>
       );
     })
