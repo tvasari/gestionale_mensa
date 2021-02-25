@@ -52,21 +52,13 @@ const PresenzeMese = () => {
     })
   }
 
-  const isSameDay = (presenzaDate: any, monthdaynumber: any) => {
-    return new Date(presenzaDate).getDate() === monthdaynumber ? true : false;
-  }
-
-  const isSameType = (presenzaType: any, presenzaRow: any) => {
-    return presenzaType === presenzaRow ? true : false;
-  }
-
-  const isSameAzienda = (presenzaAzienda: any, azienda: any) => {
-    return presenzaAzienda === azienda ? true : false;
-  }
+  const isSameDay = (presenzaDate: any, monthdaynumber: any) => new Date(presenzaDate).getDate() === monthdaynumber;
+  const isSameType = (presenzaType: any, presenzaRow: any) => presenzaType === presenzaRow;
+  const isSameAzienda = (presenzaAzienda: any, azienda: any) => presenzaAzienda === azienda;
 
   const matchPresenze = (allPresenze: any, day: number, selectedAzienda: any, rowType: any) => {
     return allPresenze.filter((presenza: any) => {
-      const { data, nome_azienda, type } = presenza;
+      const { data, nome_azienda, type, nome_pasto } = presenza;
 
       switch(rowType) {
         case "badge":
@@ -83,79 +75,99 @@ const PresenzeMese = () => {
     })
   }
 
-  const dataConstructor = (allDays: any, filteredPresenze: any, allRows: any) => {
-    return Object.keys(allRows).map((rowType: any) => {
-      const cells: any = [];
-      let isTotalRow = rowType === "totaleAzienda" || rowType === "totaleComplessivo";
+  // const dataConstructor = (allDays: any, filteredPresenze: any, allRows: any) => {
+  //   console.log("data constructor is re running", filteredPresenze)
+  //   return Object.keys(allRows).map((rowType: any) => {
+  //     const cells: any = [];
+  //     let isTotalRow = rowType === "totaleAzienda" || rowType === "totaleComplessivo";
+      
+  //     for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
+  //       if (filteredPresenze.length) {
+  //         const matchedPresenze = matchPresenze(filteredPresenze, dayNumber, azienda, rowType, pasto);
+  //         const numeroPresenze = matchedPresenze[0]?.numero_presenze;
 
-      for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) {
+
+  //         if (matchedPresenze.length) {
+  //           const total = matchedPresenze.reduce((acc: number, presenza: any) => {
+  //             return presenza.numero_presenze + acc;
+  //           }, 0)
+
+  //           cells.push(
+  //             <TableCell className={classes.zeroPadding} key={rowType + dayNumber}>
+  //               <TextField
+  //                 InputProps={{ classes: { input: classes.numericValue }}}
+  //                 disabled={!isEditing || isTotalRow}
+  //                 id="outlined-number"
+  //                 type="number"
+  //                 size="small"
+  //                 margin="none"
+  //                 defaultValue={ isTotalRow ? total : numeroPresenze }
+  //                 onChange={e => console.log(e.target.value)}
+  //               />
+  //             </TableCell>
+  //           );
+  //         } else {
+  //           cells.push(
+  //             <TableCell className={classes.zeroPadding} key={rowType + dayNumber}>
+  //               <TextField
+  //                 InputProps={{ classes: { input: classes.numericValue }}}
+  //                 disabled={isEditing ? false : true }
+  //                 id="outlined-number"
+  //                 type="number"
+  //                 size="small"
+  //                 margin="none"
+  //               />
+  //             </TableCell>
+  //           )
+  //         }
+  //       } else {
+  //         cells.push(
+  //           <TableCell className={classes.zeroPadding} key={rowType + dayNumber}>
+  //           </TableCell>
+  //         )
+  //       }
+  //     }
+
+  //     return(
+  //       <StyledTableRow key={rows[rowType]}>
+  //          <TableCell className={classes.compressedCell}>{ rows[rowType] }</TableCell>
+  //         { cells }
+  //       </StyledTableRow>
+  //     );
+  //   })
+  // }
+
+  const dataConstructor = (allDays: any, filteredPresenze: any, allRows: any) => {
+    const rowsData = [];
+    return Object.keys(allRows).map((rowType: any) => { 
+      const cellsData = [];
+
+      for (let dayNumber=1; dayNumber <= allDays.length; dayNumber++) { 
         if (filteredPresenze.length) {
           const matchedPresenze = matchPresenze(filteredPresenze, dayNumber, azienda, rowType);
-          if (matchedPresenze.length) {
-
-            const total = matchedPresenze.reduce((acc: number, presenza: any) => {
-              return presenza.numero_presenze + acc;
-            }, 0)
-
-            cells.push(
-              <TableCell className={classes.zeroPadding} key={rowType + dayNumber}>
-                <TextField
-                  InputProps={{ classes: { input: classes.numericValue }}}
-                  disabled={!isEditing || isTotalRow}
-                  id="outlined-number"
-                  type="number"
-                  size="small"
-                  margin="none"
-                  defaultValue={rowType === "badge" || rowType === "firma" ? matchedPresenze[0].numero_presenze : total }
-                />
-              </TableCell>
-            );
-          } else {
-            cells.push(
-              <TableCell className={classes.zeroPadding} key={rowType + dayNumber}>
-                <TextField
-                  InputProps={{ classes: { input: classes.numericValue }}}
-                  disabled={isEditing ? false : true }
-                  id="outlined-number"
-                  type="number"
-                  size="small"
-                  margin="none"
-                />
-              </TableCell>
-            )
-          }
-        } else {
-          cells.push(
-            <TableCell className={classes.zeroPadding} key={rowType + dayNumber}>
-            </TableCell>
-          )
+          const numeroPresenze = matchedPresenze[0]?.numero_presenze;
         }
       }
 
-      return(
-        <StyledTableRow key={rows[rowType]}>
-           <TableCell className={classes.compressedCell}>{ rows[rowType] }</TableCell>
-          { cells }
-        </StyledTableRow>
-      );
     })
   }
 
   useEffect(() => {
-
+    
     async function getPresenze() {
-
+      
       await fetch('http://localhost:3001/presenze')
-        .then(response => response.json())
-        .then((presenze: Presenza[]) => presenze.filter((presenza: Presenza) => {
-          return presenza.nome_pasto === pasto 
-          && new Date(presenza.data).getMonth() === Calendar.monthStringToNumber(mese)
-          && new Date(presenza.data).getFullYear() === parseInt(anno)
-        }))
-        .then((filteredPresenze: Presenza[]) => {
-          setPresenzeArray(filteredPresenze)
-        })
-        .catch(e => `Unable to retrive data ${e}` )
+      .then(response => response.json())
+      .then((presenze: Presenza[]) => presenze.filter((presenza: Presenza) => {
+        return presenza.nome_pasto === pasto 
+        && new Date(presenza.data).getMonth() === Calendar.monthStringToNumber(mese)
+        && new Date(presenza.data).getFullYear() === parseInt(anno)
+      }))
+      .then((filteredPresenze: Presenza[]) => {
+        console.log("something changed", filteredPresenze)
+        setPresenzeArray(filteredPresenze)
+      })
+      .catch(e => `Unable to retrive data ${e}` )
         
     }
 

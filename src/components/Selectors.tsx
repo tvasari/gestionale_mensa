@@ -78,7 +78,7 @@ const SelectorAnno = ({ setAnno, anno }: any) => {
   return <Selector setInputValue={setAnno} inputValue={anno} label={Selectors.anno} options={anni}/>
 }
 
-const SelectorPasti = ({ setPasto, pasto}: any) => {
+const SelectorPasti = ({ setPasto, pasto }: any) => {
   return(
     <Selector 
       setInputValue={setPasto} 
